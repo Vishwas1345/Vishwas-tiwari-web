@@ -157,7 +157,7 @@ const Portfolio = () => {
 
   const webDevelopmentProjects = [
     {
-      title: "Perosnal portfolio",
+      title: "Personal portfolio",
       description: "• Modern portfolio website built with React, TypeScript, and Tailwind CSS\n• Frontend with responsive design and animations\n• Dynamic content management and smooth scrolling navigation\n• Interactive project galleries and real-time animations\n• Component-based architecture and state management\n• Mobile-first design approach and accessibility compliance\n• SEO optimization and cross-browser compatibility\n• Advanced UI/UX elements: gradients, hover effects, loading animations\n• Performance optimization techniques and modern web practices\n• Living demonstration of technical skills and creative design",
       tags: ["React", "TypeScript", "Tailwind CSS", "Responsive Design", "Modern UI"],
       imageUrl: "/images/port.webp",
