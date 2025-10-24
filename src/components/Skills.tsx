@@ -67,10 +67,10 @@ const SkillItem = ({ name, level, icon, category }: SkillProps) => {
 
 const Skills = () => {
   const programmingLanguages = [
-    { name: "Python", level: 95, icon: <Code className="w-5 h-5 text-primary" />, category: "Primary Language" },
-    { name: "Java", level: 40, icon: <Coffee className="w-5 h-5 text-primary" />, category: "Object-Oriented" },
-    { name: "HTML/CSS", level: 60, icon: <FileCode className="w-5 h-5 text-primary" />, category: "Web Development" },
-    { name: "JavaScript", level: 40, icon: <Globe className="w-5 h-5 text-primary" />, category: "Frontend" },
+    { name: "Python", icon: <Code className="w-5 h-5 text-primary" />, category: "Primary Language" },
+    { name: "Java", icon: <Coffee className="w-5 h-5 text-primary" />, category: "Object-Oriented" },
+    { name: "HTML/CSS", icon: <FileCode className="w-5 h-5 text-primary" />, category: "Web Development" },
+    { name: "JavaScript", icon: <Globe className="w-5 h-5 text-primary" />, category: "Frontend" },
   ];
 
   const dataScienceTools = [
