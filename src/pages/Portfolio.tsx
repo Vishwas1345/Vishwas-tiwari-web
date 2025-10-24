@@ -100,7 +100,7 @@ const Portfolio = () => {
        tags: ["Python", "Machine Learning", "Regression", "Scikit-Learn", "Pandas", "NumPy"],
        imageUrl: "/images/3.1.png",
        icon: <Brain className="w-5 h-5 text-primary" />,
-       category: "Machine Learning",
+       category: "Machine Learning - Linear Regression",
        accuracy: "83%",
        dataset: "80k samples"
      }, 
@@ -110,7 +110,7 @@ const Portfolio = () => {
       tags: ["Python", "Neural Networks", "NumPy", "Pandas", "Deep Learning", "Calculus", "Linear Algebra", "Machine Learning"],
       imageUrl: "/images/NNFS.png",
       icon: <Brain className="w-5 h-5 text-blue-400" />,
-      category: "Deep Learning",
+      category: "Deep Learning - Neural Networks",
       accuracy: "85%",
       dataset: "60k samples",
     },
@@ -120,7 +120,7 @@ const Portfolio = () => {
        tags: ["Python", "Machine Learning", "Regression", "Scikit-Learn", "Pandas", "NumPy", "Data Visualization"],
        imageUrl: "/images/Gold-price-prediction.avif",
        icon: <Brain className="w-5 h-5 text-primary" />,
-       category: "Machine Learning",
+       category: "Machine Learning - Random Forest",
        accuracy: "98%",
        dataset: "1600 samples"
      },
@@ -130,7 +130,7 @@ const Portfolio = () => {
       tags: ["Python", "Pandas", "Numpy" , "Classification", "Scikit-Learn", "Data Science", "Feature Engineering"],
       imageUrl: "/images/random forrest.png",
       icon: <Brain className="w-5 h-5 text-green-400" />,
-      category: "Classification",
+      category: "Machine learning - Random Forest",
       accuracy: "93%",
       dataset: "20k samples"
     },
@@ -140,7 +140,7 @@ const Portfolio = () => {
       tags: ["Python", "Pandas", "Numpy" , "Matplotlib", "Machine Learning", "Data Analysis", "TensorFlow"],
       imageUrl: "/images/titanic.jpg",
       icon: <Brain className="w-5 h-5 text-purple-400" />,
-      category: "Machine Learning",
+      category: "Machine Learning - Linear Regression",
       accuracy: "75-80%",
       dataset: "800 samples"
     }
