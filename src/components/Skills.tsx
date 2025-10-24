@@ -78,7 +78,7 @@ const Skills = () => {
     { name: "NumPy", level: 80, icon: <BarChart className="w-5 h-5 text-blue-400" />, category: "Numerical Computing" },
     { name: "Matplotlib", level: 60, icon: <LineChart className="w-5 h-5 text-blue-400" />, category: "Data Visualization" },
     { name: "Seaborn", level: 65, icon: <Palette className="w-5 h-5 text-blue-400" />, category: "Data Visualization" },
-    { name: "Sci-kit learn", level: 75, icon: <Brain className="w-5 h-5 text-blue-400" />, category: "Machine Learning" 
+    { name: "Sci-kit learn", level: 75, icon: <Cpu className="w-5 h-5 text-blue-400" />, category: "Machine Learning" 
   ];
 
   const developmentTools = [
