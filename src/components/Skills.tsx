@@ -67,37 +67,37 @@ const SkillItem = ({ name, level, icon, category }: SkillProps) => {
 
 const Skills = () => {
   const programmingLanguages = [
-    { name: "Python", level: 90, icon: <Code className="w-5 h-5 text-primary" />, category: "Primary Language" },
-    { name: "Java", level: 80, icon: <Coffee className="w-5 h-5 text-primary" />, category: "Object-Oriented" },
-    { name: "HTML/CSS", level: 85, icon: <FileCode className="w-5 h-5 text-primary" />, category: "Web Development" },
+    { name: "Python", level: 95, icon: <Code className="w-5 h-5 text-primary" />, category: "Primary Language" },
+    { name: "Java", level: 40, icon: <Coffee className="w-5 h-5 text-primary" />, category: "Object-Oriented" },
+    { name: "HTML/CSS", level: 60, icon: <FileCode className="w-5 h-5 text-primary" />, category: "Web Development" },
     { name: "JavaScript", level: 40, icon: <Globe className="w-5 h-5 text-primary" />, category: "Frontend" },
   ];
 
   const dataScienceTools = [
-    { name: "Pandas", level: 85, icon: <Database className="w-5 h-5 text-blue-400" />, category: "Data Manipulation" },
-    { name: "NumPy", level: 85, icon: <BarChart className="w-5 h-5 text-blue-400" />, category: "Numerical Computing" },
-    { name: "Matplotlib", level: 70, icon: <LineChart className="w-5 h-5 text-blue-400" />, category: "Data Visualization" },
-    { name: "Seaborn", level: 55, icon: <Palette className="w-5 h-5 text-blue-400" />, category: "Statistical Visualization" },
+    { name: "Pandas", level: 85, icon: <Database className="w-5 h-5 text-blue-400" />, category: "Data Handling" },
+    { name: "NumPy", level: 80, icon: <BarChart className="w-5 h-5 text-blue-400" />, category: "Numerical Computing" },
+    { name: "Matplotlib", level: 60, icon: <LineChart className="w-5 h-5 text-blue-400" />, category: "Data Visualization" },
+    { name: "Seaborn", level: 65, icon: <Palette className="w-5 h-5 text-blue-400" />, category: "Data Visualization" },
+    { name: "Sci-kit learn", level: 75, icon: <Brain className="w-5 h-5 text-blue-400" />, category: "Machine Learning" 
   ];
 
   const developmentTools = [
     { name: "Git & GitHub", level: 70, icon: <GitBranch className="w-5 h-5 text-purple-400" />, category: "Version Control" },
-    { name: "VS Code", level: 90, icon: <Terminal className="w-5 h-5 text-purple-400" />, category: "IDE" },
-    { name: "Jupyter Notebooks", level: 85, icon: <BookOpen className="w-5 h-5 text-purple-400" />, category: "Data Analysis" },
-    { name: "Postman", level: 50, icon: <Zap className="w-5 h-5 text-purple-400" />, category: "API Testing" },
-    { name: "Google colab", level: 70, icon: <OmegaIcon className="w-5 h-5 text-purple-400" />, category: "Machine Learning" },
-    { name: "Cursor", level: 90, icon: <Terminal className="w-5 h-5 text-purple-400" />, category: "AI Code Editor" },
+    { name: "VS Code", level: 60, icon: <Terminal className="w-5 h-5 text-purple-400" />, category: "IDE" },
+    { name: "Jupyter Lab", level: 85, icon: <BookOpen className="w-5 h-5 text-purple-400" />, category: "Data Analysis" },
+    { name: "Google colab", level: 85, icon: <OmegaIcon className="w-5 h-5 text-purple-400" />, category: "Machine Learning" },
+    { name: "Cursor", level: 80, icon: <Terminal className="w-5 h-5 text-purple-400" />, category: "AI Code Editor" },
   ];
 
   const officeSkills = [
-    { name: "MS Excel", level: 85, icon: <FileSpreadsheet className="w-5 h-5 text-orange-400" />, category: "Spreadsheets" },
+    { name: "MS Excel", level: 90, icon: <FileSpreadsheet className="w-5 h-5 text-orange-400" />, category: "Spreadsheets" },
     { name: "MS Word", level: 90, icon: <FileText className="w-5 h-5 text-orange-400" />, category: "Documentation" },
-    { name: "MS PowerPoint", level: 85, icon: <FileImage className="w-5 h-5 text-orange-400" />, category: "Presentations" },
+    { name: "MS PowerPoint", level: 60, icon: <FileImage className="w-5 h-5 text-orange-400" />, category: "Presentations" },
     { name: "Google Workspace", level: 80, icon: <Cloud className="w-5 h-5 text-orange-400" />, category: "Cloud Tools" },
   ];
 
   const databaseSkills = [
-    { name: "MySQL", level: 80, icon: <Database className="w-5 h-5 text-green-400" />, category: "Relational Database" },
+    { name: "MySQL", level: 60, icon: <Database className="w-5 h-5 text-green-400" />, category: "Relational Database" },
   ];
 
   const softSkills = [
@@ -105,7 +105,7 @@ const Skills = () => {
     { name: "Insights", level: 80, icon: <BarChart className="w-5 h-5 text-cyan-400" />, category: "Research" },
     { name: "Communication", level: 75, icon: <Globe className="w-5 h-5 text-cyan-400" />, category: "Interpersonal" },
     { name: "Team Collaboration", level: 80, icon: <GitBranch className="w-5 h-5 text-cyan-400" />, category: "Leadership" },
-    { name: "Leveraging AI", level: 85, icon: <Cpu className="w-5 h-5 text-cyan-400" />, category: "AI implementation" },
+    { name: "Leveraging AI", level: 95, icon: <Cpu className="w-5 h-5 text-cyan-400" />, category: "AI implementation" },
   ];
 
   return (
