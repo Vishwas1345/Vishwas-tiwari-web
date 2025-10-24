@@ -105,6 +105,16 @@ const Portfolio = () => {
        dataset: "80k samples"
      },
     {
+       title: "Gold price prediction",
+       description: "Machine learning regression model for gold price prediction.\nAnalyzes historical data including SPX, USO, SLV prices, and EUR/USD exchange rates.\nExpertise in data preprocessing, correlation analysis, and using ensemble methods like Random Forest Regressor.\nAchieved high accuracy (98.94%) using the trained model.\nIncludes comprehensive data visualization of price distributions and correlation analysis.\nUtilizes train/test split for model evaluation and comparison of actual vs. predicted prices.\nPredicts a continuous value (gold price) with high confidence.\nValuable for financial analysis, investment strategies, and economic research.\nUseful for researchers, financial analysts, investors, and educational purposes.",
+       tags: ["Python", "Machine Learning", "Regression", "Scikit-Learn", "Pandas", "NumPy", "Data Visualization"],
+       imageUrl: "/images/3.1.png",
+       icon: <Brain className="w-5 h-5 text-primary" />,
+       category: "Machine Learning",
+       accuracy: "98%",
+       dataset: "1600 samples"
+     },
+    {
       title: "Handwritten digits classificaion",
       description: "• 3-layer neural network built from scratch using only Python, NumPy, and Pandas\n• Implements forward propagation, backpropagation, and gradient descent algorithms\n• Custom ReLu activation function and mean squared error loss calculation\n• Classifies handwritten digits (0-9) from MNIST dataset with 85% accuracy\n• 980 training iterations with adaptive learning rate optimization\n• Deep understanding of neural network fundamentals and mathematical concepts\n•Calculus, linear algebra, and optimization algorithms\n• No reliance on high-level frameworks - pure mathematical implementation\n• Excellent demonstration of machine learning theory in practice",
       tags: ["Python", "Neural Networks", "NumPy", "Pandas", "Deep Learning", "Calculus", "Linear Algebra", "Machine Learning"],
