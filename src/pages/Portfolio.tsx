@@ -118,7 +118,7 @@ const Portfolio = () => {
        title: "Gold price prediction",
        description: "• Machine learning regression model for gold price prediction.\n• Analyzes historical data including SPX, USO, SLV prices, and EUR/USD exchange rates.\n• Expertise in data preprocessing, correlation analysis, and using ensemble methods like Random Forest Regressor.\n• Achieved high accuracy (98.94%) using the trained model.\n• Includes comprehensive data visualization of price distributions and correlation analysis.\n• Utilizes train/test split for model evaluation and comparison of actual vs. predicted prices.\n• Predicts a continuous value (gold price) with high confidence.\n• Valuable for financial analysis, investment strategies, and economic research.\n• Useful for researchers, financial analysts, investors, and educational purposes.",
        tags: ["Python", "Machine Learning", "Regression", "Scikit-Learn", "Pandas", "NumPy", "Data Visualization"],
-       imageUrl: "/images/3.1.png",
+       imageUrl: "/images/Gold-price-prediction.avif",
        icon: <Brain className="w-5 h-5 text-primary" />,
        category: "Machine Learning",
        accuracy: "98%",
