@@ -30,13 +30,11 @@ import {
 
 interface SkillProps {
   name: string;
-  level: number | string;
   icon: React.ReactNode;
   category?: string;
 }
 
-const SkillItem = ({ name, level, icon, category }: SkillProps) => {
-  const displayLevel = typeof level === 'number' ? `${level}%` : level;
+const SkillItem = ({ name, icon, category }: SkillProps) => {
   const progressWidth = typeof level === 'number' ? level : 0;
   
   return (
@@ -53,12 +51,6 @@ const SkillItem = ({ name, level, icon, category }: SkillProps) => {
             )}
           </div>
         </div>
-      </div>
-      <div className="skill-bar">
-        <div 
-          className="skill-progress transition-all duration-1000 ease-out" 
-          style={{ width: `${progressWidth}%` }}
-        ></div>
       </div>
     </div>
   );
