@@ -116,13 +116,6 @@ const Projects = () => {
 
   return (
     <section id="projects" className="bg-gradient relative overflow-hidden">
-      {/* Enhanced background animations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/6 w-96 h-96 bg-blue-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-cyan-400/10 rounded-full blur-2xl animate-bounce"></div>
-      </div>
-      
       <div className="section-container">
         <div className="text-center mb-12">
           <h2 className="section-title">My Projects</h2>
@@ -131,55 +124,21 @@ const Projects = () => {
           </p>
         </div>
         
-        {/* Project Categories */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <Badge variant="outline" className="px-4 py-2 bg-primary/10 border-primary/30 text-primary">
-            <Database className="w-4 h-4 mr-2" />
-            Data Science
-          </Badge>
-          <Badge variant="outline" className="px-4 py-2 bg-blue-400/10 border-blue-400/30 text-blue-400">
-            <Brain className="w-4 h-4 mr-2" />
-            AI & ML
-          </Badge>
-          <Badge variant="outline" className="px-4 py-2 bg-green-400/10 border-green-400/30 text-green-400">
-            <TrendingUp className="w-4 h-4 mr-2" />
-            Analytics
-          </Badge>
-          <Badge variant="outline" className="px-4 py-2 bg-purple-400/10 border-purple-400/30 text-purple-400">
-            <Globe className="w-4 h-4 mr-2" />
-            Web Development
-          </Badge>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-          {projects.map((project, index) => (
-            <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
-              <ProjectCard 
-                title={project.title}
-                description={project.description}
-                tags={project.tags}
-                imageUrl={project.imageUrl}
-                icon={project.icon}
-                category={project.category}
-              />
-            </div>
-          ))}
-        </div>
         
         {/* Call to Action */}
         <div className="text-center mt-16">
           <Card className="card-hover bg-card border border-border inline-block">
             <CardContent className="p-8">
-              <h3 className="text-xl font-semibold text-gradient mb-4">Interested in Collaboration?</h3>
+              <h3 className="text-xl font-semibold text-gradient mb-4">Want to see my projects?</h3>
               <p className="text-muted-foreground mb-6">
-                I'm always excited to work on new projects and explore innovative solutions
+                Click the button below to view my projects
               </p>
               <Button 
                 className="bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => window.location.href = '/portfolio'}
               >
                 <Mail className="w-4 h-4 mr-2" />
-                Get In Touch
+                Click Here
               </Button>
             </CardContent>
           </Card>
