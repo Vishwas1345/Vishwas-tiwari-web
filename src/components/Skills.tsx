@@ -198,35 +198,7 @@ const Skills = () => {
         </div>
 
         {/* Skills Summary */}
-        <div className="mt-16">
-          <Card className="card-hover glass-effect">
-            <CardContent className="p-8 text-center">
-              <h3 className="text-2xl font-bold text-gradient mb-4">Skills Overview</h3>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">4+</div>
-                  <div className="text-sm text-muted-foreground">Programming Languages</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">4+</div>
-                  <div className="text-sm text-muted-foreground">Data Science Tools</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">4+</div>
-                  <div className="text-sm text-muted-foreground">Development Tools</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-green-400 mb-2">1+</div>
-                  <div className="text-sm text-muted-foreground">Database Skills</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-cyan-400 mb-2">4+</div>
-                  <div className="text-sm text-muted-foreground">Soft Skills</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+       
       </div>
     </section>
   );
