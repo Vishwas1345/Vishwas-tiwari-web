@@ -53,7 +53,6 @@ const SkillItem = ({ name, level, icon, category }: SkillProps) => {
             )}
           </div>
         </div>
-        <span className="text-sm text-muted-foreground font-semibold">{displayLevel}</span>
       </div>
       <div className="skill-bar">
         <div 
