@@ -98,7 +98,7 @@ const Portfolio = () => {
        title: "Will help you find a computer!",
        description: "• Machine learning regression model for accurate computer price prediction\n• Analyzes comprehensive hardware specs: RAM, GPU, processor, brand, storage\n• Extensive data preprocessing and feature engineering with multiple algorithms\n• Trained on 80,000+ computer configurations from various manufacturers\n• Achieved 83% accuracy in price prediction\n• Real-time price prediction with confidence intervals\n• Detailed breakdown of how each specification affects final price\n• Helps consumers make informed decisions and retailers optimize pricing\n• Supports multiple regression algorithms and model optimization",
        tags: ["Python", "Machine Learning", "Regression", "Scikit-Learn", "Pandas", "NumPy"],
-       imageUrl: "public/images/3.1.png",
+       imageUrl: "/images/3.1.png",
        icon: <Brain className="w-5 h-5 text-primary" />,
        category: "Machine Learning",
        accuracy: "83%",
@@ -108,7 +108,7 @@ const Portfolio = () => {
       title: "Neural Network: How it works!",
       description: "• 3-layer neural network built from scratch using only Python, NumPy, and Pandas\n• Implements forward propagation, backpropagation, and gradient descent algorithms\n• Custom sigmoid activation function and mean squared error loss calculation\n• Classifies handwritten digits (0-9) from MNIST dataset with 85% accuracy\n• 980 training iterations with adaptive learning rate optimization\n• Deep understanding of neural network fundamentals and mathematical concepts\n•Calculus, linear algebra, and optimization algorithms\n• No reliance on high-level frameworks - pure mathematical implementation\n• Excellent demonstration of machine learning theory in practice",
       tags: ["Python", "Neural Networks", "NumPy", "Pandas", "Deep Learning", "Calculus", "Linear Algebra", "Machine Learning"],
-      imageUrl: "public/images/NNFS.png",
+      imageUrl: "/images/NNFS.png",
       icon: <Brain className="w-5 h-5 text-blue-400" />,
       category: "Deep Learning",
       accuracy: "85%",
@@ -118,7 +118,7 @@ const Portfolio = () => {
       title: "What's this flower?",
       description: "• Machine learning classification model for flower species identification\n• Analyzes botanical measurements: petal length/width, sepal length/width\n• Expertise in feature engineering and data preprocessing techniques\n• Achieved 93% accuracy using ensemble methods and algorithms\n• Comprehensive data visualization of flower characteristics\n• Feature importance analysis and cross-validation techniques\n• Classifies multiple flower species with high confidence\n• Detailed probability scores for each prediction\n• Practical application in botanical research and environmental studies\n• Valuable for researchers, botanists, and educational purposes",
       tags: ["Python", "Pandas", "Numpy" , "Classification", "Scikit-Learn", "Data Science", "Feature Engineering"],
-      imageUrl: "public/images/random forrest.png",
+      imageUrl: "/images/random forrest.png",
       icon: <Brain className="w-5 h-5 text-green-400" />,
       category: "Classification",
       accuracy: "93%",
@@ -128,7 +128,7 @@ const Portfolio = () => {
       title: "Titanic: Why did they sink?",
       description: "• Machine learning classification model for Titanic passenger survival prediction\n• Analyzes demographic info, ticket details, and family relationships\n• Data analysis: missing value imputation, feature engineering\n• Factors: passenger class, age, gender, fare, cabin location, family size\n• Traditional ML algorithms and deep learning with TensorFlow/scikit-learn\n• Extensive exploratory data analysis with statistical visualizations\n• Correlation analysis and survival pattern identification\n• Data preprocessing pipelines and feature selection techniques\n• Model evaluation with confusion matrices and ROC curves\n• Insights into factors influencing survival rates during the tragic event",
       tags: ["Python", "Pandas", "Numpy" , "Matplotlib", "Machine Learning", "Data Analysis", "TensorFlow"],
-      imageUrl: "public/images/titanic.jpg",
+      imageUrl: "/images/titanic.jpg",
       icon: <Brain className="w-5 h-5 text-purple-400" />,
       category: "Machine Learning",
       accuracy: "75-80%",
@@ -141,7 +141,7 @@ const Portfolio = () => {
       title: "Super Store's Superb Analytics",
       description: "• Comprehensive business intelligence analysis of superstore billing dataset\n• Multi-year and multi-regional data spanning extensive time periods\n• Deep-dive exploration of sales patterns and customer purchasing behavior\n• Product performance metrics and regional market trend analysis\n•Statistical techniques: time series, cohort analysis, CLV calculations\n• Identification of top-performing product categories and seasonal variations\n• Customer segmentation strategies and regional performance comparisons\n• Critical insights for inventory management and pricing optimization\n• Interactive data visualization dashboards with charts and heatmaps\n• Actionable recommendations for revenue growth and operational efficiency",
       tags: ["Python", "Data Analytics", "Business Intelligence", "Pandas", "Seaborn", "Statistical Analysis", "Exploratory Data Analysis"],
-      imageUrl: "public/images/store.png",
+      imageUrl: "/images/store.png",
       icon: <TrendingUp className="w-5 h-5 text-green-400" />,
       category: "Business Analytics"
     },
@@ -149,7 +149,7 @@ const Portfolio = () => {
       title: "Mouth watering analytics",
       description: "• Comprehensive data analytics project for café billing dataset analysis\n• Detailed examination of menu item performance and customer ordering patterns\n• Peak hours analysis and revenue optimization opportunities\n• Identification of top-selling menu items and profit margin analysis by category\n• Customer behavior segmentation and seasonal trend identification\n•Data visualization: interactive dashboards and sales heatmaps\n• Customer journey mapping and behavior pattern analysis\n• Statistical methods: correlation analysis, regression modeling, A/B testing\n• Specific recommendations for menu optimization and pricing strategies\n• Staff scheduling and marketing campaign optimization insights\n• Expertise in food service analytics and hospitality industry applications",
       tags: ["Python", "Data Analysis", "Pandas", "Matplotlib", "Business Intelligence", "Seaborn", "Exploratory Data Analysis"],
-      imageUrl: "public/images/cafe.png",
+      imageUrl: "/images/cafe.png",
       icon: <BarChart3 className="w-5 h-5 text-green-400" />,
       category: "Data Analytics"
     }
@@ -160,7 +160,7 @@ const Portfolio = () => {
       title: "Whatvever I built, is here",
       description: "• Modern portfolio website built with React, TypeScript, and Tailwind CSS\n• Frontend with responsive design and animations\n• Dynamic content management and smooth scrolling navigation\n• Interactive project galleries and real-time animations\n• Component-based architecture and state management\n• Mobile-first design approach and accessibility compliance\n• SEO optimization and cross-browser compatibility\n• Advanced UI/UX elements: gradients, hover effects, loading animations\n• Performance optimization techniques and modern web practices\n• Living demonstration of technical skills and creative design",
       tags: ["React", "TypeScript", "Tailwind CSS", "Responsive Design", "Modern UI"],
-      imageUrl: "public/images/port.webp",
+      imageUrl: "/images/port.webp",
       icon: <Globe className="w-5 h-5 text-purple-400" />,
       category: "Web Development"
     },
@@ -168,7 +168,7 @@ const Portfolio = () => {
       title: "Travel with me",
       description: "• Comprehensive travel agency website for Happy Holidays\n• Complete booking and information system with responsive design\n• Dynamic tour listings with filtering and search capabilities\n• Interactive image galleries with lightbox functionality\n• Online enquiry forms with validation and real-time availability\n• Frontend technologies: HTML5, CSS3, JavaScript ES6+\n• Mobile-first design and cross-browser compatibility\n• SEO optimization and accessibility compliance\n• Advanced UI/UX: smooth animations, interactive maps\n• Customer testimonials and social media integration\n• Complete digital solution for travel agencies",
       tags: ["HTML", "CSS", "JavaScript", "Responsive Design", "UI/UX"],
-      imageUrl: "public/images/travel.jpg",
+      imageUrl: "/images/travel.jpg",
       icon: <Globe className="w-5 h-5 text-purple-400" />,
       category: "Web Development"
     }
@@ -179,7 +179,7 @@ const Portfolio = () => {
       title: "Send emails with ease",
       description: "• Email Sender Pro - comprehensive email automation application\n• Intuitive GUI for managing bulk and individual email campaigns\n• Email template management and recipient list segmentation\n• Scheduling capabilities and real-time progress tracking\n• Support for multiple email providers and HTML/plain text formatting\n• Attachment handling and personalized email content\n• Email validation, bounce handling, and delivery status tracking\n• Comprehensive reporting dashboards and analytics\n• Object-oriented design and database integration\n• Threading for concurrent operations and error handling\n• Valuable for marketing professionals and small businesses",
       tags: ["Python", "Email Automation", "GUI", "Bulk Emails", "Progress Tracking"],
-      imageUrl: "public/images/Email sender pro.jpg",
+      imageUrl: "/images/Email sender pro.jpg",
       icon: <Mail className="w-5 h-5 text-primary" />,
       category: "Automation"
     },
@@ -187,7 +187,7 @@ const Portfolio = () => {
       title: "AI ChatBot(Using Gemini API)",
       description: "• An AI-powered chatbot using Google's Gemini API\n• Conversation capabilities and modern web interface\n• Real-time conversation handling and context-aware responses\n• Conversation history management and streaming response capabilities\n• Clean Streamlit interface with real-time chat functionality\n• Message threading and conversation export options\n• Sentiment analysis and response customization features\n• Conversation analytics and multi-turn dialogue management\n• API integration and asynchronous programming\n• Data persistence and user interface design\n• Adaptable for customer service and educational purposes",
       tags: ["Python", "AI", "Gemini API", "Streamlit"],
-      imageUrl: "public/images/chatbot.avif",
+      imageUrl: "/images/chatbot.avif",
       icon: <Brain className="w-5 h-5 text-blue-400" />,
       category: "Artificial Intelligence"
     }
