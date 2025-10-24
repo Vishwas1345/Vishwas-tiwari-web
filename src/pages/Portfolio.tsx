@@ -308,7 +308,16 @@ const Portfolio = () => {
               </p>
               <Button 
                 className="bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90"
-                onClick={() => navigate('/#contact')}
+                onClick={() => {
+                  navigate('/');
+                  // Small delay to ensure the page loads before scrolling
+                  setTimeout(() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 100);
+                }}
               >
                 <Mail className="w-4 h-4 mr-2" />
                 Get In Touch
