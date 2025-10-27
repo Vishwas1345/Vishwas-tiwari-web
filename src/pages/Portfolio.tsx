@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Brain, BarChart3, Globe, Database, TrendingUp, Mail, ArrowLeft } from 'lucide-react';
+import { ExternalLink, Brain, BarChart3, Globe, Database, TrendingUp, Mail, ArrowLeft, Github } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 interface ProjectCardProps {
@@ -17,9 +17,10 @@ interface ProjectCardProps {
   accuracy?: string;
   dataset?: string;
   iterations?: string;
+  url?: string;
 }
 
-const ProjectCard = ({ title, description, tags, imageUrl, icon, category, accuracy, dataset, iterations }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, tags, imageUrl, icon, category, accuracy, dataset, iterations, url }: ProjectCardProps) => {
   return (
     <Card className="card-hover overflow-hidden bg-card border border-border h-full flex flex-col relative group">
       <div className="absolute top-4 right-4 z-10">
@@ -40,6 +41,21 @@ const ProjectCard = ({ title, description, tags, imageUrl, icon, category, accur
             {category}
           </Badge>
         </div>
+        {url && (
+          <div className="absolute bottom-4 right-4 z-10">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(url, '_blank', 'noopener,noreferrer');
+              }}
+              className="flex items-center gap-2 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20 hover:bg-black/80 hover:scale-105 transition-all duration-300"
+              aria-label={`View ${title} on GitHub`}
+            >
+              <Github className="w-5 h-5 text-white" />
+              <span className="text-sm font-medium text-white">Code</span>
+            </button>
+          </div>
+        )}
       </div>
       
        <CardContent className="p-6 flex-grow">
@@ -102,7 +118,8 @@ const Portfolio = () => {
        icon: <Brain className="w-5 h-5 text-primary" />,
        category: "Machine Learning - Linear Regression",
        accuracy: "83%",
-       dataset: "80k samples"
+       dataset: "80k samples",
+       url: "https://github.com/Vishhhfr/Computer-price-prediction"
      }, 
     {
       title: "Handwritten digits classificaion",
@@ -113,6 +130,7 @@ const Portfolio = () => {
       category: "Deep Learning - Neural Networks",
       accuracy: "85%",
       dataset: "60k samples",
+      url: "https://github.com/Vishhhfr/Neural-Network-model-from-scratch"
     },
     {
        title: "Gold price prediction",
@@ -122,7 +140,8 @@ const Portfolio = () => {
        icon: <Brain className="w-5 h-5 text-primary" />,
        category: "Machine Learning - Random Forest",
        accuracy: "98%",
-       dataset: "1600 samples"
+       dataset: "1600 samples",
+       url: "https://github.com/Vishhhfr/Gold-price-prediction"
      },
     {
       title: "Flower species classification",
@@ -132,7 +151,8 @@ const Portfolio = () => {
       icon: <Brain className="w-5 h-5 text-green-400" />,
       category: "Machine learning - Random Forest",
       accuracy: "93%",
-      dataset: "20k samples"
+      dataset: "20k samples",
+      url: "https://github.com/Vishhhfr/Flower-species-classification"
     },
     {
       title: "Titanic survival prediction",
@@ -142,7 +162,8 @@ const Portfolio = () => {
       icon: <Brain className="w-5 h-5 text-purple-400" />,
       category: "Machine Learning - Linear Regression",
       accuracy: "75-80%",
-      dataset: "800 samples"
+      dataset: "800 samples",
+      url: "https://github.com/Vishhhfr/Titanic-Survival-Prediction"
     }
   ];
 
@@ -153,7 +174,8 @@ const Portfolio = () => {
       tags: ["Python", "Data Analytics", "Business Intelligence", "Pandas", "Seaborn", "Statistical Analysis", "Exploratory Data Analysis"],
       imageUrl: "/images/store.png",
       icon: <TrendingUp className="w-5 h-5 text-green-400" />,
-      category: "Business Analytics"
+      category: "Business Analytics",
+      url: "https://github.com/Vishhhfr/Store-analytics"
     },
     {
       title: "Cafe bill analytics",
@@ -161,7 +183,8 @@ const Portfolio = () => {
       tags: ["Python", "Data Analysis", "Pandas", "Matplotlib", "Business Intelligence", "Seaborn", "Exploratory Data Analysis"],
       imageUrl: "/images/cafe.png",
       icon: <BarChart3 className="w-5 h-5 text-green-400" />,
-      category: "Data Analytics"
+      category: "Data Analytics",
+      url: "https://github.com/Vishhhfr/Cafe-bill-analytics"
     }
   ];
 
@@ -172,7 +195,7 @@ const Portfolio = () => {
       tags: ["React", "TypeScript", "Tailwind CSS", "Responsive Design", "Modern UI"],
       imageUrl: "/images/port.webp",
       icon: <Globe className="w-5 h-5 text-purple-400" />,
-      category: "Web Development"
+      category: "Web Development",
     },
     {
       title: "Happy hoildays website",
@@ -180,7 +203,8 @@ const Portfolio = () => {
       tags: ["HTML", "CSS", "JavaScript", "Responsive Design", "UI/UX"],
       imageUrl: "/images/travel.jpg",
       icon: <Globe className="w-5 h-5 text-purple-400" />,
-      category: "Web Development"
+      category: "Web Development",
+      url: "https://github.com/Vishhhfr/Happy-Holidays"
     }
   ];
 
@@ -191,7 +215,8 @@ const Portfolio = () => {
       tags: ["Python", "Email Automation", "GUI", "Bulk Emails", "Progress Tracking"],
       imageUrl: "/images/Email sender pro.jpg",
       icon: <Mail className="w-5 h-5 text-primary" />,
-      category: "Automation"
+      category: "Automation",
+      url: "https://github.com/Vishhhfr/Email-sender-pro"
     },
     {
       title: "AI ChatBot(Using Gemini API)",
