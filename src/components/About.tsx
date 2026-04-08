@@ -1,148 +1,136 @@
-
-import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, MapPin, Code, Database, Brain, TrendingUp, Award, Target } from 'lucide-react';
+import { Calendar, MapPin, Code, Database, Brain, TrendingUp, Award, Target } from "lucide-react";
+import { Reveal } from "@/components/motion/Reveal";
 
 const About = () => {
   return (
-    <section id="about" className="relative bg-gradient overflow-hidden">
-      {/* Floating particles animation */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/30 rounded-full animate-ping"></div>
-        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-blue-400/40 rounded-full animate-pulse"></div>
-        <div className="absolute top-1/2 left-3/4 w-3 h-3 bg-cyan-400/20 rounded-full animate-bounce"></div>
+    <section id="about" className="relative section-band overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none opacity-40">
+        <div className="absolute top-20 right-[15%] h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
       </div>
-      
-      <div className="section-container">
-        <div className="text-center mb-12">
-          <h2 className="section-title">About Me</h2>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-10">
-          {/* Profile Photo Card */}
-          <Card className="card-hover bg-card border border-border lg:col-span-1 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-blue-400/10"></div>
-            <CardContent className="p-6 text-center relative z-10">
-              <div className="relative mb-4 inline-block">
-                <div className="w-32 h-39 mx-auto rounded-xl bg-gradient-to-br from-primary to-blue-400 p-1">
-                  <div className="w-full h-full rounded-lg overflow-hidden bg-card">
-                    <img 
-                      src="\lovable-uploads\Profile Imag.jpg" 
-                      alt="Vishwas Tiwari"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-gradient mb-2">Vishwas Tiwari</h3>
-              <p className="text-primary font-medium mb-4">AI engineer enthusiast</p>
-              <div className="flex justify-center space-x-2">
-                <div className="p-2 bg-primary/10 rounded-full">
-                  <Database className="w-4 h-4 text-primary" />
-                </div>
-                <div className="p-2 bg-blue-400/10 rounded-full">
-                  <Brain className="w-4 h-4 text-blue-400" />
-                </div>
-                <div className="p-2 bg-cyan-400/10 rounded-full">
-                  <TrendingUp className="w-4 h-4 text-cyan-400" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          {/* Main About Content */}
-          <Card className="card-hover col-span-1 lg:col-span-2 bg-card border border-border relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/5 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
-            <CardContent className="p-6">
-              <div className="flex items-center mb-4">
-                <Target className="w-6 h-6 text-primary mr-3" />
-                <h3 className="text-xl font-semibold text-gradient">Personal Profile</h3>
-              </div>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                A passionate AI enthusiast with a strong foundation in analytical thinking and 
-                problem-solving. My journey in data science is driven by curiosity and the desire to extract 
-                meaningful insights from complex datasets. I specialize in machine learning algorithms, 
-                statistical analysis, and data visualization techniques.
-              </p>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Currently pursuing Bachelor's degree in Computer Applications (BCA) at 
-                Bhagwan Mahavir University, actively building expertise in programming, 
-                data science, and advanced analytics. My academic journey is complemented 
-                by hands-on projects that demonstrate real-world applications of data science.
-              </p>
-              
-              {/* Key Strengths */}
-              <div className="grid grid-cols-2 gap-4 mt-6">
-                <div className="flex items-center space-x-3 p-3 bg-primary/5 rounded-lg">
-                  <Award className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium">Problem Solver</span>
-                </div>
-                <div className="flex items-center space-x-3 p-3 bg-blue-400/5 rounded-lg">
-                  <Code className="w-5 h-5 text-blue-400" />
-                  <span className="text-sm font-medium">Tech Enthusiast</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          {/* Enhanced Personal Details */}
-          <Card className="card-hover bg-card border border-border lg:col-span-1 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-blue-400/5"></div>
-            <CardContent className="p-6 relative z-10">
-              <div className="flex items-center mb-4">
-                <Calendar className="w-5 h-5 text-primary mr-2" />
-                <h3 className="text-lg font-semibold text-gradient">Contact Info</h3>
-              </div>
-              
-              <div className="space-y-4 mb-4">
-                <div className="group">
-                  <div className="flex items-center space-x-3 rounded-lg p-1 bg-secondary/30 group-hover:bg-blue-400/10 transition-colors">
-                    <div className="bg-blue-400/20 p-2 rounded-full">
-                      <Calendar className="w-4 h-4 text-blue-400" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground" style={{ fontSize: "15px" }}>Date of Birth</p>
-                      <p className="font-medium text-sm" style={{ fontSize: "13px" }}>13/04/2005</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="group">
-                  <div className="flex items-center space-x-3 rounded-lg p-1 bg-secondary/30 group-hover:bg-cyan-400/10 transition-colors">
-                    <div className="bg-cyan-400/20 p-2 rounded-full">
-                      <MapPin className="w-4 h-4 text-cyan-400" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground" style={{ fontSize: "15px" }}>Email</p>
-                      <p
-                        className="font-medium text-sm break-all"
-                        style={{ fontSize: "13px", wordBreak: "break-all" }}
-                      >
-                        vishwastiwari1901@gmail.com
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-            </CardContent>
-          </Card>
+      <div className="section-container">
+        <Reveal>
+          <p className="section-eyebrow text-center lg:text-left">Profile</p>
+          <h2 className="section-title text-center lg:text-left">About Me</h2>
+          <p className="section-desc text-center lg:text-left mx-auto lg:mx-0 mb-14">
+            Builder at the intersection of data, ML, and software — grounded in curiosity and clear
+            communication.
+          </p>
+        </Reveal>
+
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
+          <Reveal delay={0.05}>
+            <Card className="card-hover border-0 lg:col-span-1 h-full">
+              <CardContent className="p-6 text-center">
+                <div className="relative mb-5 inline-block">
+                  <div className="rounded-3xl p-[2px] bg-gradient-to-br from-primary/80 to-[hsl(207,100%,55%)]/50">
+                    <div className="rounded-[1.4rem] overflow-hidden bg-card aspect-[4/5] max-w-[200px] mx-auto">
+                      <img
+                        src="/placeholder.svg"
+                        alt="Vishwas Tiwari"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <h3 className="text-lg font-display font-bold text-foreground mb-1">Vishwas Tiwari</h3>
+                <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI &amp; data</p>
+                <div className="flex justify-center gap-2">
+                  <span className="rounded-xl bg-primary/10 p-2 text-primary">
+                    <Database className="w-4 h-4" />
+                  </span>
+                  <span className="rounded-xl bg-[hsl(207,100%,55%)]/10 p-2 text-[hsl(207,100%,70%)]">
+                    <Brain className="w-4 h-4" />
+                  </span>
+                  <span className="rounded-xl bg-primary/10 p-2 text-primary">
+                    <TrendingUp className="w-4 h-4" />
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <Card className="card-hover border-0 lg:col-span-2 h-full">
+              <CardContent className="p-6 md:p-8">
+                <div className="flex items-center gap-3 mb-5">
+                  <Target className="w-6 h-6 text-primary" />
+                  <h3 className="text-xl font-display font-semibold text-foreground">Personal profile</h3>
+                </div>
+                <p className="text-muted-foreground mb-5 leading-relaxed">
+                  A passionate AI enthusiast with a strong foundation in analytical thinking and
+                  problem-solving. My journey in data science is driven by curiosity and the desire to extract
+                  meaningful insights from complex datasets. I specialize in machine learning workflows,
+                  statistical analysis, and visualization.
+                </p>
+                <p className="text-muted-foreground mb-8 leading-relaxed">
+                  Currently pursuing a Bachelor&apos;s in Computer Applications (BCA) at Bhagwan Mahavir
+                  University, building expertise in programming, data science, and analytics — complemented by
+                  hands-on projects that reflect real-world impact.
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="flex items-center gap-3 rounded-2xl bg-white/[0.03] px-3 py-3 border border-white/[0.06]">
+                    <Award className="w-5 h-5 text-primary shrink-0" />
+                    <span className="text-sm font-medium font-label">Problem solver</span>
+                  </div>
+                  <div className="flex items-center gap-3 rounded-2xl bg-white/[0.03] px-3 py-3 border border-white/[0.06]">
+                    <Code className="w-5 h-5 text-primary shrink-0" />
+                    <span className="text-sm font-medium font-label">Tech enthusiast</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <Card className="card-hover border-0 lg:col-span-1 h-full">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-2 mb-5">
+                  <Calendar className="w-5 h-5 text-primary" />
+                  <h3 className="text-lg font-display font-semibold">Quick facts</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 transition hover:border-primary/20">
+                    <p className="font-label text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
+                      Date of birth
+                    </p>
+                    <p className="text-sm font-medium">13/04/2005</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 transition hover:border-primary/20">
+                    <div className="flex items-start gap-2">
+                      <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                      <div>
+                        <p className="font-label text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
+                          Email
+                        </p>
+                        <a href="mailto:vishwastiwari1901@gmail.com" className="link-cyan text-sm break-all">
+                          vishwastiwari1901@gmail.com
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </Reveal>
         </div>
-        
-        {/* Mission Statement */}
-        <Card className="card-hover bg-card border border-border mt-8 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-blue-400/5"></div>
-          <CardContent className="p-8 text-center relative z-10">
-            <h3 className="text-2xl font-bold text-gradient mb-4">My Mission</h3>
-            <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              To leverage the power of data science and machine learning to solve real-world problems, 
-              drive innovation, and create meaningful impact in the digital landscape. I believe in 
-              continuous learning, collaborative growth, and using technology as a force for positive change.
+
+        <Reveal delay={0.08}>
+          <Card className="card-hover border-0 mt-8">
+            <CardContent className="p-8 md:p-10 text-center">
+              <h3 className="text-2xl font-display font-bold text-foreground mb-4">My mission</h3>
+              <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                To leverage data science and machine learning to solve real problems, drive innovation, and
+                create measurable impact. I believe in continuous learning, collaborative growth, and using
+                technology as a force for positive change.
               </p>
             </CardContent>
-        </Card>
+          </Card>
+        </Reveal>
       </div>
     </section>
   );
 };
+
 export default About;

@@ -1,204 +1,174 @@
-
-import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { 
-  Code, 
-  Coffee, 
+import {
+  Code,
+  Coffee,
   Database,
   BarChart,
   LineChart,
-  BrainCircuit,
+  Cpu,
   BookOpen,
   FileSpreadsheet,
   FileText,
   FileImage,
   FileCode,
   Globe,
-  Cpu,
-  Zap,
-  Palette,
   GitBranch,
   Cloud,
-  Shield,
-  Layers,
   Terminal,
-  Smartphone,
-  Monitor,
-  OmegaIcon
-} from 'lucide-react';
+  OmegaIcon,
+} from "lucide-react";
+import { Reveal } from "@/components/motion/Reveal";
 
 interface SkillProps {
   name: string;
   icon: React.ReactNode;
   category?: string;
+  level?: number;
 }
 
-const SkillItem = ({ name, icon, category }: SkillProps) => {
-  const progressWidth = typeof level === 'number' ? level : 0;
-  
+const SkillItem = ({ name, icon, category, level }: SkillProps) => {
   return (
-    <div className="mb-6 group">
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center">
-          <div className="mr-3 p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+    <div className="mb-5 group">
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center min-w-0">
+          <div className="mr-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary/15 group-hover:shadow-[0_0_20px_hsl(var(--glow)/0.2)]">
             {icon}
           </div>
-          <div>
-            <span className="font-medium text-foreground group-hover:text-primary transition-colors duration-300">{name}</span>
-            {category && (
-              <div className="text-xs text-muted-foreground">{category}</div>
-            )}
+          <div className="min-w-0">
+            <span className="font-medium text-foreground group-hover:text-primary transition-colors block truncate">
+              {name}
+            </span>
+            {category && <div className="text-xs text-muted-foreground font-label mt-0.5">{category}</div>}
           </div>
         </div>
       </div>
+      {level != null && (
+        <div className="skill-bar">
+          <div className="skill-progress transition-all duration-700" style={{ width: `${level}%` }} />
+        </div>
+      )}
     </div>
   );
 };
 
 const Skills = () => {
   const programmingLanguages = [
-    { name: "Python", icon: <Code className="w-5 h-5 text-primary" />, category: "Primary Language" },
-    { name: "Java", icon: <Coffee className="w-5 h-5 text-primary" />, category: "Object-Oriented" },
-    { name: "HTML/CSS", icon: <FileCode className="w-5 h-5 text-primary" />, category: "Web Development" },
-    { name: "JavaScript", icon: <Globe className="w-5 h-5 text-primary" />, category: "Frontend" },
+    { name: "Python", icon: <Code className="w-5 h-5" />, category: "Primary language" },
+    { name: "Java", icon: <Coffee className="w-5 h-5" />, category: "Object-oriented" },
+    { name: "HTML/CSS", icon: <FileCode className="w-5 h-5" />, category: "Web" },
+    { name: "JavaScript", icon: <Globe className="w-5 h-5" />, category: "Frontend" },
   ];
 
   const dataScienceTools = [
-    { name: "Pandas", level: 85, icon: <Database className="w-5 h-5 text-blue-400" />, category: "Data Handling" },
-    { name: "NumPy", level: 80, icon: <BarChart className="w-5 h-5 text-blue-400" />, category: "Numerical Computing" },
-    { name: "Matplotlib", level: 60, icon: <LineChart className="w-5 h-5 text-blue-400" />, category: "Data Visualization" },
-    { name: "Seaborn", level: 65, icon: <Palette className="w-5 h-5 text-blue-400" />, category: "Data Visualization" },
-    { name: "Sci-kit learn", level: 75, icon: <Cpu className="w-5 h-5 text-blue-400" />, category: "Machine Learning" }
+    { name: "Pandas", level: 85, icon: <Database className="w-5 h-5" />, category: "Data handling" },
+    { name: "NumPy", level: 80, icon: <BarChart className="w-5 h-5" />, category: "Numerical computing" },
+    { name: "Matplotlib", level: 60, icon: <LineChart className="w-5 h-5" />, category: "Visualization" },
+    { name: "Seaborn", level: 65, icon: <LineChart className="w-5 h-5" />, category: "Visualization" },
+    { name: "Scikit-learn", level: 75, icon: <Cpu className="w-5 h-5" />, category: "Machine learning" },
   ];
 
   const developmentTools = [
-    { name: "Git & GitHub", level: 70, icon: <GitBranch className="w-5 h-5 text-purple-400" />, category: "Version Control" },
-    { name: "VS Code", level: 60, icon: <Terminal className="w-5 h-5 text-purple-400" />, category: "IDE" },
-    { name: "Jupyter Lab", level: 85, icon: <BookOpen className="w-5 h-5 text-purple-400" />, category: "Data Analysis" },
-    { name: "Google colab", level: 85, icon: <OmegaIcon className="w-5 h-5 text-purple-400" />, category: "Machine Learning" },
-    { name: "Cursor", level: 80, icon: <Terminal className="w-5 h-5 text-purple-400" />, category: "AI Code Editor" },
+    { name: "Git & GitHub", level: 70, icon: <GitBranch className="w-5 h-5" />, category: "Version control" },
+    { name: "VS Code", level: 60, icon: <Terminal className="w-5 h-5" />, category: "IDE" },
+    { name: "Jupyter Lab", level: 85, icon: <BookOpen className="w-5 h-5" />, category: "Analysis" },
+    { name: "Google Colab", level: 85, icon: <OmegaIcon className="w-5 h-5" />, category: "ML notebooks" },
+    { name: "Cursor", level: 80, icon: <Terminal className="w-5 h-5" />, category: "AI editor" },
   ];
 
   const officeSkills = [
-    { name: "MS Excel", level: 90, icon: <FileSpreadsheet className="w-5 h-5 text-orange-400" />, category: "Spreadsheets" },
-    { name: "MS Word", level: 90, icon: <FileText className="w-5 h-5 text-orange-400" />, category: "Documentation" },
-    { name: "MS PowerPoint", level: 60, icon: <FileImage className="w-5 h-5 text-orange-400" />, category: "Presentations" },
-    { name: "Google Workspace", level: 80, icon: <Cloud className="w-5 h-5 text-orange-400" />, category: "Cloud Tools" },
+    { name: "MS Excel", level: 90, icon: <FileSpreadsheet className="w-5 h-5" />, category: "Spreadsheets" },
+    { name: "MS Word", level: 90, icon: <FileText className="w-5 h-5" />, category: "Docs" },
+    { name: "MS PowerPoint", level: 60, icon: <FileImage className="w-5 h-5" />, category: "Decks" },
+    { name: "Google Workspace", level: 80, icon: <Cloud className="w-5 h-5" />, category: "Cloud" },
   ];
 
   const databaseSkills = [
-    { name: "MySQL", level: 60, icon: <Database className="w-5 h-5 text-green-400" />, category: "Relational Database" },
+    { name: "MySQL", level: 60, icon: <Database className="w-5 h-5" />, category: "Relational DB" },
   ];
 
   const softSkills = [
-    { name: "Problem Solving", level: 85, icon: <Cloud className="w-5 h-5 text-cyan-400" />, category: "Analytical" },
-    { name: "Insights", level: 80, icon: <BarChart className="w-5 h-5 text-cyan-400" />, category: "Research" },
-    { name: "Communication", level: 75, icon: <Globe className="w-5 h-5 text-cyan-400" />, category: "Interpersonal" },
-    { name: "Team Collaboration", level: 80, icon: <GitBranch className="w-5 h-5 text-cyan-400" />, category: "Leadership" },
-    { name: "Leveraging AI", level: 95, icon: <Cpu className="w-5 h-5 text-cyan-400" />, category: "AI implementation" },
+    { name: "Problem solving", level: 85, icon: <Cloud className="w-5 h-5" />, category: "Analytical" },
+    { name: "Research & insights", level: 80, icon: <BarChart className="w-5 h-5" />, category: "Research" },
+    { name: "Communication", level: 75, icon: <Globe className="w-5 h-5" />, category: "Interpersonal" },
+    { name: "Team collaboration", level: 80, icon: <GitBranch className="w-5 h-5" />, category: "Leadership" },
+    { name: "Leveraging AI", level: 95, icon: <Cpu className="w-5 h-5" />, category: "Implementation" },
+  ];
+
+  const blocks = [
+    {
+      title: "Languages",
+      accent: "from-primary to-[hsl(207,100%,55%)]",
+      dot: "chip-dot-cyan" as const,
+      skills: programmingLanguages,
+    },
+    {
+      title: "Data science",
+      accent: "from-[hsl(207,100%,55%)] to-primary/60",
+      dot: "chip-dot-blue" as const,
+      skills: dataScienceTools,
+    },
+    {
+      title: "Development tools",
+      accent: "from-primary/80 to-[hsl(207,100%,45%)]",
+      dot: "chip-dot-cyan" as const,
+      skills: developmentTools,
+    },
+    {
+      title: "Office & productivity",
+      accent: "from-[hsl(207,100%,50%)] to-primary/50",
+      dot: "chip-dot-blue" as const,
+      skills: officeSkills,
+    },
+    {
+      title: "Databases",
+      accent: "from-primary to-[hsl(207,100%,60%)]",
+      dot: "chip-dot-cyan" as const,
+      skills: databaseSkills,
+    },
+    {
+      title: "Soft skills",
+      accent: "from-[hsl(207,100%,55%)] to-primary",
+      dot: "chip-dot-blue" as const,
+      skills: softSkills,
+    },
   ];
 
   return (
-    <section id="skills" className="bg-gradient relative overflow-hidden">
-      {/* Floating particles animation */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/30 rounded-full animate-ping"></div>
-        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-blue-400/40 rounded-full animate-pulse"></div>
-        <div className="absolute top-1/2 left-3/4 w-3 h-3 bg-cyan-400/20 rounded-full animate-bounce"></div>
-      </div>
-
+    <section id="skills" className="relative section-band-alt overflow-hidden">
       <div className="section-container">
-        <div className="text-center mb-12">
-          <h2 className="section-title">Technical Expertise</h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            A comprehensive collection of my technical skills, tools, and competencies 
-            that enable me to deliver innovative solutions and drive data-informed decisions
+        <Reveal>
+          <p className="section-eyebrow text-center">Capabilities</p>
+          <h2 className="section-title text-center mx-auto block">Technical expertise</h2>
+          <p className="section-desc text-center mx-auto mb-14">
+            Tools and strengths I use to ship analysis, models, and interfaces end-to-end.
           </p>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {blocks.map((block, blockIndex) => (
+            <Reveal key={block.title} delay={0.06 * blockIndex}>
+              <Card className="card-hover border-0 h-full floating-animation" style={{ animationDelay: `${blockIndex * 0.15}s` }}>
+                <CardContent className="p-7">
+                  <div className="flex items-center mb-6">
+                    <div className={`h-9 w-1 rounded-full bg-gradient-to-b ${block.accent} mr-4 shadow-[0_0_12px_hsl(var(--glow)/0.35)]`} />
+                    <h3 className={`flex items-center gap-2 text-lg font-display font-semibold ${block.dot}`}>
+                      {block.title}
+                    </h3>
+                  </div>
+                  {block.skills.map((skill, index) => (
+                    <SkillItem
+                      key={`${skill.name}-${index}`}
+                      name={skill.name}
+                      icon={skill.icon}
+                      category={skill.category}
+                      level={"level" in skill ? skill.level : undefined}
+                    />
+                  ))}
+                </CardContent>
+              </Card>
+            </Reveal>
+          ))}
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {/* Programming Languages */}
-          <Card className="card-hover glass-effect floating-animation">
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="w-2 h-8 bg-gradient-to-b from-primary to-blue-400 rounded-full mr-4"></div>
-                <h3 className="text-xl font-semibold text-gradient">Programming Languages</h3>
-              </div>
-              {programmingLanguages.map((skill, index) => (
-                <SkillItem key={index} name={skill.name} level={skill.level} icon={skill.icon} category={skill.category} />
-              ))}
-            </CardContent>
-          </Card>
-
-          {/* Data Science Tools */}
-          <Card className="card-hover glass-effect floating-animation" style={{ animationDelay: '0.5s' }}>
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="w-2 h-8 bg-gradient-to-b from-blue-400 to-cyan-400 rounded-full mr-4"></div>
-                <h3 className="text-xl font-semibold text-gradient">Data Science Tools</h3>
-              </div>
-              {dataScienceTools.map((skill, index) => (
-                <SkillItem key={index} name={skill.name} level={skill.level} icon={skill.icon} category={skill.category} />
-              ))}
-            </CardContent>
-          </Card>
-
-          {/* Development Tools */}
-          <Card className="card-hover glass-effect floating-animation" style={{ animationDelay: '1s' }}>
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="w-2 h-8 bg-gradient-to-b from-purple-400 to-pink-500 rounded-full mr-4"></div>
-                <h3 className="text-xl font-semibold text-gradient">Development Tools</h3>
-              </div>
-              {developmentTools.map((skill, index) => (
-                <SkillItem key={index} name={skill.name} level={skill.level} icon={skill.icon} category={skill.category} />
-              ))}
-            </CardContent>
-          </Card>
-
-          {/* Office Skills */}
-          <Card className="card-hover glass-effect floating-animation" style={{ animationDelay: '1.5s' }}>
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="w-2 h-8 bg-gradient-to-b from-orange-400 to-red-500 rounded-full mr-4"></div>
-                <h3 className="text-xl font-semibold text-gradient">Office & Productivity</h3>
-              </div>
-              {officeSkills.map((skill, index) => (
-                <SkillItem key={index} name={skill.name} level={skill.level} icon={skill.icon} category={skill.category} />
-              ))}
-            </CardContent>
-          </Card>
-
-          {/* Database Skills */}
-          <Card className="card-hover glass-effect floating-animation" style={{ animationDelay: '2s' }}>
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="w-2 h-8 bg-gradient-to-b from-green-400 to-emerald-500 rounded-full mr-4"></div>
-                <h3 className="text-xl font-semibold text-gradient">Database Skills</h3>
-              </div>
-              {databaseSkills.map((skill, index) => (
-                <SkillItem key={index} name={skill.name} level={skill.level} icon={skill.icon} category={skill.category} />
-              ))}
-            </CardContent>
-          </Card>
-
-          {/* Soft Skills */}
-          <Card className="card-hover glass-effect floating-animation" style={{ animationDelay: '2.5s' }}>
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="w-2 h-8 bg-gradient-to-b from-cyan-400 to-teal-500 rounded-full mr-4"></div>
-                <h3 className="text-xl font-semibold text-gradient">Soft Skills</h3>
-              </div>
-              {softSkills.map((skill, index) => (
-                <SkillItem key={index} name={skill.name} level={skill.level} icon={skill.icon} category={skill.category} />
-              ))}
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Skills Summary */}
-       
       </div>
     </section>
   );

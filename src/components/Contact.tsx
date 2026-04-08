@@ -1,118 +1,161 @@
-
-import React from 'react';
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Github, Send } from "lucide-react";
+import { Reveal } from "@/components/motion/Reveal";
 
 const Contact = () => {
-  const phoneNumber = "917984527433"; // WhatsApp requires country code without +
+  const phoneNumber = "917984527433";
   const whatsappUrl = `https://wa.me/${phoneNumber}`;
   const emailAddress = "vishwastiwari1901@gmail.com";
-  const callUrl = "tel:+917984527433";
   const mailtoUrl = `mailto:${emailAddress}`;
-  const linkedinUrl = "https://www.linkedin.com/in/vishwas-tiwari-74893a300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app";
+  const linkedinUrl =
+    "https://www.linkedin.com/in/vishwas-tiwari-74893a300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app";
   const githubUrl = "https://github.com/Vishhhfr";
 
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [message, setMessage] = React.useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\n${message || "(No message)"}`
+    );
+    window.location.href = `mailto:${emailAddress}?subject=${encodeURIComponent("Portfolio contact")}&body=${body}`;
+  };
+
   return (
-    <section id="contact" className="relative bg-gradient overflow-hidden">
+    <section id="contact" className="relative section-band-alt overflow-hidden">
       <div className="section-container">
-        <div className="text-center mb-12">
-          <h2 className="section-title">Get In Touch</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Let's connect and discuss opportunities. I'm always open to new challenges and collaborations.
+        <Reveal>
+          <p className="section-eyebrow text-center">Collaborate</p>
+          <h2 className="section-title text-center mx-auto block">Get in touch</h2>
+          <p className="section-desc text-center mx-auto mb-14">
+            Open to internships, projects, and interesting data/ML problems.
           </p>
-        </div>
-        
-        <div className="mx-auto max-w-6xl">
-          <Card className="card-hover glass-effect pulse-glow">
-            <CardContent className="p-12">
-              <h3 className="text-3xl font-semibold mb-12 text-center text-gradient">Contact Information</h3>
-              
-              {/* Main Contact Info */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 align-items-end">
-                <div className="flex flex-col items-center space-y-6 group">
-                  <div className="bg-gradient-to-br from-primary to-blue-400 p-6 rounded-3xl shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
-                    <Mail className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-center">
-                    <p className="text-sm text-muted-foreground uppercase tracking-wider mb-3 font-medium">Email</p>
-                    <a 
-                      href={mailtoUrl} 
-                      className="font-semibold hover:text-primary transition-colors duration-300 text-lg text-foreground block"
-                      aria-label="Send email to Vishwas"
+        </Reveal>
+
+        <div className="mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-5 gap-8">
+          <Reveal className="lg:col-span-2" delay={0.06}>
+            <Card className="card-hover border-0 h-full">
+              <CardContent className="p-6 md:p-8 flex flex-col gap-8">
+                <div>
+                  <h3 className="text-lg font-display font-semibold mb-6">Direct channels</h3>
+                  <div className="space-y-6">
+                    <a
+                      href={mailtoUrl}
+                      className="flex gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-4 transition hover:border-primary/25 hover:bg-primary/5 group"
                     >
-                      {emailAddress}
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                        <Mail className="w-5 h-5" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-label text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Email</p>
+                        <p className="font-medium text-sm break-all group-hover:text-primary transition-colors">{emailAddress}</p>
+                      </div>
+                    </a>
+                    <div className="flex gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[hsl(207,100%,50%)]/15 text-[hsl(207,100%,70%)]">
+                        <MapPin className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <p className="font-label text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Location</p>
+                        <p className="font-medium text-sm">Surat, Gujarat</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-label text-[10px] uppercase tracking-wider text-muted-foreground mb-4">Social</h4>
+                  <div className="flex gap-3">
+                    <a
+                      href={linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-primary hover:border-primary/30 hover:bg-primary/10 transition"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a
+                      href={githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-primary hover:border-primary/30 hover:bg-primary/10 transition"
+                      aria-label="GitHub"
+                    >
+                      <Github className="w-5 h-5" />
                     </a>
                   </div>
                 </div>
-              
-                <div className="flex flex-col items-center space-y-6 group">
-                  <div className="bg-gradient-to-br from-purple-400 to-pink-500 p-6 rounded-3xl shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
-                    <MapPin className="w-8 h-8 text-white" />
+              </CardContent>
+            </Card>
+          </Reveal>
+
+          <Reveal className="lg:col-span-3" delay={0.1}>
+            <Card className="card-hover border-0 h-full">
+              <CardContent className="p-6 md:p-8">
+                <h3 className="text-lg font-display font-semibold mb-2">Send a message</h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Fills your mail client — no backend required.
+                </p>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div>
+                    <label htmlFor="contact-name" className="font-label text-[10px] uppercase tracking-wider text-muted-foreground">
+                      Name
+                    </label>
+                    <input
+                      id="contact-name"
+                      className="input-underline mt-1"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      autoComplete="name"
+                    />
                   </div>
-                  <div className="text-center">
-                    <p className="text-sm text-muted-foreground uppercase tracking-wider mb-3 font-medium">Location</p>
-                    <p className="font-semibold text-lg">Surat, Gujarat</p>
+                  <div>
+                    <label htmlFor="contact-email" className="font-label text-[10px] uppercase tracking-wider text-muted-foreground">
+                      Email
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      className="input-underline mt-1"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      autoComplete="email"
+                    />
                   </div>
-                </div>
-              </div>
-              
-              {/* Social Links */}
-              <div className="border-t border-border pt-12">
-                <h4 className="text-xl font-semibold mb-8 text-center text-gradient">Connect With Me</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-                  <div className="flex flex-col items-center space-y-4 group">
-                    <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-5 rounded-2xl shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
-                      <Linkedin className="w-7 h-7 text-white" />
-                    </div>
-                    <div className="text-center">
-                      <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2 font-medium">LinkedIn</p>
-                      <a 
-                        href={linkedinUrl} 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-semibold hover:text-primary transition-colors duration-300 text-lg"
-                        aria-label="Visit Vishwas on LinkedIn"
-                      >
-                        Professional Network
-                      </a>
-                    </div>
+                  <div>
+                    <label htmlFor="contact-message" className="font-label text-[10px] uppercase tracking-wider text-muted-foreground">
+                      Message
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      rows={4}
+                      className="input-underline mt-1 resize-none min-h-[120px]"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                    />
                   </div>
-                  
-                  <div className="flex flex-col items-center space-y-4 group">
-                    <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-5 rounded-2xl shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
-                      <Github className="w-7 h-7 text-white" />
-                    </div>
-                    <div className="text-center">
-                      <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2 font-medium">GitHub</p>
-                      <a 
-                        href={githubUrl} 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-semibold hover:text-primary transition-colors duration-300 text-lg"
-                        aria-label="Visit Vishwas on GitHub"
-                      >
-                        Code Repository
-                      </a>
-                    </div>
+                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                    <Button type="submit" className="font-label gap-2">
+                      <Send className="w-4 h-4" />
+                      Open in email
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="font-label"
+                      onClick={() => window.open(whatsappUrl, "_blank")}
+                    >
+                      WhatsApp
+                    </Button>
                   </div>
-                </div>
-              </div>
-              
-              <div className="mt-12 text-center border-t border-border pt-8">
-                <h4 className="text-lg font-semibold mb-6 text-gradient">Quick Message</h4>
-                <Button 
-                  className="px-10 py-4 text-lg bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white glow-button hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300" 
-                  onClick={() => window.open(whatsappUrl, '_blank')}
-                >
-                  <svg className="mr-3 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                  </svg>
-                  WhatsApp Message
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+                </form>
+              </CardContent>
+            </Card>
+          </Reveal>
         </div>
       </div>
     </section>

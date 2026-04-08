@@ -20,8 +20,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
-				heading: ['Poppins', 'sans-serif'],
+				sans: ['Inter', 'system-ui', 'sans-serif'],
+				display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+				label: ['Manrope', 'Inter', 'sans-serif'],
+				heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -74,6 +76,10 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			keyframes: {
+				'shimmer-line': {
+					'0%': { backgroundPosition: '200% 0' },
+					'100%': { backgroundPosition: '-200% 0' },
+				},
 				'accordion-down': {
 					from: { height: '0' },
 					to: { height: 'var(--radix-accordion-content-height)' }
@@ -96,6 +102,7 @@ export default {
 				}
 			},
 			animation: {
+				'shimmer-line': 'shimmer-line 8s linear infinite',
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',

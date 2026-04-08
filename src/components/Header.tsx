@@ -1,9 +1,10 @@
-
-import React from 'react';
+import React from "react";
 import { Button } from "@/components/ui/button";
-import { Menu } from 'lucide-react';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { useNavigate } from 'react-router-dom';
+import { Menu } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useNavigate } from "react-router-dom";
+import { downloadResume } from "@/lib/resumeDownload";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -13,15 +14,13 @@ const Header = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: 'smooth'
-      });
+      const top = element.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top, behavior: "smooth" });
       setIsOpen(false);
     }
   };
 
-  const handleNavClick = (item: { label: string, id: string, isRoute: boolean }) => {
+  const handleNavClick = (item: { label: string; id: string; isRoute: boolean }) => {
     if (item.isRoute) {
       navigate(`/${item.id}`);
       setIsOpen(false);
@@ -31,43 +30,61 @@ const Header = () => {
   };
 
   const navItems = [
-    { label: 'About', id: 'about', isRoute: false },
-    { label: 'Skills', id: 'skills', isRoute: false },
-    { label: 'Experience', id: 'experience', isRoute: false },
-    { label: 'Education', id: 'education', isRoute: false },
-    { label: 'Portfolio', id: 'portfolio', isRoute: true },
-    { label: 'Contact', id: 'contact', isRoute: false },
+    { label: "About", id: "about", isRoute: false },
+    { label: "Skills", id: "skills", isRoute: false },
+    { label: "Experience", id: "experience", isRoute: false },
+    { label: "Education", id: "education", isRoute: false },
+    { label: "Projects", id: "projects", isRoute: false },
+    { label: "Portfolio", id: "portfolio", isRoute: true },
+    { label: "Contact", id: "contact", isRoute: false },
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-background/90 backdrop-blur-sm z-50 border-b border-border">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a
-          onClick={() => navigate('/')}
-          className="text-xl font-bold text-foreground cursor-pointer text-left flex-shrink-0"
-          style={{ minWidth: "max-content" }}
+    <header className="fixed top-0 left-0 w-full z-[100] glass-nav">
+      <div className="container mx-auto px-4 py-3.5 flex justify-between items-center gap-4">
+        <motion.button
+          type="button"
+          onClick={() => navigate("/")}
+          className="flex items-center gap-3 cursor-pointer text-left flex-shrink-0 group"
+          whileTap={{ scale: 0.98 }}
         >
-          Vishwas Tiwari
-        </a>
-        
+          <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-primary/35 bg-primary/10 text-sm font-bold font-display text-primary shadow-[0_0_24px_hsl(var(--glow)/0.2)] transition group-hover:border-primary/60 group-hover:shadow-[0_0_28px_hsl(var(--glow)/0.35)]">
+            VT
+          </span>
+          <span className="hidden sm:block">
+            <span className="block text-sm font-label font-semibold text-muted-foreground tracking-wide">
+              Portfolio
+            </span>
+            <span className="block text-base font-display font-bold text-foreground leading-tight">
+              Vishwas Tiwari
+            </span>
+          </span>
+        </motion.button>
+
         {isMobile ? (
           <>
-            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
-              <Menu className="w-5 h-5" />
-            </Button>
-            
+            <div className="flex items-center gap-2">
+              <Button size="sm" className="font-label text-xs" onClick={() => downloadResume()}>
+                Resume
+              </Button>
+              <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} aria-label="Open menu">
+                <Menu className="w-5 h-5" />
+              </Button>
+            </div>
+
             {isOpen && (
-              <div className="absolute top-16 left-0 right-0 bg-background border-b border-border py-4 animate-fade-in">
+              <div className="absolute top-full left-0 right-0 glass-nav border-t border-white/5 py-4 animate-fade-in">
                 <nav>
-                  <ul className="flex flex-col space-y-3 px-4">
+                  <ul className="flex flex-col px-4">
                     {navItems.map((item) => (
                       <li key={item.label}>
-                        <a 
+                        <button
+                          type="button"
                           onClick={() => handleNavClick(item)}
-                          className="block py-2 px-4 hover:bg-secondary rounded-md transition-colors cursor-pointer"
+                          className="w-full text-left py-3 px-3 rounded-xl font-label text-sm text-muted-foreground hover:text-primary hover:bg-white/5 transition-colors"
                         >
                           {item.label}
-                        </a>
+                        </button>
                       </li>
                     ))}
                   </ul>
@@ -76,20 +93,26 @@ const Header = () => {
             )}
           </>
         ) : (
-          <nav>
-            <ul className="flex space-x-8">
-              {navItems.map((item) => (
-                <li key={item.label}>
-                  <a 
-                    onClick={() => handleNavClick(item)}
-                    className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="flex items-center gap-8 flex-1 justify-end">
+            <nav>
+              <ul className="flex flex-wrap justify-end gap-x-6 gap-y-2">
+                {navItems.map((item) => (
+                  <li key={item.label}>
+                    <button
+                      type="button"
+                      onClick={() => handleNavClick(item)}
+                      className="font-label text-sm text-muted-foreground hover:text-primary transition-colors relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-primary after:transition-all hover:after:w-full"
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <Button size="sm" className="font-label shrink-0" onClick={() => downloadResume()}>
+              Resume
+            </Button>
+          </div>
         )}
       </div>
     </header>
