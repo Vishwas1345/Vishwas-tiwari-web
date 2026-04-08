@@ -45,19 +45,14 @@ const Header = () => {
         <motion.button
           type="button"
           onClick={() => navigate("/")}
-          className="flex items-center gap-3 cursor-pointer text-left flex-shrink-0 group"
+          className="flex flex-col items-start cursor-pointer text-left flex-shrink-0 group"
           whileTap={{ scale: 0.98 }}
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-primary/35 bg-primary/10 text-sm font-bold font-display text-primary shadow-[0_0_24px_hsl(var(--glow)/0.2)] transition group-hover:border-primary/60 group-hover:shadow-[0_0_28px_hsl(var(--glow)/0.35)]">
-            VT
+          <span className="block text-sm font-label font-semibold text-muted-foreground tracking-wide">
+            Portfolio
           </span>
-          <span className="hidden sm:block">
-            <span className="block text-sm font-label font-semibold text-muted-foreground tracking-wide">
-              Portfolio
-            </span>
-            <span className="block text-base font-display font-bold text-foreground leading-tight">
-              Vishwas Tiwari
-            </span>
+          <span className="block text-base sm:text-lg font-display font-bold text-foreground leading-tight group-hover:text-primary/90 transition-colors">
+            Vishwas Tiwari
           </span>
         </motion.button>
 
