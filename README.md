@@ -35,7 +35,7 @@ npm run preview  # serve dist locally
 
 - **Résumé PDF** — Expected at `public/Vishwas_Tiwari_Resume.pdf` (download button in hero/header).
 - **Profile image** — About section may reference `public/` assets; replace placeholders as needed.
-- **Intro timing** — Controlled in `src/components/SiteIntro.tsx`. Shared graph data lives in `src/lib/neuralCanvasLayout.ts` (used by `IntroNeuralStage` and `NeuralOrb`).
+- **Landing intro** — Fullscreen canvas in `src/components/LandingPlexusCanvas.tsx`: scattered points → converge into the shared graph from `src/lib/neuralCanvasLayout.ts` → name overlay → continuous merged plexus background.
 
 ## Scripts
 

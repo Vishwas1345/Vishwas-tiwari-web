@@ -9,12 +9,12 @@ import Education from "@/components/Education";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { SiteIntro } from "@/components/SiteIntro";
+import { LandingPlexusCanvas } from "@/components/LandingPlexusCanvas";
 import { IntroContext, useIntroOptional } from "@/contexts/IntroContext";
 
 type HomeLocationState = { scrollTo?: string };
 
-/** Scroll to a section when arriving from another route (e.g. /portfolio) — waits for intro overlay to finish. */
+/** Scroll to a section when arriving from another route (e.g. /portfolio) — waits for landing intro to finish. */
 function ScrollToRouteSection() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -44,22 +44,21 @@ const Index = () => {
 
   return (
     <IntroContext.Provider value={{ introComplete, setIntroComplete }}>
-      <SiteIntro>
-        <ScrollToRouteSection />
-        <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-          <Header />
-          <main>
-            <Hero />
-            <About />
-            <Skills />
-            <Experience />
-            <Education />
-            <Projects />
-            <Contact />
-          </main>
-          <Footer />
-        </div>
-      </SiteIntro>
+      <LandingPlexusCanvas />
+      <ScrollToRouteSection />
+      <div className="relative z-[2] min-h-screen text-foreground overflow-x-hidden">
+        {introComplete && <Header />}
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Experience />
+          <Education />
+          <Projects />
+          <Contact />
+        </main>
+        {introComplete && <Footer />}
+      </div>
     </IntroContext.Provider>
   );
 };
