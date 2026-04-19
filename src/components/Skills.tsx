@@ -1,23 +1,34 @@
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Code,
-  Coffee,
-  Database,
-  BarChart,
-  LineChart,
-  Cpu,
-  BookOpen,
-  FileSpreadsheet,
-  FileText,
-  FileImage,
-  FileCode,
-  Globe,
-  GitBranch,
-  Cloud,
-  Terminal,
-  OmegaIcon,
+  SiPython,
+  SiJavascript,
+  SiHtml5,
+  SiPandas,
+  SiNumpy,
+  SiScikitlearn,
+  SiGit,
+  SiGithub,
+  SiJupyter,
+  SiGooglecolab,
+  SiMysql,
+  SiGoogledrive,
+  SiGoogle,
+  SiOpenai,
+} from "react-icons/si";
+import { DiCss3, DiJava } from "react-icons/di";
+import { VscVscode } from "react-icons/vsc";
+import { FaFileExcel, FaFileWord, FaFilePowerpoint } from "react-icons/fa";
+import { FaChartLine, FaChartBar } from "react-icons/fa6";
+import {
+  Lightbulb,
+  Search,
+  MessageCircle,
+  Users,
+  Sparkles,
 } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
+
+const iconBase = "h-5 w-5 shrink-0";
 
 interface SkillProps {
   name: string;
@@ -31,7 +42,7 @@ const SkillItem = ({ name, icon, category, level }: SkillProps) => {
     <div className="mb-5 group">
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center min-w-0">
-          <div className="mr-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary/15 group-hover:shadow-[0_0_20px_hsl(var(--glow)/0.2)]">
+          <div className="mr-3 flex h-10 min-w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary/15 group-hover:shadow-[0_0_20px_hsl(var(--glow)/0.2)] [&_svg]:overflow-visible">
             {icon}
           </div>
           <div className="min-w-0">
@@ -49,49 +60,177 @@ const SkillItem = ({ name, icon, category, level }: SkillProps) => {
       )}
     </div>
   );
-};
+}
 
 const Skills = () => {
   const programmingLanguages = [
-    { name: "Python", icon: <Code className="w-5 h-5" />, category: "Primary language" },
-    { name: "Java", icon: <Coffee className="w-5 h-5" />, category: "Object-oriented" },
-    { name: "HTML/CSS", icon: <FileCode className="w-5 h-5" />, category: "Web" },
-    { name: "JavaScript", icon: <Globe className="w-5 h-5" />, category: "Frontend" },
+    {
+      name: "Python",
+      icon: <SiPython className={iconBase} aria-hidden />,
+      category: "Primary language",
+    },
+    {
+      name: "Java",
+      icon: <DiJava className="h-5 w-5" aria-hidden />,
+      category: "Object-oriented",
+    },
+    {
+      name: "HTML/CSS",
+      icon: (
+        <span className="flex items-center gap-0.5" aria-hidden>
+          <SiHtml5 className="h-5 w-5 text-[#E34F26]" title="HTML5" />
+        </span>
+      ),
+      category: "Web",
+    },
+    {
+      name: "JavaScript",
+      icon: <SiJavascript className={`${iconBase} text-[#F7DF1E]`} aria-hidden />,
+      category: "Frontend",
+    },
   ];
 
   const dataScienceTools = [
-    { name: "Pandas", level: 85, icon: <Database className="w-5 h-5" />, category: "Data handling" },
-    { name: "NumPy", level: 80, icon: <BarChart className="w-5 h-5" />, category: "Numerical computing" },
-    { name: "Matplotlib", level: 60, icon: <LineChart className="w-5 h-5" />, category: "Visualization" },
-    { name: "Seaborn", level: 65, icon: <LineChart className="w-5 h-5" />, category: "Visualization" },
-    { name: "Scikit-learn", level: 75, icon: <Cpu className="w-5 h-5" />, category: "Machine learning" },
+    {
+      name: "Pandas",
+      level: 85,
+      icon: <SiPandas className={`${iconBase} text-[#150458]`} aria-hidden />,
+      category: "Data handling",
+    },
+    {
+      name: "NumPy",
+      level: 80,
+      icon: <SiNumpy className={`${iconBase} text-[#4DABCF]`} aria-hidden />,
+      category: "Numerical computing",
+    },
+    {
+      name: "Matplotlib",
+      level: 60,
+      icon: <FaChartLine className={`${iconBase} text-[#11557C]`} aria-hidden />,
+      category: "Visualization",
+    },
+    {
+      name: "Seaborn",
+      level: 65,
+      icon: <FaChartBar className={`${iconBase} text-[#4C72B0]`} aria-hidden />,
+      category: "Visualization",
+    },
+    {
+      name: "Scikit-learn",
+      level: 75,
+      icon: <SiScikitlearn className={`${iconBase} text-[#F89939]`} aria-hidden />,
+      category: "Machine learning",
+    },
   ];
 
   const developmentTools = [
-    { name: "Git & GitHub", level: 70, icon: <GitBranch className="w-5 h-5" />, category: "Version control" },
-    { name: "VS Code", level: 60, icon: <Terminal className="w-5 h-5" />, category: "IDE" },
-    { name: "Jupyter Lab", level: 85, icon: <BookOpen className="w-5 h-5" />, category: "Analysis" },
-    { name: "Google Colab", level: 85, icon: <OmegaIcon className="w-5 h-5" />, category: "ML notebooks" },
-    { name: "Cursor", level: 80, icon: <Terminal className="w-5 h-5" />, category: "AI editor" },
+    {
+      name: "Git & GitHub",
+      level: 70,
+      icon: (
+        <span className="flex items-center gap-0.5" aria-hidden>
+          <SiGithub className="h-5 w-5 text-foreground" title="GitHub" />
+        </span>
+      ),
+      category: "Version control",
+    },
+    {
+      name: "VS Code",
+      level: 60,
+      icon: <VscVscode className={`${iconBase} text-[#23A9F2]`} aria-hidden />,
+      category: "IDE",
+    },
+    {
+      name: "Jupyter Lab",
+      level: 85,
+      icon: <SiJupyter className={`${iconBase} text-[#F37626]`} aria-hidden />,
+      category: "Analysis",
+    },
+    {
+      name: "Google Colab",
+      level: 85,
+      icon: <SiGooglecolab className={`${iconBase} text-[#F9AB00]`} aria-hidden />,
+      category: "ML notebooks",
+    },
+    {
+      name: "Cursor",
+      level: 80,
+      icon: <Sparkles className={`${iconBase}`} aria-hidden />,
+      category: "AI editor",
+    },
   ];
 
   const officeSkills = [
-    { name: "MS Excel", level: 90, icon: <FileSpreadsheet className="w-5 h-5" />, category: "Spreadsheets" },
-    { name: "MS Word", level: 90, icon: <FileText className="w-5 h-5" />, category: "Docs" },
-    { name: "MS PowerPoint", level: 60, icon: <FileImage className="w-5 h-5" />, category: "Decks" },
-    { name: "Google Workspace", level: 80, icon: <Cloud className="w-5 h-5" />, category: "Cloud" },
+    {
+      name: "MS Excel",
+      level: 90,
+      icon: <FaFileExcel className={`${iconBase} text-[#217346]`} aria-hidden />,
+      category: "Spreadsheets",
+    },
+    {
+      name: "MS Word",
+      level: 90,
+      icon: <FaFileWord className={`${iconBase} text-[#2B579A]`} aria-hidden />,
+      category: "Docs",
+    },
+    {
+      name: "MS PowerPoint",
+      level: 60,
+      icon: <FaFilePowerpoint className={`${iconBase} text-[#D24726]`} aria-hidden />,
+      category: "Decks",
+    },
+    {
+      name: "Google Workspace",
+      level: 80,
+      icon: (
+        <span className="flex items-center gap-0.5" aria-hidden>
+          <SiGoogle className="h-5 w-5 text-[#4285F4]" title="Google" />
+        </span>
+      ),
+      category: "Cloud",
+    },
   ];
 
   const databaseSkills = [
-    { name: "MySQL", level: 60, icon: <Database className="w-5 h-5" />, category: "Relational DB" },
+    {
+      name: "MySQL",
+      level: 60,
+      icon: <SiMysql className={`${iconBase} text-[#4479A1]`} aria-hidden />,
+      category: "Relational DB",
+    },
   ];
 
   const softSkills = [
-    { name: "Problem solving", level: 85, icon: <Cloud className="w-5 h-5" />, category: "Analytical" },
-    { name: "Research & insights", level: 80, icon: <BarChart className="w-5 h-5" />, category: "Research" },
-    { name: "Communication", level: 75, icon: <Globe className="w-5 h-5" />, category: "Interpersonal" },
-    { name: "Team collaboration", level: 80, icon: <GitBranch className="w-5 h-5" />, category: "Leadership" },
-    { name: "Leveraging AI", level: 95, icon: <Cpu className="w-5 h-5" />, category: "Implementation" },
+    {
+      name: "Problem solving",
+      level: 85,
+      icon: <Lightbulb className={iconBase} aria-hidden />,
+      category: "Analytical",
+    },
+    {
+      name: "Research & insights",
+      level: 80,
+      icon: <Search className={iconBase} aria-hidden />,
+      category: "Research",
+    },
+    {
+      name: "Communication",
+      level: 75,
+      icon: <MessageCircle className={iconBase} aria-hidden />,
+      category: "Interpersonal",
+    },
+    {
+      name: "Team collaboration",
+      level: 80,
+      icon: <Users className={iconBase} aria-hidden />,
+      category: "Leadership",
+    },
+    {
+      name: "Leveraging AI",
+      level: 95,
+      icon: <SiOpenai className={`${iconBase} text-foreground`} aria-hidden />,
+      category: "Implementation",
+    },
   ];
 
   const blocks = [

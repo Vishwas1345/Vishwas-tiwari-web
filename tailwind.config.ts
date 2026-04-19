@@ -22,7 +22,7 @@ export default {
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 				display: ['Svetze', 'system-ui', 'sans-serif'],
-				label: ['Manrope', 'Inter', 'sans-serif'],
+				label: ['"Geist Sans"', 'Inter', 'sans-serif'],
 				heading: ['Svetze', 'system-ui', 'sans-serif'],
 			},
 			colors: {
