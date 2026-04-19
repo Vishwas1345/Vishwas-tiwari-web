@@ -85,7 +85,7 @@ export function IntroNeuralStage({ phase, reducedMotion }: IntroNeuralStageProps
       </motion.p>
 
       <div className="relative mx-auto aspect-square w-full max-w-[min(92vw,440px)]">
-        <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-primary/18 via-transparent to-[hsl(207,100%,70%)]/12 blur-3xl neural-pulse" />
+        <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-primary/18 via-transparent to-highlight/12 blur-3xl neural-pulse" />
 
         <svg
           viewBox={`0 0 ${NEURAL_VIEW} ${NEURAL_VIEW}`}
@@ -95,7 +95,7 @@ export function IntroNeuralStage({ phase, reducedMotion }: IntroNeuralStageProps
           <defs>
             <linearGradient id="intro-orb-line" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.95" />
-              <stop offset="100%" stopColor="hsl(207 100% 70%)" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="hsl(var(--highlight))" stopOpacity="0.38" />
             </linearGradient>
             <radialGradient id="intro-orb-glow" cx="50%" cy="42%" r="58%">
               <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.28" />

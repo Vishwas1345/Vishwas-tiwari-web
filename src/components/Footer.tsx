@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer className="relative border-t border-white/[0.06] bg-[hsl(var(--surface-low))] py-12 overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-primary/[0.04] via-transparent to-[hsl(207,100%,50%)]/[0.04]" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-primary/[0.05] via-transparent to-highlight/[0.05]" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">

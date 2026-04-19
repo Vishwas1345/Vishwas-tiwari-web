@@ -30,7 +30,7 @@ const Hero = () => {
     <section className="min-h-screen flex items-center relative bg-gradient overflow-hidden pt-24 pb-16 md:pt-28">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-[10%] h-72 w-72 rounded-full bg-primary/[0.07] blur-[100px] neural-pulse" />
-        <div className="absolute bottom-1/4 right-[5%] h-96 w-96 rounded-full bg-[hsl(207,100%,50%)]/[0.06] blur-[120px] neural-pulse" style={{ animationDelay: "1.2s" }} />
+        <div className="absolute bottom-1/4 right-[5%] h-96 w-96 rounded-full bg-highlight-deep/[0.09] blur-[120px] neural-pulse" style={{ animationDelay: "1.2s" }} />
       </div>
 
       <div className="section-container w-full z-10">

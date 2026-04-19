@@ -7,38 +7,41 @@
 
 @layer base {
   :root {
-    /* Cyber-Neural Premium (Stitch) — dark void + electric cyan */
-    --background: 0 0% 5.5%;
-    --foreground: 0 0% 98%;
+    /* Cherry red — dark wine-tinted base + vivid cherry primary (not pink pastel) */
+    --background: 350 14% 5%;
+    --foreground: 350 12% 96%;
 
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 98%;
+    --card: 350 12% 9%;
+    --card-foreground: 350 12% 96%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 350 11% 7%;
+    --popover-foreground: 350 12% 96%;
 
-    --primary: 186 100% 53%;
-    --primary-foreground: 186 100% 19%;
+    --primary: 352 82% 51%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 0 0% 12.5%;
-    --secondary-foreground: 0 0% 96%;
+    --secondary: 350 11% 13%;
+    --secondary-foreground: 350 10% 94%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 2% 68%;
+    --muted: 350 10% 12%;
+    --muted-foreground: 350 10% 60%;
 
-    --accent: 186 100% 53%;
-    --accent-foreground: 186 100% 19%;
+    --accent: 352 82% 51%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 72% 51%;
+    --destructive: 0 72% 48%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 100% / 0.09;
-    --input: 0 0% 100% / 0.12;
-    --ring: 186 100% 53%;
+    --border: 350 20% 100% / 0.09;
+    --input: 350 20% 100% / 0.12;
+    --ring: 352 82% 51%;
 
-    --surface-low: 0 0% 7.5%;
-    --surface-bright: 0 0% 17%;
-    --glow: 186 100% 53%;
+    --surface-low: 350 10% 7%;
+    --surface-bright: 350 8% 16%;
+    /* Gradient partners — bright cherry / deep burgundy */
+    --highlight: 350 88% 60%;
+    --highlight-deep: 348 52% 30%;
+    --glow: 352 82% 51%;
 
     --radius: 1rem;
   }
@@ -100,7 +103,7 @@
   .section-title::after {
     content: "";
     @apply block h-0.5 w-16 mt-4 rounded-full;
-    background: linear-gradient(90deg, hsl(var(--primary)), hsl(207 100% 70% / 0.4));
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--highlight) / 0.45));
     box-shadow: 0 0 20px hsl(var(--glow) / 0.45);
   }
 
@@ -151,7 +154,7 @@
 
   .skill-progress {
     @apply h-full rounded-full relative;
-    background: linear-gradient(90deg, hsl(var(--primary)), hsl(207 100% 65%));
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--highlight)));
     box-shadow: 0 0 16px hsl(var(--glow) / 0.35);
   }
 
@@ -165,11 +168,11 @@
   .chip-dot-blue::before {
     content: "";
     @apply inline-block w-1 h-1 rounded-full mr-2 align-middle;
-    background: hsl(207 100% 70%);
+    background: hsl(var(--highlight));
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(0 0% 100%) 55%, hsl(207 100% 75%) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(350 18% 96%) 48%, hsl(var(--highlight)) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -190,7 +193,7 @@
   }
 }
 
-/* Page backdrop (subtle depth, no harsh blue gradients) */
+/* Page backdrop — cherry-tinted glows */
 .bg-gradient {
   background: hsl(var(--background));
   position: relative;
@@ -202,8 +205,8 @@
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 50% at 15% -10%, hsl(var(--primary) / 0.12), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 100% 30%, hsl(207 100% 50% / 0.08), transparent 50%);
+    radial-gradient(ellipse 80% 50% at 15% -10%, hsl(var(--primary) / 0.14), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 30%, hsl(var(--highlight-deep) / 0.12), transparent 50%);
 }
 
 .card-hover {
@@ -272,7 +275,7 @@
 
 .timeline-rail {
   border-left: 2px solid transparent;
-  border-image: linear-gradient(180deg, hsl(var(--primary)), hsl(207 100% 55% / 0.35)) 1;
+  border-image: linear-gradient(180deg, hsl(var(--primary)), hsl(var(--highlight) / 0.35)) 1;
 }
 
 ::-webkit-scrollbar {
@@ -284,7 +287,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, hsl(var(--primary) / 0.7), hsl(207 100% 50% / 0.5));
+  background: linear-gradient(180deg, hsl(var(--primary) / 0.75), hsl(var(--highlight-deep) / 0.65));
   border-radius: 4px;
 }
 
@@ -358,7 +361,7 @@
     transform: translateX(-1px);
   }
   4% {
-    filter: drop-shadow(-2px 0 0 hsl(207 100% 60% / 0.35));
+    filter: drop-shadow(-2px 0 0 hsl(var(--highlight) / 0.4));
     transform: translateX(1px);
   }
   6% {

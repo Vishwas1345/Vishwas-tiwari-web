@@ -97,37 +97,37 @@ const Skills = () => {
   const blocks = [
     {
       title: "Languages",
-      accent: "from-primary to-[hsl(207,100%,55%)]",
+      accent: "from-primary to-highlight",
       dot: "chip-dot-cyan" as const,
       skills: programmingLanguages,
     },
     {
       title: "Data science",
-      accent: "from-[hsl(207,100%,55%)] to-primary/60",
+      accent: "from-highlight to-primary/65",
       dot: "chip-dot-blue" as const,
       skills: dataScienceTools,
     },
     {
       title: "Development tools",
-      accent: "from-primary/80 to-[hsl(207,100%,45%)]",
+      accent: "from-primary/85 to-highlight-deep",
       dot: "chip-dot-cyan" as const,
       skills: developmentTools,
     },
     {
       title: "Office & productivity",
-      accent: "from-[hsl(207,100%,50%)] to-primary/50",
+      accent: "from-highlight-deep to-primary/55",
       dot: "chip-dot-blue" as const,
       skills: officeSkills,
     },
     {
       title: "Databases",
-      accent: "from-primary to-[hsl(207,100%,60%)]",
+      accent: "from-primary to-highlight/90",
       dot: "chip-dot-cyan" as const,
       skills: databaseSkills,
     },
     {
       title: "Soft skills",
-      accent: "from-[hsl(207,100%,55%)] to-primary",
+      accent: "from-highlight to-primary",
       dot: "chip-dot-blue" as const,
       skills: softSkills,
     },

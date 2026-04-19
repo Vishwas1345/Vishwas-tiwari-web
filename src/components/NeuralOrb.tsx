@@ -5,7 +5,7 @@ import { NEURAL_LINES, NEURAL_NODES, NEURAL_VIEW } from "@/lib/neuralCanvasLayou
 export function NeuralOrb() {
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[min(100%,420px)] select-none">
-      <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-primary/20 via-transparent to-[hsl(207,100%,70%)]/15 blur-3xl neural-pulse" />
+      <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-primary/20 via-transparent to-highlight/15 blur-3xl neural-pulse" />
       <motion.svg
         viewBox={`0 0 ${NEURAL_VIEW} ${NEURAL_VIEW}`}
         className="relative z-10 h-full w-full text-primary"
@@ -17,7 +17,7 @@ export function NeuralOrb() {
         <defs>
           <linearGradient id="orb-line" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="hsl(207 100% 70%)" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="hsl(var(--highlight))" stopOpacity="0.38" />
           </linearGradient>
           <radialGradient id="orb-glow" cx="50%" cy="40%" r="60%">
             <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />

@@ -126,7 +126,7 @@ const Portfolio = () => {
       description: "• 3-layer neural network built from scratch using only Python, NumPy, and Pandas\n• Implements forward propagation, backpropagation, and gradient descent algorithms\n• Custom ReLu activation function and mean squared error loss calculation\n• Classifies handwritten digits (0-9) from MNIST dataset with 85% accuracy\n• 980 training iterations with adaptive learning rate optimization\n• Deep understanding of neural network fundamentals and mathematical concepts\n•Calculus, linear algebra, and optimization algorithms\n• No reliance on high-level frameworks - pure mathematical implementation\n• Excellent demonstration of machine learning theory in practice",
       tags: ["Python", "Neural Networks", "NumPy", "Pandas", "Deep Learning", "Calculus", "Linear Algebra", "Machine Learning"],
       imageUrl: "/images/NNFS.png",
-      icon: <Brain className="w-5 h-5 text-blue-400" />,
+      icon: <Brain className="w-5 h-5 text-highlight" />,
       category: "Deep Learning - Neural Networks",
       accuracy: "85%",
       dataset: "60k samples",
@@ -223,7 +223,7 @@ const Portfolio = () => {
       description: "• An AI-powered chatbot using Google's Gemini API\n• Conversation capabilities and modern web interface\n• Real-time conversation handling and context-aware responses\n• Conversation history management and streaming response capabilities\n• Clean Streamlit interface with real-time chat functionality\n• Message threading and conversation export options\n• Sentiment analysis and response customization features\n• Conversation analytics and multi-turn dialogue management\n• API integration and asynchronous programming\n• Data persistence and user interface design\n• Adaptable for customer service and educational purposes",
       tags: ["Python", "AI", "Gemini API", "Streamlit"],
       imageUrl: "/images/chatbot.avif",
-      icon: <Brain className="w-5 h-5 text-blue-400" />,
+      icon: <Brain className="w-5 h-5 text-highlight" />,
       category: "Artificial Intelligence"
     }
   ];
@@ -258,7 +258,7 @@ const Portfolio = () => {
       <section className="pt-24 pb-16 bg-gradient relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/6 w-96 h-96 bg-blue-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-1/4 right-1/6 w-96 h-96 bg-highlight/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
         
         <div className="container mx-auto px-4 relative">
@@ -294,7 +294,7 @@ const Portfolio = () => {
                 <Globe className="w-4 h-4 mr-2" />
                 Web Development
               </Badge>
-              <Badge variant="outline" className="px-4 py-2 bg-blue-400/10 border-blue-400/30 text-blue-400">
+              <Badge variant="outline" className="px-4 py-2 bg-highlight/12 border-highlight/35 text-highlight">
                 <Database className="w-4 h-4 mr-2" />
                 Extra Projects
               </Badge>
@@ -329,7 +329,7 @@ const Portfolio = () => {
         <ProjectSection
           title="Extra Projects"
           description="Innovative solutions and automation tools that showcase diverse technical skills"
-          icon={<Database className="w-6 h-6 text-blue-400" />}
+          icon={<Database className="w-6 h-6 text-highlight" />}
           projects={extraProjects}
         />
 
@@ -342,7 +342,7 @@ const Portfolio = () => {
                 I'm always excited to work on new projects and explore innovative solutions
               </p>
               <Button 
-                className="bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90"
+                className="bg-gradient-to-r from-primary to-highlight hover:from-primary/90 hover:to-highlight/90"
                 onClick={() => {
                   navigate('/');
                   // Small delay to ensure the page loads before scrolling

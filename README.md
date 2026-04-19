@@ -1,6 +1,6 @@
 # Vishwas Tiwari — Portfolio
 
-Personal portfolio site for **Vishwas Tiwari** (AI enthusiast & developer). Dark, cyan-accent **“Cyber‑Neural”** UI inspired by a Google Stitch design pass: glass-style surfaces, Space Grotesk / Inter / Manrope typography, and a shared **neural canvas** graphic between the landing intro and hero.
+Personal portfolio site for **Vishwas Tiwari** (AI enthusiast & developer). Dark, **cherry red** accent **“Cyber‑Neural”** UI inspired by a Google Stitch design pass: glass-style surfaces, Space Grotesk / Inter / Manrope typography, and a shared **neural canvas** graphic between the landing intro and hero.
 
 ## Features
 
