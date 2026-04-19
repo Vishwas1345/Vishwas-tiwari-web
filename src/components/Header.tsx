@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { downloadResume } from "@/lib/resumeDownload";
 import { motion } from "framer-motion";
 
@@ -10,6 +10,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const isMobile = useIsMobile();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -24,9 +25,15 @@ const Header = () => {
     if (item.isRoute) {
       navigate(`/${item.id}`);
       setIsOpen(false);
-    } else {
-      scrollToSection(item.id);
+      return;
     }
+    /* Section anchors only exist on the home page — scroll there first from /portfolio etc. */
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: item.id } });
+      setIsOpen(false);
+      return;
+    }
+    scrollToSection(item.id);
   };
 
   const navItems = [
