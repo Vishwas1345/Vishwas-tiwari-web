@@ -5,10 +5,6 @@ import { Reveal } from "@/components/motion/Reveal";
 const About = () => {
   return (
     <section id="about" className="relative section-band overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none opacity-40">
-        <div className="absolute top-20 right-[15%] h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
-      </div>
-
       <div className="section-container">
         <Reveal>
           <div className="mb-14 max-w-2xl">

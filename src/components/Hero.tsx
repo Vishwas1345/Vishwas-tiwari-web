@@ -68,7 +68,7 @@ const Hero = () => {
           variants={shell}
           initial="hidden"
           animate={introComplete ? "visible" : "hidden"}
-          className="pointer-events-auto rounded-[1.75rem] border border-white/[0.08] bg-black/45 px-6 py-10 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.85)] backdrop-blur-xl sm:px-10 md:px-12 md:py-12"
+          className="pointer-events-auto card-hover px-6 py-10 sm:px-10 md:px-12 md:py-12"
         >
           <motion.h1
             variants={lettersContainer}

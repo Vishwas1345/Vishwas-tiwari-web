@@ -24,7 +24,7 @@ const ProjectCard = ({ title, description, tags, imageUrl, icon, category, class
       )}
     >
       <div className="absolute top-4 right-4 z-10">
-        <div className="rounded-xl border border-primary/20 bg-background/60 backdrop-blur-md p-2 text-primary">{icon}</div>
+        <div className="rounded-xl border border-primary/25 bg-black/45 p-2 text-primary backdrop-blur-md">{icon}</div>
       </div>
 
       <div className="relative h-44 overflow-hidden shrink-0">
@@ -33,7 +33,7 @@ const ProjectCard = ({ title, description, tags, imageUrl, icon, category, class
           alt=""
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent opacity-95" />
         <div className="absolute bottom-3 left-4">
           <Badge variant="secondary" className="font-label text-[10px] uppercase tracking-wider bg-black/40 text-white border-white/10">
             {category}

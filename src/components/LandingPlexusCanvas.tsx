@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { IntroContext } from "@/contexts/IntroContext";
 import {
   NEURAL_LINES,
@@ -27,6 +28,32 @@ const PARTICLE_COUNT = 76;
 
 const SCATTER_MS = 900;
 const CONVERGE_MS = 3600;
+
+/** After particles join: show welcome copy on canvas, then reveal hero (non-skip only). */
+const WELCOME_AT_CONVERGE = 0.78;
+const WELCOME_HOLD_MS = 2000;
+
+const welcomeMotionParent = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.04 },
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.42, ease: [0.4, 0, 0.2, 1] },
+  },
+};
+
+const welcomeMotionLine = {
+  hidden: { opacity: 0, y: 36, filter: "blur(16px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 /** Only scatter → converge → idle canvas; hero name + copy animate in together on top (see Hero.tsx). */
 type IntroPhase = "scatter" | "converge" | "idle";
@@ -154,6 +181,11 @@ function dofAlpha(depth: number, baseAlpha: number): number {
 function dofRadius(depth: number, baseR: number): number {
   const blur = Math.max(0, (depth - 500) / 600);
   return baseR + blur * 4;
+}
+
+/** Stronger parallax for nearer (smaller depth) projected points — follows cursor. */
+function sheetParallaxFactor(depth: number): number {
+  return Math.min(1.25, 400 / Math.max(120, depth));
 }
 
 function bandHue(x: number, y: number, progress: number, W: number, H: number): number {
@@ -318,6 +350,11 @@ export function LandingPlexusCanvas() {
 
   const [uiPhase, setUiPhase] = useState<IntroPhase>("scatter");
   const uiSyncRef = useRef<IntroPhase>("scatter");
+  const [welcomeVisible, setWelcomeVisible] = useState(false);
+  const welcomeShownRef = useRef(false);
+  const heroRevealTimeoutRef = useRef(0);
+  /** Smoothed cursor (canvas space) for background mesh — avoids jitter. */
+  const smoothMouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
@@ -400,7 +437,26 @@ export function LandingPlexusCanvas() {
       phaseRef.current = "idle";
       uiSyncRef.current = "idle";
       setUiPhase("idle");
-      setIntroComplete(true);
+
+      if (skipIntroRef.current) {
+        setWelcomeVisible(false);
+        setIntroComplete(true);
+        return;
+      }
+
+      if (!welcomeShownRef.current) {
+        welcomeShownRef.current = true;
+        setWelcomeVisible(true);
+      }
+
+      if (heroRevealTimeoutRef.current) {
+        window.clearTimeout(heroRevealTimeoutRef.current);
+      }
+      heroRevealTimeoutRef.current = window.setTimeout(() => {
+        heroRevealTimeoutRef.current = 0;
+        setWelcomeVisible(false);
+        setIntroComplete(true);
+      }, WELCOME_HOLD_MS);
     };
 
     const skipToIdle = () => {
@@ -434,15 +490,30 @@ export function LandingPlexusCanvas() {
       W: number,
       H: number,
       tp: number,
-      frameH: number
+      frameH: number,
+      mx: number,
+      my: number
     ) => {
+      const offX = (mx / W - 0.5) * W * 0.036;
+      const offY = (my / H - 0.5) * H * 0.028;
       const proj: ({ sx: number; sy: number; scale: number; depth: number } | null)[][] = [];
       for (let r = 0; r < rowCount; r++) {
         proj.push([]);
         for (let c = 0; c < colCount; c++) {
           const pt = sheet[r][c];
           const { wx, wy, wz } = getPos(pt, frameH);
-          proj[r].push(project(wx, wy, wz, W, H));
+          const raw = project(wx, wy, wz, W, H);
+          if (!raw) {
+            proj[r].push(null);
+            continue;
+          }
+          const fp = sheetParallaxFactor(raw.depth);
+          proj[r].push({
+            sx: raw.sx + offX * fp,
+            sy: raw.sy + offY * fp,
+            scale: raw.scale,
+            depth: raw.depth,
+          });
         }
       }
 
@@ -520,6 +591,18 @@ export function LandingPlexusCanvas() {
       ctx.globalAlpha = 0.92;
 
       for (const b of BOKEH) {
+        const dxb = mx - b.x;
+        const dyb = my - b.y;
+        const db = Math.hypot(dxb, dyb) + 0.001;
+        const infB = Math.min(1, 360 / db);
+        b.vx += (dxb / db) * 0.062 * infB * infB;
+        b.vy += (dyb / db) * 0.062 * infB * infB;
+        const txb = -dyb / db;
+        const tyb = dxb / db;
+        b.vx += txb * 0.028 * infB * (1 - Math.min(db / 420, 1));
+        b.vy += tyb * 0.028 * infB * (1 - Math.min(db / 420, 1));
+        b.vx *= 0.972;
+        b.vy *= 0.972;
         b.x += b.vx;
         b.y += b.vy;
         b.ph += 0.01;
@@ -541,13 +624,18 @@ export function LandingPlexusCanvas() {
       for (const n of nodes) {
         const dxm = mx - n.x;
         const dym = my - n.y;
-        const dm = Math.sqrt(dxm * dxm + dym * dym);
-        if (dm < 240 && dm > 0.001) {
-          n.vx += (dxm / dm) * 0.012;
-          n.vy += (dym / dm) * 0.012;
-        }
-        n.vx *= 0.98;
-        n.vy *= 0.98;
+        const dm = Math.hypot(dxm, dym) + 0.001;
+        const inf = Math.min(1, 520 / dm);
+        const pull = 0.048 * inf * inf;
+        n.vx += (dxm / dm) * pull;
+        n.vy += (dym / dm) * pull;
+        const tx = -dym / dm;
+        const ty = dxm / dm;
+        const swirl = 0.032 * inf * inf * (1 - Math.min(dm / 560, 1));
+        n.vx += tx * swirl;
+        n.vy += ty * swirl;
+        n.vx *= 0.983;
+        n.vy *= 0.983;
         n.x += n.vx;
         n.y += n.vy;
         n.ph += 0.018;
@@ -637,7 +725,7 @@ export function LandingPlexusCanvas() {
       scatterPhase: boolean
     ) => {
       const parts = introParticlesRef.current;
-      const mouseStrength = 0.038;
+      const mouseStrength = scatterPhase ? 0.055 : 0.072;
       const spring = scatterPhase ? 0.085 : 0.055 + convergeProg * 0.06;
 
       for (const p of parts) {
@@ -654,7 +742,7 @@ export function LandingPlexusCanvas() {
         const dx = mx - p.x;
         const dy = my - p.y;
         const d = Math.sqrt(dx * dx + dy * dy) + 0.001;
-        const falloff = Math.min(200 / d, 2.8);
+        const falloff = Math.min(340 / d, 3.6);
         fx += (dx / d) * mouseStrength * falloff;
         fy += (dy / d) * mouseStrength * falloff;
 
@@ -746,28 +834,38 @@ export function LandingPlexusCanvas() {
         ctx.fillStyle = vig;
         ctx.fillRect(0, 0, W, H);
 
+        const sm = smoothMouseRef.current;
+        sm.x += (mx - sm.x) * 0.12;
+        sm.y += (my - sm.y) * 0.12;
+
+        const off3X = (sm.x / W - 0.5) * W * 0.036;
+        const off3Y = (sm.y / H - 0.5) * H * 0.028;
+
         for (const b of bokeh3Ref.current) {
           b.ph += b.vph;
           const pr = project(b.wx, b.wy, b.wz, W, H);
           if (!pr || pr.depth < 100) continue;
+          const fp3 = sheetParallaxFactor(pr.depth);
+          const bx = pr.sx + off3X * fp3 * 0.88;
+          const by = pr.sy + off3Y * fp3 * 0.88;
           const bh = lerp(b.hueBase, 355, tp);
           const pulse = 0.7 + Math.sin(b.ph) * 0.3;
           const br = b.r * pr.scale * 3 * pulse;
           const ba = dofAlpha(pr.depth, b.a) * pulse;
           if (ba < 0.01 || br < 1) continue;
-          const g = ctx.createRadialGradient(pr.sx, pr.sy, 0, pr.sx, pr.sy, br);
+          const g = ctx.createRadialGradient(bx, by, 0, bx, by, br);
           g.addColorStop(0, `hsla(${bh},70%,75%,${ba * 0.55})`);
           g.addColorStop(0.4, `hsla(${bh},65%,65%,${ba * 0.35})`);
           g.addColorStop(1, `hsla(${bh},60%,60%,0)`);
           ctx.beginPath();
-          ctx.arc(pr.sx, pr.sy, br, 0, Math.PI * 2);
+          ctx.arc(bx, by, br, 0, Math.PI * 2);
           ctx.fillStyle = g;
           ctx.fill();
         }
 
         const fh = frameHRef.current;
-        drawSheet(sheetBRef.current, COLS2, ROWS2, W, H, tp, fh);
-        drawSheet(sheetARef.current, COLS, ROWS, W, H, tp, fh);
+        drawSheet(sheetBRef.current, COLS2, ROWS2, W, H, tp, fh, sm.x, sm.y);
+        drawSheet(sheetARef.current, COLS, ROWS, W, H, tp, fh, sm.x, sm.y);
 
         const flareH = lerp(190, 355, tp);
         const fg = ctx.createRadialGradient(W * 0.2, H * 0.45, 0, W * 0.2, H * 0.45, W * 0.35);
@@ -800,6 +898,10 @@ export function LandingPlexusCanvas() {
         phaseRef.current = "converge";
         const raw = tim.converge > 0 ? (elapsed - tim.scatter) / tim.converge : 1;
         convergeProg = easeOutCubic(Math.min(1, raw));
+        if (!welcomeShownRef.current && raw >= WELCOME_AT_CONVERGE) {
+          welcomeShownRef.current = true;
+          setWelcomeVisible(true);
+        }
       }
 
       if (uiSyncRef.current !== phaseRef.current) {
@@ -830,6 +932,10 @@ export function LandingPlexusCanvas() {
       running = false;
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      if (heroRevealTimeoutRef.current) {
+        window.clearTimeout(heroRevealTimeoutRef.current);
+        heroRevealTimeoutRef.current = 0;
+      }
       delete (window as unknown as { __skipLandingIntro?: () => void }).__skipLandingIntro;
     };
   }, [setIntroComplete]);
@@ -843,6 +949,51 @@ export function LandingPlexusCanvas() {
         className="fixed inset-0 z-[0] h-[100svh] w-full pointer-events-none"
         aria-hidden
       />
+      <AnimatePresence>
+        {welcomeVisible && (
+          <motion.div
+            key="landing-welcome"
+            role="status"
+            aria-live="polite"
+            variants={welcomeMotionParent}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="fixed inset-0 z-[15] flex items-center justify-center pointer-events-none px-5 sm:px-8"
+          >
+            <div className="flex max-w-[min(92vw,36rem)] flex-col items-center text-center">
+              <motion.p
+                variants={welcomeMotionLine}
+                className="font-display text-[clamp(2.25rem,8vw,3.75rem)] font-medium italic leading-none text-white [text-shadow:0_1px_0_rgba(255,255,255,0.12),0_4px_36px_rgba(0,0,0,0.95),0_0_80px_rgba(255,255,255,0.06)]"
+              >
+                Hii
+              </motion.p>
+
+              <motion.div variants={welcomeMotionLine} className="mt-7 md:mt-9">
+                <span className="inline-block [filter:drop-shadow(0_10px_36px_rgba(0,0,0,0.85))]">
+                  <span className="font-display text-[clamp(2.75rem,11vw,5.5rem)] font-bold leading-[1.05] tracking-tight text-gradient">
+                    I'm Vishwas
+                  </span>
+                </span>
+              </motion.div>
+
+              <motion.p
+                variants={welcomeMotionLine}
+                className="mt-10 max-w-md font-display text-[clamp(1.05rem,3.6vw,1.35rem)] font-normal leading-relaxed tracking-[0.02em] text-white/92 [text-shadow:0_2px_28px_rgba(0,0,0,0.92),0_1px_2px_rgba(0,0,0,0.8)]"
+              >
+                Welcome to my Portfolio,
+              </motion.p>
+
+              <motion.p
+                variants={welcomeMotionLine}
+                className="mt-4 font-display text-[clamp(1.35rem,4.8vw,2.25rem)] font-semibold italic leading-tight tracking-tight text-primary [text-shadow:0_0_42px_hsl(var(--primary)/0.35),0_4px_32px_rgba(0,0,0,0.88)]"
+              >
+                Lets explore!
+              </motion.p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {showSkip && (
         <button
           type="button"

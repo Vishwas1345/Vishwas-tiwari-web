@@ -80,7 +80,7 @@ const Education = () => {
             {educationData.map((item, index) => (
               <Reveal key={index} delay={0.06 * index}>
                 <div className="mb-12 relative group">
-                  <div className="absolute -left-[2.15rem] md:-left-[2.6rem] top-2 flex h-9 w-9 items-center justify-center rounded-2xl border-2 border-background bg-gradient-to-br from-primary to-highlight-deep shadow-[0_0_20px_hsl(var(--glow)/0.35)] transition-transform group-hover:scale-110">
+                  <div className="absolute -left-[2.15rem] md:-left-[2.6rem] top-2 flex h-9 w-9 items-center justify-center rounded-2xl border-2 border-white/20 bg-gradient-to-br from-primary to-highlight-deep shadow-[0_0_20px_hsl(var(--glow)/0.35)] transition-transform group-hover:scale-110">
                     <GraduationCap className="w-4 h-4 text-primary-foreground" />
                   </div>
 

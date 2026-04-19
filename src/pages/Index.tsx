@@ -46,7 +46,7 @@ const Index = () => {
     <IntroContext.Provider value={{ introComplete, setIntroComplete }}>
       <LandingPlexusCanvas />
       <ScrollToRouteSection />
-      <div className="relative z-[2] min-h-screen text-foreground overflow-x-hidden">
+      <div className="relative z-[2] min-h-screen bg-transparent text-foreground overflow-x-hidden">
         {introComplete && <Header />}
         <main>
           <Hero />

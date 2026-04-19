@@ -151,12 +151,10 @@
       0 20px 50px -28px hsl(0 0% 0% / 0.55);
   }
 
-  .section-band {
-    background: hsl(var(--surface-low));
-  }
-
+  /* Home: fixed canvas shows through — no full-bleed section fills */
+  .section-band,
   .section-band-alt {
-    background: hsl(var(--background));
+    background: transparent;
   }
 
   .skill-bar {
@@ -222,13 +220,15 @@
 }
 
 .card-hover {
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, background-color 0.35s ease;
-  background: hsl(var(--card) / 0.72);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.35s ease;
+  border-radius: 1.75rem !important;
+  background: rgb(0 0 0 / 0.45) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 0.08) !important;
   box-shadow:
-    0 0 0 1px hsl(var(--foreground) / 0.06),
-    0 16px 48px -24px hsl(0 0% 0% / 0.5);
+    0 40px 120px -40px rgb(0 0 0 / 0.85),
+    0 0 0 1px rgb(255 255 255 / 0.04);
   position: relative;
   overflow: hidden;
 }
@@ -245,10 +245,11 @@
 
 .card-hover:hover {
   transform: translateY(-6px) scale(1.01);
+  border-color: rgb(255 255 255 / 0.14) !important;
   box-shadow:
-    0 0 0 1px hsl(var(--primary) / 0.15),
-    0 28px 64px -28px hsl(var(--glow) / 0.18),
-    0 24px 48px -32px hsl(0 0% 0% / 0.55);
+    0 48px 120px -48px rgb(0 0 0 / 0.95),
+    0 0 0 1px hsl(var(--primary) / 0.22),
+    0 28px 64px -28px hsl(var(--glow) / 0.2);
 }
 
 .card-hover:hover::before {
