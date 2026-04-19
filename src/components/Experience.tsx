@@ -3,8 +3,28 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Building2, Users, Target, Award, Code } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 
+type ExperienceEntry = {
+  position: string;
+  company: string;
+  period: string;
+  location: string;
+  status: string;
+  description: string;
+  responsibilities: string[];
+  technologies: string[];
+  achievements: string[];
+  companyInfo: {
+    industry: string;
+    size: string;
+    focus: string;
+    description: string;
+  };
+  logoSrc?: string;
+  logoAlt?: string;
+};
+
 const Experience = () => {
-  const experienceData = [
+  const experienceData: ExperienceEntry[] = [
     {
       position: "Data Science Intern",
       company: "Alphabin Technologies",
@@ -42,6 +62,8 @@ const Experience = () => {
         description:
           "Alphabin Technologies delivers quality assurance and testing services across industries, with emphasis on automation and performance.",
       },
+      logoSrc: "/lovable-uploads/OIP.jpeg",
+      logoAlt: "Alphabin Technologies logo",
     },
   ];
 
@@ -69,11 +91,11 @@ const Experience = () => {
                     <CardContent className="p-6 md:p-8">
                       <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
                         <div className="flex gap-4 min-w-0">
-                          <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                          <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-black/40">
                             <img
-                              src="/placeholder.svg"
-                              alt=""
-                              className="h-full w-full object-cover opacity-80"
+                              src={item.logoSrc ?? "/placeholder.svg"}
+                              alt={item.logoAlt ?? ""}
+                              className="h-full w-full object-cover object-center"
                             />
                           </div>
                           <div className="min-w-0">
