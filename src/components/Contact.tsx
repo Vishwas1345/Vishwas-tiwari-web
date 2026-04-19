@@ -56,7 +56,7 @@ const Contact = () => {
                       </div>
                     </a>
                     <div className="flex gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[hsl(207,100%,50%)]/15 text-[hsl(207,100%,70%)]">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-highlight/14 text-highlight">
                         <MapPin className="w-5 h-5" />
                       </div>
                       <div>

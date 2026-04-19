@@ -61,7 +61,7 @@ const Experience = () => {
             {experienceData.map((item, index) => (
               <Reveal key={index} delay={0.08}>
                 <div className="mb-12 relative group">
-                  <div className="absolute -left-[2.15rem] md:-left-[2.6rem] top-2 flex h-9 w-9 items-center justify-center rounded-2xl border-2 border-background bg-gradient-to-br from-primary to-[hsl(207,100%,45%)] shadow-[0_0_20px_hsl(var(--glow)/0.35)] transition-transform group-hover:scale-110">
+                  <div className="absolute -left-[2.15rem] md:-left-[2.6rem] top-2 flex h-9 w-9 items-center justify-center rounded-2xl border-2 border-background bg-gradient-to-br from-primary to-highlight-deep shadow-[0_0_20px_hsl(var(--glow)/0.35)] transition-transform group-hover:scale-110">
                     <Building2 className="w-4 h-4 text-primary-foreground" />
                   </div>
 
@@ -162,7 +162,7 @@ const Experience = () => {
                         <ul className="space-y-2">
                           {item.achievements.map((a, i) => (
                             <li key={i} className="flex gap-3 text-sm text-muted-foreground">
-                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(207,100%,60%)]" />
+                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-highlight" />
                               {a}
                             </li>
                           ))}
