@@ -41,19 +41,17 @@ const Hero = () => {
             initial="hidden"
             animate={introComplete ? "visible" : "hidden"}
           >
-            <motion.p variants={item} className="section-eyebrow">
-              AI · Data · Product-minded dev
-            </motion.p>
+            
             <motion.h1 variants={item} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display mb-4 text-left leading-[1.05]">
               <span className="text-gradient">Vishwas Tiwari</span>
             </motion.h1>
             <motion.p variants={item} className="text-xl md:text-2xl text-primary font-semibold font-display mb-5 text-left">
-              AI Enthusiast & Developer
+              <i>AI Engineer & Developer</i>
             </motion.p>
-            <motion.p variants={item} className="text-base md:text-lg text-muted-foreground mb-10 max-w-xl leading-relaxed text-left">
-              Passionate about turning data into actionable insight and shipping thoughtful ML-powered
-              experiences — from analytics pipelines to interfaces people enjoy using.
+            <motion.p variants={item} className="text-muted-foreground mb-7 text-left max-w-2xl">
+              Hii, I'm an enthusiastic developer specializing in AI and software engineering. I love building intelligent solutions that make a difference and am always eager to learn, innovate, and collaborate to solve real-world challenges. 
             </motion.p>
+       
             <motion.div variants={item} className="flex flex-col sm:flex-row gap-4 mb-10">
               <Button size="lg" className="group font-label" onClick={() => downloadResume()}>
                 <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
@@ -71,7 +69,7 @@ const Hero = () => {
             </motion.div>
             <motion.div variants={item} className="flex gap-4">
               <a
-                href="https://github.com/Vishhhfr"
+                href="https://github.com/Vishwas1345"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-primary transition hover:border-primary/30 hover:bg-primary/10 hover:scale-105 hover:shadow-[0_0_24px_hsl(var(--glow)/0.25)]"

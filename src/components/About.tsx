@@ -41,7 +41,7 @@ const About = () => {
                   </div>
                 </div>
                 <h3 className="text-lg font-display font-bold text-foreground mb-1">Vishwas Tiwari</h3>
-                <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI &amp; data</p>
+                <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI Engineer</p>
                 <div className="flex flex-wrap justify-start gap-2">
                   <span className="rounded-xl bg-primary/10 p-2 text-primary">
                     <Database className="w-4 h-4" />
@@ -65,14 +65,14 @@ const About = () => {
                   <h3 className="text-xl font-display font-semibold text-foreground">Personal profile</h3>
                 </div>
                 <p className="text-muted-foreground mb-5 leading-relaxed">
-                  A passionate AI enthusiast with a strong foundation in analytical thinking and
-                  problem-solving. My journey in data science is driven by curiosity and the desire to extract
+                  A passionate AI Engineer with a strong foundation in analytical thinking and
+                  problem-solving. My journey in AI and Data Science is driven by curiosity and the desire to extract
                   meaningful insights from complex datasets. I specialize in machine learning workflows,
                   statistical analysis, and visualization.
                 </p>
                 <p className="text-muted-foreground mb-8 leading-relaxed">
                   Currently pursuing a Bachelor&apos;s in Computer Applications (BCA) at Bhagwan Mahavir
-                  University, building expertise in programming, data science, and analytics — complemented by
+                  University, building expertise in programming, data science, and analytics, complemented by
                   hands-on projects that reflect real-world impact.
                 </p>
                 <div className="grid grid-cols-2 gap-3 pt-2">

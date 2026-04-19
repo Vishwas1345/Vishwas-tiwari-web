@@ -21,9 +21,9 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
-				display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+				display: ['Svetze', 'system-ui', 'sans-serif'],
 				label: ['Manrope', 'Inter', 'sans-serif'],
-				heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+				heading: ['Svetze', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
