@@ -206,14 +206,14 @@ function bandLight(progress: number): number {
 }
 
 function buildSheetA() {
-  return makeSheet(COLS, ROWS, -160, 560, -80, 50, 22, 1.2, 0.018, (u, v, tpp) => {
+  return makeSheet(COLS, ROWS, -160, 560, -80, 50, 22, 1.2, 0.025, (u, v, tpp) => {
     const hBase = 120 - u * 110;
     return lerp(hBase, 355, tpp);
   });
 }
 
 function buildSheetB() {
-  return makeSheet(COLS2, ROWS2, -40, 500, -120, 80, 28, 0.9, 0.014, (u, v, tpp) => {
+  return makeSheet(COLS2, ROWS2, -40, 500, -120, 80, 28, 0.9, 0.035, (u, v, tpp) => {
     const hBase = 190 - u * 40;
     return lerp(hBase, 355, tpp);
   });
@@ -495,8 +495,8 @@ export function LandingPlexusCanvas() {
       mx: number,
       my: number
     ) => {
-      const offX = (mx / W - 0.5) * W * 0.036;
-      const offY = (my / H - 0.5) * H * 0.028;
+      const offX = (mx / W - 0.5) * W * 0.035;
+      const offY = (my / H - 0.5) * H * 0.030;
       const proj: ({ sx: number; sy: number; scale: number; depth: number } | null)[][] = [];
       for (let r = 0; r < rowCount; r++) {
         proj.push([]);
@@ -839,8 +839,8 @@ export function LandingPlexusCanvas() {
         sm.x += (mx - sm.x) * 0.12;
         sm.y += (my - sm.y) * 0.12;
 
-        const off3X = (sm.x / W - 0.5) * W * 0.036;
-        const off3Y = (sm.y / H - 0.5) * H * 0.028;
+        const off3X = (sm.x / W - 0.5) * W * 0.035;
+        const off3Y = (sm.y / H - 0.5) * H * 0.030;
 
         for (const b of bokeh3Ref.current) {
           b.ph += b.vph;

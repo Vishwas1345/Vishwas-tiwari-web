@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, Download, Github, Linkedin } from "lucide-react";
 import { downloadResume } from "@/lib/resumeDownload";
 import { motion } from "framer-motion";
-import { useIntroOptional } from "@/contexts/IntroContext";
 
 /**
  * Same viewport as LandingPlexusCanvas: fixed canvas is the bg for this entire section.
@@ -56,8 +55,6 @@ const letterItem = {
 const NAME = "Vishwas Tiwari";
 
 const Hero = () => {
-  const { introComplete } = useIntroOptional();
-
   return (
     <section
       id="hero"
@@ -67,7 +64,7 @@ const Hero = () => {
         <motion.div
           variants={shell}
           initial="hidden"
-          animate={introComplete ? "visible" : "hidden"}
+          animate="visible"
           className="pointer-events-auto card-hover px-6 py-10 sm:px-10 md:px-12 md:py-12"
         >
           <motion.h1

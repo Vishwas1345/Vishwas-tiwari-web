@@ -58,7 +58,7 @@ const Index = () => {
       <LandingPlexusCanvas />
       <ScrollToRouteSection />
       <div className="relative z-[2] min-h-screen bg-transparent text-foreground overflow-x-hidden">
-        {introComplete && <Header />}
+        <Header />
         <main>
           <Hero />
           <About />
@@ -68,7 +68,7 @@ const Index = () => {
           <Projects />
           <Contact />
         </main>
-        {introComplete && <Footer />}
+        <Footer />
       </div>
     </IntroContext.Provider>
   );
