@@ -190,6 +190,14 @@ const Portfolio = () => {
 
   const webDevelopmentProjects = [
     {
+      title: "FuelMate",
+      description: "• Comprehensive on-demand fuel delivery management system built with the MERN stack\n• Connects customers, fuel stations, and delivery personnel for efficient fuel delivery services\n• Real-time location-based fuel ordering with Mapbox integration\n• User authentication and authorization with JWT and bcrypt\n• Multiple payment options and order tracking system\n• Dashboard with analytics for stations and delivery personnel\n• Route optimization and earnings tracking for delivery personnel\n• Professional logging with Winston (server) and loglevel (client)\n• Email OTP verification using SendGrid for secure registration\n• Google OAuth integration for seamless sign-in\n• Responsive design with Tailwind CSS and shadcn/ui components\n• RESTful API with Express.js and MongoDB database\n• Complete admin panel for user and station management",
+      tags: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Mapbox", "JWT", "Tailwind CSS", "shadcn/ui"],
+      imageUrl: "/images/fast_delivery_mobile.png",
+      icon: <Globe className="w-5 h-5 text-purple-400" />,
+      category: "Full Stack Web Development",
+    },
+    {
       title: "Personal portfolio",
       description: "• Modern portfolio website built with React, TypeScript, and Tailwind CSS\n• Frontend with responsive design and animations\n• Dynamic content management and smooth scrolling navigation\n• Interactive project galleries and real-time animations\n• Component-based architecture and state management\n• Mobile-first design approach and accessibility compliance\n• SEO optimization and cross-browser compatibility\n• Advanced UI/UX elements: gradients, hover effects, loading animations\n• Performance optimization techniques and modern web practices\n• Living demonstration of technical skills and creative design",
       tags: ["React", "TypeScript", "Tailwind CSS", "Responsive Design", "Modern UI"],

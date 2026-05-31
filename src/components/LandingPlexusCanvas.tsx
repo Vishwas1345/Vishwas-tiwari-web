@@ -330,7 +330,7 @@ function buildIntroParticles(W: number, H: number): IntroParticle[] {
 }
 
 export function LandingPlexusCanvas() {
-  const { setIntroComplete } = useContext(IntroContext);
+  const { introComplete, setIntroComplete } = useContext(IntroContext);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const frameRef = useRef(0);
@@ -366,8 +366,9 @@ export function LandingPlexusCanvas() {
 
   useEffect(() => {
     const rm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    skipIntroRef.current = rm;
-  }, []);
+    // Skip intro if user has already seen it or prefers reduced motion
+    skipIntroRef.current = rm || introComplete;
+  }, [introComplete]);
 
   useEffect(() => {
     const active = uiPhase !== "idle";

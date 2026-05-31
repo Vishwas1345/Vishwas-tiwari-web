@@ -40,7 +40,18 @@ function ScrollToRouteSection() {
 }
 
 const Index = () => {
-  const [introComplete, setIntroComplete] = useState(false);
+  // Check localStorage to see if user has already seen the intro animation
+  const [introComplete, setIntroComplete] = useState(() => {
+    const hasSeenIntro = localStorage.getItem('hasSeenIntro');
+    return hasSeenIntro === 'true';
+  });
+
+  // Save to localStorage when intro completes
+  useEffect(() => {
+    if (introComplete) {
+      localStorage.setItem('hasSeenIntro', 'true');
+    }
+  }, [introComplete]);
 
   return (
     <IntroContext.Provider value={{ introComplete, setIntroComplete }}>
