@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, Building2, Users, Target, Award, Code } from "lucide-react";
+import { Calendar, MapPin, Building2, Users, Target } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 
 type ExperienceEntry = {
@@ -11,13 +11,12 @@ type ExperienceEntry = {
   status: string;
   description: string;
   responsibilities: string[];
-  technologies: string[];
-  achievements: string[];
   companyInfo: {
     industry: string;
     size: string;
     focus: string;
     description: string;
+    website: string;
   };
   logoSrc?: string;
   logoAlt?: string;
@@ -26,34 +25,41 @@ type ExperienceEntry = {
 const Experience = () => {
   const experienceData: ExperienceEntry[] = [
     {
-      position: "Data Science Intern",
-      company: "Alphabin Technologies",
-      period: "August 2025 - Present",
-      location: "Onsite",
+      position: "AI/ML & Backend Engineer",
+      company: "TestDino",
+      period: "May 2026 - Present",
+      location: "On-site ",
       status: "Active",
       description:
-        "Hands-on data science and analytics at a service-based QA company — from exploratory analysis to stakeholder-ready reporting.",
+        "AI/ML and Backend Engineer specializing in AI product development, LLM integrations, and backend infrastructure. Experienced in building production-ready AI features, integrating enterprise tools, developing MCP-based AI systems, and optimizing distributed backend flows. Passionate about leveraging AI and scalable engineering practices to improve automation, developer productivity, and software quality.",
       responsibilities: [
-        "Analyzing datasets to extract meaningful insights and patterns",
-        "Creating data visualizations and reports for stakeholders",
-        "Collaborating with cross-functional teams on data-driven solutions",
-        "Working with testing data to improve software quality metrics",
+        "Developed multiple integrations for TestDino including Slack, GitHub, JIRA, and Claude Web to improve automation and developer assistant and workflows",
+        "Built the MCP (Model Context Protocol) infrastructure for TestDino, enabling multiple AI clients to securely interact with TestDino report data and enhance QA automation workflows",
+        "Worked on backend architecture improvements including server load balancing, database sharding, and CI/CD pipeline optimization to improve scalability and system reliability",
       ],
-      technologies: [
-        "Python",
-        "JavaScript",
-        "Pandas",
-        "NumPy",
-        "Scikit-learn",
-        "Matplotlib",
-        "Seaborn",
-        "Jupyter",
-        "SQL",
-        "Excel",
-      ],
-      achievements: [
-        "Contributed to TestDino, an AI-driven software test reporting tool",
-        "Built interactive dashboards for real-time monitoring",
+      companyInfo: {
+        industry: "AI-powered QA & Testing",
+        size: "Startup",
+        focus: "AI automation for software testing",
+        description:
+          "TestDino is an AI-driven software test reporting and automation platform that helps development teams improve software quality through intelligent test analysis and automation.",
+        website: "https://testdino.com",
+      },
+      logoSrc: "/Resume/download (1).png",
+      logoAlt: "TestDino logo",
+    },
+    {
+      position: "Data Science Intern",
+      company: "Alphabin Technologies",
+      period: "August 2025 - April 2026",
+      location: "Onsite",
+      status: "Completed",
+      description:
+        "Data Science Intern experienced in Machine Learning, NLP, LLM evaluation, text classification, clustering, and AI workflow automation. Built practical solutions for model testing, error analysis, and process automation using modern AI technologies.",
+      responsibilities: [
+        "Built LLM testing workflows using Playwright and DeepEval to evaluate AI model accuracy, response structure, and resilience against prompt injection attacks",
+        "Developed a text classification and clustering model for automated error grouping from raw Playwright error logs, improving debugging and failure analysis workflows",
+        "Created an AI-driven blog publishing pipeline that automated content publishing workflows, reduced manual effort, and improved operational efficiency",
       ],
       companyInfo: {
         industry: "Software testing & QA",
@@ -61,6 +67,7 @@ const Experience = () => {
         focus: "Quality engineering",
         description:
           "Alphabin Technologies delivers quality assurance and testing services across industries, with emphasis on automation and performance.",
+        website: "https://alphabin.co",
       },
       logoSrc: "/lovable-uploads/OIP.jpeg",
       logoAlt: "Alphabin Technologies logo",
@@ -79,11 +86,20 @@ const Experience = () => {
         </Reveal>
 
         <div className="mt-4 max-w-4xl mx-auto">
-          <div className="relative timeline-rail pl-8 md:pl-10 ml-2 md:ml-4">
+          <div className="relative md:timeline-rail md:pl-10 md:ml-4">
             {experienceData.map((item, index) => (
               <Reveal key={index} delay={0.08}>
                 <div className="mb-12 relative group">
-                  <div className="absolute -left-[2.15rem] md:-left-[2.6rem] top-2 flex h-9 w-9 items-center justify-center rounded-2xl border-2 border-white/20 bg-gradient-to-br from-primary to-highlight-deep shadow-[0_0_20px_hsl(var(--glow)/0.35)] transition-transform group-hover:scale-110">
+                  {/* Mobile: centered timeline */}
+                  <div className="md:hidden flex flex-col items-center">
+      
+                    {index < experienceData.length - 1 && (
+                      <div className="absolute top-12 left-1/2 -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-highlight/35" />
+                    )}
+                  </div>
+
+                  {/* Desktop: left-aligned timeline */}
+                  <div className="hidden md:block absolute -left-[2.6rem] top-2 flex h-9 w-9 items-center justify-center rounded-2xl border-2 border-white/20 bg-gradient-to-br from-primary to-highlight-deep shadow-[0_0_20px_hsl(var(--glow)/0.35)] transition-transform group-hover:scale-110">
                     <Building2 className="w-4 h-4 text-primary-foreground" />
                   </div>
 
@@ -128,12 +144,12 @@ const Experience = () => {
                         </h4>
                         <p className="text-sm text-muted-foreground mb-3">{item.companyInfo.description}</p>
                         <a
-                          href="https://alphabin.co"
+                          href={item.companyInfo.website}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="link-cyan text-sm font-medium"
                         >
-                          alphabin.co
+                          {item.companyInfo.website.replace('https://', '')}
                         </a>
                         <div className="flex flex-wrap gap-2 mt-3">
                           <Badge variant="outline" className="text-[10px] font-label border-white/15">
@@ -147,7 +163,7 @@ const Experience = () => {
 
                       <p className="text-muted-foreground leading-relaxed mb-6">{item.description}</p>
 
-                      <div className="mb-6">
+                      <div>
                         <h4 className="text-base font-display font-semibold mb-3 flex items-center gap-2">
                           <Users className="w-5 h-5 text-primary" />
                           Key responsibilities
@@ -157,35 +173,6 @@ const Experience = () => {
                             <li key={i} className="flex gap-3 text-sm text-muted-foreground">
                               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary shadow-[0_0_8px_hsl(var(--glow)/0.6)]" />
                               {r}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="mb-6">
-                        <h4 className="text-base font-display font-semibold mb-3 flex items-center gap-2">
-                          <Code className="w-5 h-5 text-primary" />
-                          Technologies
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {item.technologies.map((tech) => (
-                            <Badge key={tech} variant="secondary" className="font-label text-xs bg-white/5 border border-white/10">
-                              {tech}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div>
-                        <h4 className="text-base font-display font-semibold mb-3 flex items-center gap-2">
-                          <Award className="w-5 h-5 text-primary" />
-                          Highlights
-                        </h4>
-                        <ul className="space-y-2">
-                          {item.achievements.map((a, i) => (
-                            <li key={i} className="flex gap-3 text-sm text-muted-foreground">
-                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-highlight" />
-                              {a}
                             </li>
                           ))}
                         </ul>

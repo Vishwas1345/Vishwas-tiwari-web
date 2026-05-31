@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, MapPin, Code, Database, Brain, TrendingUp, Award, Target } from "lucide-react";
+import { Code, Database, Brain, TrendingUp, Award, Target } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 
 const About = () => {
@@ -18,7 +18,7 @@ const About = () => {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 lg:items-stretch gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 lg:items-stretch gap-6 lg:gap-8">
           <Reveal delay={0.05} className="h-full lg:col-span-1">
             <Card className="card-hover border-0 h-full flex flex-col">
               <CardContent className="flex flex-1 flex-col p-6 md:p-8 text-left">
@@ -80,37 +80,6 @@ const About = () => {
             </Card>
           </Reveal>
 
-          <Reveal delay={0.15} className="h-full lg:col-span-1">
-            <Card className="card-hover border-0 h-full flex flex-col">
-              <CardContent className="flex flex-1 flex-col p-6 md:p-8">
-                <div className="flex items-center gap-2 mb-5">
-                  <Calendar className="w-5 h-5 text-primary" />
-                  <h3 className="text-lg font-display font-semibold">Quick facts</h3>
-                </div>
-                <div className="space-y-4">
-                  <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 transition hover:border-primary/20">
-                    <p className="font-label text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
-                      Date of birth
-                    </p>
-                    <p className="text-sm font-medium">13/04/2005</p>
-                  </div>
-                  <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 transition hover:border-primary/20">
-                    <div className="flex items-start gap-2">
-                      <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                      <div>
-                        <p className="font-label text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
-                          Email
-                        </p>
-                        <a href="mailto:vishwastiwari1901@gmail.com" className="link-cyan text-sm break-all">
-                          vishwastiwari1901@gmail.com
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </Reveal>
         </div>
 
         <Reveal delay={0.08}>
