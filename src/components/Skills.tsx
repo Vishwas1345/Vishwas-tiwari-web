@@ -248,9 +248,9 @@ const Skills = () => {
     <section id="skills" className="relative section-band-alt overflow-hidden">
       <div className="section-container">
         <Reveal>
-          <p className="section-eyebrow text-center">Capabilities</p>
-          <h2 className="section-title text-center mx-auto block">Technical expertise</h2>
-          <p className="section-desc text-center mx-auto mb-14">
+          <p className="section-eyebrow text-left">Capabilities</p>
+          <h2 className="section-title text-left block">Technical expertise</h2>
+          <p className="section-desc text-left mx-0 mb-14">
             Tools and strengths I use to ship analysis, models, and interfaces end-to-end.
           </p>
         </Reveal>

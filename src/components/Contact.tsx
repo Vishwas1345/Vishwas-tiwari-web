@@ -29,9 +29,9 @@ const Contact = () => {
     <section id="contact" className="relative section-band-alt overflow-hidden">
       <div className="section-container">
         <Reveal>
-          <p className="section-eyebrow text-center">Collaborate</p>
-          <h2 className="section-title text-center mx-auto block">Get in touch</h2>
-          <p className="section-desc text-center mx-auto mb-14">
+          <p className="section-eyebrow text-left">Collaborate</p>
+          <h2 className="section-title text-left block">Get in touch</h2>
+          <p className="section-desc text-left mx-0 mb-14">
             Open to internships, projects, and interesting data/ML problems.
           </p>
         </Reveal>

@@ -71,9 +71,9 @@ const Experience = () => {
     <section id="experience" className="relative section-band overflow-hidden">
       <div className="section-container">
         <Reveal>
-          <p className="section-eyebrow text-center">Work</p>
-          <h2 className="section-title text-center mx-auto block">Professional experience</h2>
-          <p className="section-desc text-center mx-auto mb-14">
+          <p className="section-eyebrow text-left">Work</p>
+          <h2 className="section-title text-left block">Professional experience</h2>
+          <p className="section-desc text-left mx-0 mb-14">
             Real roles, real datasets, and shipping value with teams.
           </p>
         </Reveal>

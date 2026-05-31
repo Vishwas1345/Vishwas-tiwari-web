@@ -115,9 +115,9 @@ const Projects = () => {
     <section id="projects" className="relative section-band overflow-hidden">
       <div className="section-container">
         <Reveal>
-          <p className="section-eyebrow text-center">Selected work</p>
-          <h2 className="section-title text-center mx-auto block">Projects</h2>
-          <p className="section-desc text-center mx-auto mb-14">
+          <p className="section-eyebrow text-left">Selected work</p>
+          <h2 className="section-title text-left block">Projects</h2>
+          <p className="section-desc text-left mx-0 mb-14">
             Bento-style showcase — dive deeper on the full portfolio page.
           </p>
         </Reveal>

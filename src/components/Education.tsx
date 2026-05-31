@@ -68,9 +68,9 @@ const Education = () => {
     <section id="education" className="relative section-band-alt overflow-hidden">
       <div className="section-container">
         <Reveal>
-          <p className="section-eyebrow text-center">Academics</p>
-          <h2 className="section-title text-center mx-auto block">Education journey</h2>
-          <p className="section-desc text-center mx-auto mb-14">
+          <p className="section-eyebrow text-left">Academics</p>
+          <h2 className="section-title text-left block">Education journey</h2>
+          <p className="section-desc text-left mx-0 mb-14">
             Coursework and milestones that shaped how I build and learn.
           </p>
         </Reveal>
