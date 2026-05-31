@@ -36,7 +36,7 @@ const About = () => {
                   </div>
                 </div>
                 <h3 className="text-lg font-display font-bold text-foreground mb-1">Vishwas Tiwari</h3>
-                <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI/ML and Backend developer</p>
+                <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI/ML & Backend Engineer</p>
                 <div className="flex flex-wrap justify-start gap-2">
                   <span className="rounded-xl bg-primary/10 p-2 text-primary">
                     <Database className="w-4 h-4" />

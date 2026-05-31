@@ -99,9 +99,7 @@ const Experience = () => {
                   </div>
 
                   {/* Desktop: left-aligned timeline */}
-                  <div className="hidden md:block absolute -left-[2.6rem] top-2 flex h-9 w-9 items-center justify-center rounded-2xl border-2 border-white/20 bg-gradient-to-br from-primary to-highlight-deep shadow-[0_0_20px_hsl(var(--glow)/0.35)] transition-transform group-hover:scale-110">
-                    <Building2 className="w-4 h-4 text-primary-foreground" />
-                  </div>
+                     
 
                   <Card className="card-hover border-0">
                     <CardContent className="p-6 md:p-8">

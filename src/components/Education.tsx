@@ -9,8 +9,7 @@ const Education = () => {
       degree: "Bachelor in Computer Applications (BCA)",
       institution: "Bhagwan Mahavir University",
       period: "2023-26",
-      grade: "5th Semester",
-      cgpa: "7.76",
+      cgpa: "7.5 CGPA",
       location: "Surat, Gujarat",
       details:
         "Comprehensive BCA program focused on programming fundamentals, data structures, algorithms, and software development.",
@@ -28,39 +27,18 @@ const Education = () => {
         "Computer Networks",
         "Software Engineering",
       ],
+      status: "Completed",
+    },
+    {
+      degree: "Masters in Computer Applications (MCA)",
+      institution: "Manipal University Jaipur",
+      period: "2026-28",
+      location: "Jaipur, Rajasthan",
+      details: "Pursuing an MCA in Artificial Intelligence & Machine Learning while gaining hands-on industry experience as an AI/ML and Backend Engineer, bridging advanced academic concepts with real-world software and AI development.",
+      achievements: [
+      ],
+      courses: ["AI", "Machine learning", "Data Pre-Processing", "Data Insights", "Computer Science", "Model training"],
       status: "In Progress",
-    },
-    {
-      degree: "Higher Secondary Certificate (HSC)",
-      institution: "St Xavier's High School",
-      period: "2021-23",
-      grade: "10+2 (PCM)",
-      cgpa: "69.78 PR",
-      location: "Surat, Gujarat",
-      details: "Higher secondary with Physics, Chemistry, and Mathematics — foundation in analytical thinking.",
-      achievements: [
-        "69.78 PR in finals",
-        "Science exhibitions and competitions",
-        "Advanced mathematics and physics coursework",
-      ],
-      courses: ["Physics", "Chemistry", "Mathematics", "English", "Computer Science"],
-      status: "Completed",
-    },
-    {
-      degree: "Secondary School Certificate (SSC)",
-      institution: "Sungrace School, Udhna",
-      period: "2009-21",
-      grade: "10th Standard",
-      cgpa: "Distinction",
-      location: "Udhna, Surat",
-      details: "Secondary education with distinction and broad foundation across core subjects.",
-      achievements: [
-        "Distinction in finals",
-        "Extracurricular leadership",
-        "Strong foundation in STEM",
-      ],
-      courses: ["English", "Mathematics", "Science", "Social Studies", "Hindi", "Computer Applications"],
-      status: "Completed",
     },
   ];
 
@@ -76,14 +54,21 @@ const Education = () => {
         </Reveal>
 
         <div className="max-w-4xl mx-auto">
-          <div className="relative timeline-rail pl-8 md:pl-10 ml-2 md:ml-4">
+          <div className="relative md:timeline-rail md:pl-10 md:ml-4">
             {educationData.map((item, index) => (
               <Reveal key={index} delay={0.06 * index}>
                 <div className="mb-12 relative group">
-                  <div className="absolute -left-[2.15rem] md:-left-[2.6rem] top-2 flex h-9 w-9 items-center justify-center rounded-2xl border-2 border-white/20 bg-gradient-to-br from-primary to-highlight-deep shadow-[0_0_20px_hsl(var(--glow)/0.35)] transition-transform group-hover:scale-110">
-                    <GraduationCap className="w-4 h-4 text-primary-foreground" />
+                  {/* Mobile: centered timeline */}
+                  <div className="md:hidden flex flex-col items-center mb-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border-2 border-white/20 bg-gradient-to-br from-primary to-highlight-deep shadow-[0_0_20px_hsl(var(--glow)/0.35)] transition-transform group-hover:scale-110">
+                      <GraduationCap className="w-5 h-5 text-primary-foreground" />
+                    </div>
+                    {index < educationData.length - 1 && (
+                      <div className="absolute top-16 left-1/2 -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-highlight/35" />
+                    )}
                   </div>
 
+                  {/* Desktop: left-aligned timeline */}
                   <Card className="card-hover border-0">
                     <CardContent className="p-6 md:p-8">
                       <div className="flex flex-wrap justify-between gap-4 mb-6">
@@ -110,10 +95,6 @@ const Education = () => {
                       </div>
 
                       <div className="flex flex-wrap gap-3 mb-6">
-                        <div className="flex items-center gap-2 rounded-xl bg-primary/10 px-3 py-2 border border-primary/15">
-                          <Star className="w-4 h-4 text-primary" />
-                          <span className="text-sm font-semibold font-label">{item.grade}</span>
-                        </div>
                         {item.cgpa && (
                           <div className="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 border border-white/10">
                             <Award className="w-4 h-4 text-highlight" />
