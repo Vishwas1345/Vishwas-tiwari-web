@@ -157,30 +157,6 @@
     background: transparent;
   }
 
-  .skill-bar {
-    @apply h-2 rounded-full overflow-hidden relative mt-2;
-    background: hsl(var(--foreground) / 0.08);
-  }
-
-  .skill-progress {
-    @apply h-full rounded-full relative;
-    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--highlight)));
-    box-shadow: 0 0 16px hsl(var(--glow) / 0.35);
-  }
-
-  .chip-dot-cyan::before {
-    content: "";
-    @apply inline-block w-1 h-1 rounded-full mr-2 align-middle;
-    background: hsl(var(--primary));
-    box-shadow: 0 0 8px hsl(var(--glow) / 0.8);
-  }
-
-  .chip-dot-blue::before {
-    content: "";
-    @apply inline-block w-1 h-1 rounded-full mr-2 align-middle;
-    background: hsl(var(--highlight));
-  }
-
   .text-gradient {
     background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(350 18% 96%) 48%, hsl(var(--highlight)) 100%);
     -webkit-background-clip: text;

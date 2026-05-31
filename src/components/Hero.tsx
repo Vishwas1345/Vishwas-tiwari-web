@@ -93,12 +93,10 @@ const Hero = () => {
             variants={row}
             className="text-xl md:text-2xl text-primary font-semibold font-display mb-5 text-left [text-shadow:0_1px_24px_rgba(0,0,0,0.5)]"
           >
-            <i>AI Engineer & Developer</i>
+            <i>AI/ML & Backend Developer</i>
           </motion.p>
           <motion.p variants={row} className="text-muted-foreground mb-8 text-left max-w-2xl leading-relaxed">
-            Hii, I'm an enthusiastic developer specializing in AI and software engineering. I love building intelligent
-            solutions that make a difference and am always eager to learn, innovate, and collaborate to solve real-world
-            challenges.
+            Focused on <span className="text-primary font-semibold">AI/ML and Backend</span> systems, but I don't stay in one box. I build with AI models, design backend flows, automate testing and deployment, experiment with NLP, and make different technologies work together. Adaptability matters more than specialization today. Always learning, building, and turning ideas into something real.
           </motion.p>
 
           <motion.div variants={row} className="flex flex-col sm:flex-row gap-4 mb-10">

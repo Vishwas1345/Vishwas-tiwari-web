@@ -13,8 +13,7 @@ const About = () => {
               About Me
             </h2>
             <p className="section-desc text-left mx-0 mt-4">
-              Builder at the intersection of data, ML, and software — grounded in curiosity and clear
-              communication.
+              <span className="text-primary font-semibold">AI/ML and backend</span> specialist who adapts across the stack. Building models, automating systems, and connecting technologies to solve real problems.
             </p>
           </div>
         </Reveal>
@@ -37,7 +36,7 @@ const About = () => {
                   </div>
                 </div>
                 <h3 className="text-lg font-display font-bold text-foreground mb-1">Vishwas Tiwari</h3>
-                <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI Engineer</p>
+                <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI/ML and Backend developer</p>
                 <div className="flex flex-wrap justify-start gap-2">
                   <span className="rounded-xl bg-primary/10 p-2 text-primary">
                     <Database className="w-4 h-4" />
@@ -61,15 +60,11 @@ const About = () => {
                   <h3 className="text-xl font-display font-semibold text-foreground">Personal profile</h3>
                 </div>
                 <p className="text-muted-foreground mb-5 leading-relaxed">
-                  A passionate AI Engineer with a strong foundation in analytical thinking and
-                  problem-solving. My journey in AI and Data Science is driven by curiosity and the desire to extract
-                  meaningful insights from complex datasets. I specialize in machine learning workflows,
-                  statistical analysis, and visualization.
+                  I specialize in <span className="text-primary font-semibold">AI/ML and backend</span> development, but I don't limit myself to one domain. My work spans building AI models, designing scalable backend systems, automating testing and deployment pipelines, experimenting with NLP, and integrating diverse technologies. I believe adaptability and continuous learning matter more than narrow specialization in today's fast-evolving tech landscape.
                 </p>
                 <p className="text-muted-foreground mb-8 leading-relaxed">
                   Currently pursuing a Bachelor&apos;s in Computer Applications (BCA) at Bhagwan Mahavir
-                  University, building expertise in programming, data science, and analytics, complemented by
-                  hands-on projects that reflect real-world impact.
+                  University, I complement academic learning with hands-on projects across AI, backend engineering, QA automation, and DevOps. Always exploring, building, and turning ideas into working solutions.
                 </p>
                 <div className="grid grid-cols-2 gap-3 pt-2">
                   <div className="flex items-center gap-3 rounded-2xl bg-white/[0.03] px-3 py-3 border border-white/[0.06]">
