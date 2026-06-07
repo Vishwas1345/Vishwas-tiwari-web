@@ -29,17 +29,6 @@ const Education = () => {
       ],
       status: "Completed",
     },
-    {
-      degree: "Masters in Computer Applications (MCA)",
-      institution: "Manipal University Jaipur",
-      period: "2026-28",
-      location: "Jaipur, Rajasthan",
-      details: "Pursuing an MCA in Artificial Intelligence & Machine Learning while gaining hands-on industry experience as an AI/ML and Backend Engineer, bridging advanced academic concepts with real-world software and AI development.",
-      achievements: [
-      ],
-      courses: ["AI", "Machine learning", "Data Pre-Processing", "Data Insights", "Computer Science", "Model training"],
-      status: "In Progress",
-    },
   ];
 
   return (
