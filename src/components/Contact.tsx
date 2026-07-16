@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin, Linkedin, Github, Send } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const phoneNumber = "917984527433";
@@ -11,7 +12,7 @@ const Contact = () => {
   const mailtoUrl = `mailto:${emailAddress}`;
   const linkedinUrl =
     "https://www.linkedin.com/in/vishwas-tiwari-74893a300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app";
-  const githubUrl = "https://github.com/Vishhhfr";
+  const githubUrl = "https://github.com/Vishwas1345";
 
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -37,7 +38,7 @@ const Contact = () => {
         </Reveal>
 
         <div className="mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-5 gap-8">
-          <Reveal className="lg:col-span-2" delay={0.06}>
+          <Reveal className="lg:col-span-2" delay={0.06} direction="left">
             <Card className="card-hover border-0 h-full">
               <CardContent className="p-6 md:p-8 flex flex-col gap-8">
                 <div>
@@ -69,31 +70,37 @@ const Contact = () => {
                 <div>
                   <h4 className="font-label text-[10px] uppercase tracking-wider text-muted-foreground mb-4">Social</h4>
                   <div className="flex gap-3">
-                    <a
+                    <motion.a
                       href={linkedinUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-primary hover:border-primary/30 hover:bg-primary/10 transition"
                       aria-label="LinkedIn"
+                      whileHover={{ scale: 1.15, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 320, damping: 16 }}
                     >
                       <Linkedin className="w-5 h-5" />
-                    </a>
-                    <a
+                    </motion.a>
+                    <motion.a
                       href={githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-primary hover:border-primary/30 hover:bg-primary/10 transition"
                       aria-label="GitHub"
+                      whileHover={{ scale: 1.15, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 320, damping: 16 }}
                     >
                       <Github className="w-5 h-5" />
-                    </a>
+                    </motion.a>
                   </div>
                 </div>
               </CardContent>
             </Card>
           </Reveal>
 
-          <Reveal className="lg:col-span-3" delay={0.1}>
+          <Reveal className="lg:col-span-3" delay={0.1} direction="right">
             <Card className="card-hover border-0 h-full">
               <CardContent className="p-6 md:p-8">
                 <h3 className="text-lg font-display font-semibold mb-2">Send a message</h3>

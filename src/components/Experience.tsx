@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Building2, Users, Target } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
+import { motion } from "framer-motion";
 
 type ExperienceEntry = {
   position: string;
@@ -105,13 +106,17 @@ const Experience = () => {
                     <CardContent className="p-6 md:p-8">
                       <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
                         <div className="flex gap-4 min-w-0">
-                          <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-black/40">
+                          <motion.div
+                            className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-black/40"
+                            whileHover={{ scale: 1.1, rotate: 3 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                          >
                             <img
                               src={item.logoSrc ?? "/placeholder.svg"}
                               alt={item.logoAlt ?? ""}
                               className="h-full w-full object-cover object-center"
                             />
-                          </div>
+                          </motion.div>
                           <div className="min-w-0">
                             <h3 className="text-xl md:text-2xl font-display font-bold text-foreground mb-1">
                               {item.position}
@@ -168,10 +173,17 @@ const Experience = () => {
                         </h4>
                         <ul className="space-y-2">
                           {item.responsibilities.map((r, i) => (
-                            <li key={i} className="flex gap-3 text-sm text-muted-foreground">
+                            <motion.li
+                              key={i}
+                              className="flex gap-3 text-sm text-muted-foreground"
+                              initial={{ opacity: 0, x: -18 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true, margin: "-40px" }}
+                              transition={{ delay: 0.1 + i * 0.1, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                            >
                               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary shadow-[0_0_8px_hsl(var(--glow)/0.6)]" />
                               {r}
-                            </li>
+                            </motion.li>
                           ))}
                         </ul>
                       </div>

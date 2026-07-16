@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap, BookOpen, Calendar, MapPin, Star, Award } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
+import { motion } from "framer-motion";
 
 const Education = () => {
   const educationData = [
@@ -97,10 +98,19 @@ const Education = () => {
                       <div className="mb-6">
                         <h4 className="text-base font-display font-semibold mb-3">Key courses</h4>
                         <div className="flex flex-wrap gap-2">
-                          {item.courses.map((course) => (
-                            <Badge key={course} variant="outline" className="text-xs border-white/15 font-label">
-                              {course}
-                            </Badge>
+                          {item.courses.map((course, i) => (
+                            <motion.div
+                              key={course}
+                              initial={{ opacity: 0, scale: 0.7 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              viewport={{ once: true, margin: "-40px" }}
+                              transition={{ delay: i * 0.06, type: "spring", stiffness: 300, damping: 20 }}
+                              whileHover={{ scale: 1.08, y: -2 }}
+                            >
+                              <Badge variant="outline" className="text-xs border-white/15 font-label">
+                                {course}
+                              </Badge>
+                            </motion.div>
                           ))}
                         </div>
                       </div>
@@ -109,10 +119,17 @@ const Education = () => {
                         <h4 className="text-base font-display font-semibold mb-3">Achievements</h4>
                         <ul className="space-y-2">
                           {item.achievements.map((a, i) => (
-                            <li key={i} className="flex gap-3 text-sm text-muted-foreground">
+                            <motion.li
+                              key={i}
+                              className="flex gap-3 text-sm text-muted-foreground"
+                              initial={{ opacity: 0, x: -18 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true, margin: "-40px" }}
+                              transition={{ delay: 0.08 + i * 0.08, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                            >
                               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                               {a}
-                            </li>
+                            </motion.li>
                           ))}
                         </ul>
                       </div>

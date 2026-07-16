@@ -4,13 +4,15 @@ import { Menu } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLocation, useNavigate } from "react-router-dom";
 import { downloadResume } from "@/lib/resumeDownload";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const location = useLocation();
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 26, restDelta: 0.001 });
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -47,7 +49,18 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] glass-nav">
+    <motion.header
+      className="fixed top-0 left-0 w-full z-[100] glass-nav"
+      initial={{ y: -56, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {/* Page scroll progress */}
+      <motion.div
+        className="absolute top-0 left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-primary via-highlight to-primary"
+        style={{ scaleX: progress }}
+        aria-hidden
+      />
       <div className="container mx-auto px-4 py-3.5 flex justify-between items-center gap-4">
         <motion.button
           type="button"
@@ -74,25 +87,38 @@ const Header = () => {
               </Button>
             </div>
 
-            {isOpen && (
-              <div className="absolute top-full left-0 right-0 glass-nav border-t border-white/5 py-4 animate-fade-in">
-                <nav>
-                  <ul className="flex flex-col px-4">
-                    {navItems.map((item) => (
-                      <li key={item.label}>
-                        <button
-                          type="button"
-                          onClick={() => handleNavClick(item)}
-                          className="w-full text-left py-3 px-3 rounded-xl font-label text-sm text-muted-foreground hover:text-primary hover:bg-white/5 transition-colors"
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  className="absolute top-full left-0 right-0 glass-nav border-t border-white/5 py-4 overflow-hidden"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <nav>
+                    <ul className="flex flex-col px-4">
+                      {navItems.map((item, i) => (
+                        <motion.li
+                          key={item.label}
+                          initial={{ opacity: 0, x: -16 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.05 + i * 0.045, duration: 0.3 }}
                         >
-                          {item.label}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              </div>
-            )}
+                          <button
+                            type="button"
+                            onClick={() => handleNavClick(item)}
+                            className="w-full text-left py-3 px-3 rounded-xl font-label text-sm text-muted-foreground hover:text-primary hover:bg-white/5 transition-colors"
+                          >
+                            {item.label}
+                          </button>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </nav>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </>
         ) : (
           <div className="flex items-center gap-8 flex-1 justify-end">
@@ -117,7 +143,7 @@ const Header = () => {
           </div>
         )}
       </div>
-    </header>
+    </motion.header>
   );
 };
 
