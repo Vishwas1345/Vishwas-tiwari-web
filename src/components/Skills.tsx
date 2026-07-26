@@ -14,6 +14,8 @@ import {
   SiGoogle,
   SiOpenai,
   SiGithubactions,
+  SiNodedotjs,
+  SiDocker,
 } from "react-icons/si";
 import { DiCss3, DiJava } from "react-icons/di";
 import { VscVscode } from "react-icons/vsc";
@@ -25,6 +27,7 @@ import {
   MessageCircle,
   Users,
   Sparkles,
+  DatabaseZap,
 } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { motion } from "framer-motion";
@@ -92,6 +95,11 @@ const Skills = () => {
       icon: <SiJavascript className={`${iconBase} text-[#F7DF1E]`} aria-hidden />,
       category: "Frontend",
     },
+    {
+      name: "Node.js",
+      icon: <SiNodedotjs className={`${iconBase} text-[#339933]`} aria-hidden />,
+      category: "Runtime",
+    },
   ];
 
   const dataScienceTools = [
@@ -119,6 +127,11 @@ const Skills = () => {
       name: "Scikit-learn",
       icon: <SiScikitlearn className={`${iconBase} text-[#F89939]`} aria-hidden />,
       category: "Machine learning",
+    },
+    {
+      name: "RAG Pipelines",
+      icon: <DatabaseZap className={`${iconBase} text-primary`} aria-hidden />,
+      category: "Retrieval-Augmented Generation",
     },
   ];
 
@@ -151,6 +164,11 @@ const Skills = () => {
       name: "CI/CD Pipelines",
       icon: <SiGithubactions className={`${iconBase} text-[#2088FF]`} aria-hidden />,
       category: "Automation",
+    },
+    {
+      name: "Docker",
+      icon: <SiDocker className={`${iconBase} text-[#2496ED]`} aria-hidden />,
+      category: "Containerization",
     },
   ];
 
@@ -191,6 +209,11 @@ const Skills = () => {
       name: "MongoDB",
       icon: <SiMongodb className={`${iconBase} text-[#47A248]`} aria-hidden />,
       category: "NoSQL document DB",
+    },
+    {
+      name: "ChromaDB",
+      icon: <DatabaseZap className={`${iconBase} text-primary`} aria-hidden />,
+      category: "Vector database",
     },
   ];
 

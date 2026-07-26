@@ -41,7 +41,7 @@ const About = () => {
                   </div>
                 </motion.div>
                 <h3 className="text-lg font-display font-bold text-foreground mb-1">Vishwas Tiwari</h3>
-                <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI/ML & Backend Engineer</p>
+                <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI Backend Engineer</p>
                 <div className="flex flex-wrap justify-start gap-2">
                   {[
                     { icon: <Database className="w-4 h-4" />, cls: "bg-primary/10 text-primary" },
@@ -70,11 +70,13 @@ const About = () => {
                   <h3 className="text-xl font-display font-semibold text-foreground">Personal profile</h3>
                 </div>
                 <p className="text-muted-foreground mb-5 leading-relaxed">
-                  I specialize in <span className="text-primary font-semibold">AI/ML and backend</span> development, but I don't limit myself to one domain. My work spans building AI models, designing scalable backend systems, automating testing and deployment pipelines, experimenting with NLP, and integrating diverse technologies. I believe adaptability and continuous learning matter more than narrow specialization in today's fast-evolving tech landscape.
+                  <span className="text-primary font-semibold">AI Backend Engineer</span> with a foundation in Data Science and Machine Learning, currently working at the intersection of both. My experience spans backend development, AI/ML system integration, and applied engineering, including training and packaging ML models, building RAG pipelines with embeddings and retrieval, and developing MCP servers for AI-powered platforms.
+                </p>
+                <p className="text-muted-foreground mb-5 leading-relaxed">
+                  I've worked on AI-powered test reporting and management tools, an agentic security tool for AI coding assistants. My interests lie in the practical side of AI: taking models and LLM systems from experimentation to production, with an emphasis on reliability, scalability, and real-world usability.
                 </p>
                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                  Currently pursuing a Bachelor&apos;s in Computer Applications (BCA) at Bhagwan Mahavir
-                  University, I complement academic learning with hands-on projects across AI, backend engineering, QA automation, and DevOps. Always exploring, building, and turning ideas into working solutions.
+                  Open for discussions on <span className="text-primary font-semibold">AI/ML engineering, backend engineering, or applied AI development</span>, where I can contribute both technical depth and hands-on system-building experience. Feel free to connect or reach out for any potential opportunities.
                 </p>
                 <Stagger className="grid grid-cols-2 gap-3 pt-2" interval={0.12}>
                   <StaggerItem>
