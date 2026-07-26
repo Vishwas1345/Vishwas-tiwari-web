@@ -1,11 +1,13 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { PortfolioPlexusCanvas } from '@/components/PortfolioPlexusCanvas';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Brain, BarChart3, Globe, Database, TrendingUp, Mail, ArrowLeft, Github } from 'lucide-react';
+import { Brain, BarChart3, Globe, Database, TrendingUp, Mail, ArrowLeft, Github, Sparkles, Code2, Cpu } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { motion, type Variants } from 'framer-motion';
 
 interface ProjectCardProps {
   title: string;
@@ -20,89 +22,166 @@ interface ProjectCardProps {
   url?: string;
 }
 
+const heroStagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+};
+
+const heroItem: Variants = {
+  hidden: { opacity: 0, y: 32, filter: "blur(12px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const badgePop: Variants = {
+  hidden: { opacity: 0, scale: 0.6, y: 12 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 320, damping: 22 },
+  },
+};
+
+const gridStagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.14 } },
+};
+
+const cardRise: Variants = {
+  hidden: { opacity: 0, y: 48, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const sectionHeader: Variants = {
+  hidden: { opacity: 0, x: -36 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+/** Slow-drifting decorative icon for the hero backdrop. */
+const FloatingIcon = ({
+  children,
+  className,
+  duration = 7,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  duration?: number;
+  delay?: number;
+}) => (
+  <motion.div
+    className={`absolute pointer-events-none text-primary/20 hidden md:block ${className ?? ''}`}
+    animate={{ y: [0, -18, 0], rotate: [0, 8, -8, 0] }}
+    transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
+    aria-hidden
+  >
+    {children}
+  </motion.div>
+);
+
 const ProjectCard = ({ title, description, tags, imageUrl, icon, category, accuracy, dataset, iterations, url }: ProjectCardProps) => {
   return (
-    <Card className="card-hover overflow-hidden bg-card border border-border h-full flex flex-col relative group">
-      <div className="absolute top-4 right-4 z-10">
-        <div className="bg-primary/10 backdrop-blur-sm p-2 rounded-full border border-primary/20">
-          {icon}
+    <div className="h-full">
+      <Card className="card-hover overflow-hidden bg-card border border-border h-full flex flex-col relative group">
+        <div className="absolute top-4 right-4 z-10">
+          <motion.div
+            className="bg-primary/10 backdrop-blur-sm p-2 rounded-full border border-primary/20"
+            whileHover={{ scale: 1.15, rotate: 8 }}
+            transition={{ type: "spring", stiffness: 300, damping: 18 }}
+          >
+            {icon}
+          </motion.div>
         </div>
-      </div>
-      
-      <div className="relative h-52 overflow-hidden">
-        <img 
-          src={imageUrl} 
-          alt={title} 
-          className="w-full h-full object-cover transition-transform group-hover:scale-110 duration-500"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <Badge variant="secondary" className="bg-black/50 text-white border-white/20">
-            {category}
-          </Badge>
-        </div>
-        {url && (
-          <div className="absolute bottom-4 right-4 z-10">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                window.open(url, '_blank', 'noopener,noreferrer');
-              }}
-              className="flex items-center gap-2 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20 hover:bg-black/80 hover:scale-105 transition-all duration-300"
-              aria-label={`View ${title} on GitHub`}
-            >
-              <Github className="w-5 h-5 text-white" />
-              <span className="text-sm font-medium text-white">Code</span>
-            </button>
-          </div>
-        )}
-      </div>
-      
-       <CardContent className="p-6 flex-grow">
-         <h3 className="text-xl font-semibold mb-2 text-gradient">{title}</h3>
-         <div className="text-muted-foreground mb-4">
-           {description.split('\n').map((line, index) => (
-             <div key={index} className="mb-1" style={{ marginBottom: '4px' }}>
-               {line}
-             </div>
-           ))}
-         </div>
-        
-        {/* Performance metrics for ML projects */}
-        {(accuracy || dataset || iterations) && (
-          <div className="mb-4 p-3 bg-primary/5 rounded-lg border border-primary/20">
-            <div className="grid grid-cols-1 gap-2 text-sm">
-              {accuracy && (
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Accuracy:</span>
-                  <span className="font-semibold text-primary">{accuracy}</span>
-                </div>
-              )}
-              {dataset && (
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Dataset:</span>
-                  <span className="font-semibold text-primary">{dataset}</span>
-                </div>
-              )}
-               {iterations && (
-                 <div className="flex justify-between">
-                   <span className="text-muted-foreground">Iterations:</span>
-                   <span className="font-semibold text-primary">{iterations}</span>
-                 </div>
-               )}
-            </div>
-          </div>
-        )}
-        
-        <div className="flex flex-wrap gap-2 mt-auto">
-          {tags.map((tag, index) => (
-            <Badge key={index} variant="secondary" className="hover:bg-primary/20 transition-colors">
-              {tag}
+
+        <div className="relative h-52 overflow-hidden">
+          <img
+            src={imageUrl}
+            alt={title}
+            className="w-full h-full object-cover transition-transform group-hover:scale-110 duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <Badge variant="secondary" className="bg-black/50 text-white border-white/20">
+              {category}
             </Badge>
-          ))}
+          </div>
+          {url && (
+            <div className="absolute bottom-4 right-4 z-10">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(url, '_blank', 'noopener,noreferrer');
+                }}
+                className="flex items-center gap-2 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20 hover:bg-black/80 hover:scale-105 transition-all duration-300"
+                aria-label={`View ${title} on GitHub`}
+              >
+                <Github className="w-5 h-5 text-white" />
+                <span className="text-sm font-medium text-white">Code</span>
+              </button>
+            </div>
+          )}
         </div>
-      </CardContent>
-    </Card>
+
+        <CardContent className="p-6 flex-grow">
+          <h3 className="text-xl font-semibold mb-2 text-gradient">{title}</h3>
+          <div className="text-muted-foreground mb-4">
+            {description.split('\n').map((line, index) => (
+              <div key={index} className="mb-1" style={{ marginBottom: '4px' }}>
+                {line}
+              </div>
+            ))}
+          </div>
+
+          {/* Performance metrics for ML projects */}
+          {(accuracy || dataset || iterations) && (
+            <div className="mb-4 p-3 bg-primary/5 rounded-lg border border-primary/20">
+              <div className="grid grid-cols-1 gap-2 text-sm">
+                {accuracy && (
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Accuracy:</span>
+                    <span className="font-semibold text-primary">{accuracy}</span>
+                  </div>
+                )}
+                {dataset && (
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Dataset:</span>
+                    <span className="font-semibold text-primary">{dataset}</span>
+                  </div>
+                )}
+                {iterations && (
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Iterations:</span>
+                    <span className="font-semibold text-primary">{iterations}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          <div className="flex flex-wrap gap-2 mt-auto">
+            {tags.map((tag, index) => (
+              <Badge key={index} variant="secondary" className="hover:bg-primary/20 hover:scale-105 transition-all">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
@@ -120,7 +199,7 @@ const Portfolio = () => {
        accuracy: "83%",
        dataset: "80k samples",
        url: "https://github.com/Vishhhfr/Computer-price-prediction"
-     }, 
+     },
     {
       title: "Handwritten digits classificaion",
       description: "• 3-layer neural network built from scratch using only Python, NumPy, and Pandas\n• Implements forward propagation, backpropagation, and gradient descent algorithms\n• Custom ReLu activation function and mean squared error loss calculation\n• Classifies handwritten digits (0-9) from MNIST dataset with 85% accuracy\n• 980 training iterations with adaptive learning rate optimization\n• Deep understanding of neural network fundamentals and mathematical concepts\n•Calculus, linear algebra, and optimization algorithms\n• No reliance on high-level frameworks - pure mathematical implementation\n• Excellent demonstration of machine learning theory in practice",
@@ -196,6 +275,7 @@ const Portfolio = () => {
       imageUrl: "/images/fast_delivery_mobile.png",
       icon: <Globe className="w-5 h-5 text-purple-400" />,
       category: "Full Stack Web Development",
+      url :"https://github.com/Vishwas1345/FuelMate"
     },
     {
       title: "Personal portfolio",
@@ -238,139 +318,182 @@ const Portfolio = () => {
 
   const ProjectSection = ({ title, projects, icon, description }: { title: string, projects: ProjectCardProps[], icon: React.ReactNode, description: string }) => (
     <section className="mb-16">
-      <div className="flex items-center gap-3 mb-8">
-        <div className="bg-primary/10 p-3 rounded-lg border border-primary/20">
+      <motion.div
+        className="flex items-center gap-3 mb-8"
+        variants={sectionHeader}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+      >
+        <motion.div
+          className="bg-primary/10 p-3 rounded-lg border border-primary/20"
+          animate={{ y: [0, -5, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+        >
           {icon}
-        </div>
+        </motion.div>
         <div>
           <h2 className="text-3xl font-bold text-gradient">{title}</h2>
           <p className="text-muted-foreground">{description}</p>
         </div>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      </motion.div>
+
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        variants={gridStagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-40px" }}
+      >
         {projects.map((project, index) => (
-          <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
+          <motion.div key={index} variants={cardRise}>
             <ProjectCard {...project} />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <Header />
-      
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/6 w-96 h-96 bg-highlight/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative">
-          <div className="flex items-center gap-4 mb-8">
-            <Button 
-              variant="ghost" 
-              onClick={() => navigate('/')}
-              className="flex items-center gap-2"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Home
-            </Button>
+    <div className="min-h-screen text-foreground overflow-x-hidden relative">
+      <PortfolioPlexusCanvas />
+      <div className="relative z-10">
+        <Header />
+
+        {/* Hero Section */}
+        <section className="pt-24 pb-16 relative overflow-hidden">
+          <FloatingIcon className="top-28 left-[8%]" duration={7}>
+            <Brain className="w-10 h-10" />
+          </FloatingIcon>
+          <FloatingIcon className="top-40 right-[10%]" duration={9} delay={0.8}>
+            <Code2 className="w-12 h-12" />
+          </FloatingIcon>
+          <FloatingIcon className="bottom-16 left-[16%]" duration={8} delay={1.6}>
+            <Cpu className="w-8 h-8" />
+          </FloatingIcon>
+          <FloatingIcon className="bottom-24 right-[18%]" duration={6.5} delay={0.4}>
+            <Sparkles className="w-9 h-9" />
+          </FloatingIcon>
+
+          <div className="container mx-auto px-4 relative">
+            <motion.div variants={heroStagger} initial="hidden" animate="visible">
+              <motion.div variants={heroItem} className="flex items-center gap-4 mb-8">
+                <Button
+                  variant="ghost"
+                  onClick={() => navigate('/')}
+                  className="flex items-center gap-2"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Back to Home
+                </Button>
+              </motion.div>
+
+              <div className="text-center max-w-4xl mx-auto">
+                <motion.h1 variants={heroItem} className="text-5xl md:text-6xl font-bold text-gradient mb-6">
+                  Vishwas's Portfolio
+                </motion.h1>
+                <motion.p variants={heroItem} className="text-xl text-muted-foreground mb-8">
+                  A comprehensive showcase of my technical expertise across machine learning, data analytics, web development, and innovative projects
+                </motion.p>
+
+                <motion.div variants={heroStagger} className="flex flex-wrap justify-center gap-4">
+                  <motion.div variants={badgePop} whileHover={{ scale: 1.08, y: -2 }}>
+                    <Badge variant="outline" className="px-4 py-2 bg-primary/10 border-primary/30 text-primary">
+                      <Brain className="w-4 h-4 mr-2" />
+                      Machine Learning
+                    </Badge>
+                  </motion.div>
+                  <motion.div variants={badgePop} whileHover={{ scale: 1.08, y: -2 }}>
+                    <Badge variant="outline" className="px-4 py-2 bg-green-400/10 border-green-400/30 text-green-400">
+                      <BarChart3 className="w-4 h-4 mr-2" />
+                      Data Analytics
+                    </Badge>
+                  </motion.div>
+                  <motion.div variants={badgePop} whileHover={{ scale: 1.08, y: -2 }}>
+                    <Badge variant="outline" className="px-4 py-2 bg-purple-400/10 border-purple-400/30 text-purple-400">
+                      <Globe className="w-4 h-4 mr-2" />
+                      Web Development
+                    </Badge>
+                  </motion.div>
+                  <motion.div variants={badgePop} whileHover={{ scale: 1.08, y: -2 }}>
+                    <Badge variant="outline" className="px-4 py-2 bg-highlight/12 border-highlight/35 text-highlight">
+                      <Database className="w-4 h-4 mr-2" />
+                      Extra Projects
+                    </Badge>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
-          
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-gradient mb-6">
-              Vishwas's Portfolio
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              A comprehensive showcase of my technical expertise across machine learning, data analytics, web development, and innovative projects
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              <Badge variant="outline" className="px-4 py-2 bg-primary/10 border-primary/30 text-primary">
-                <Brain className="w-4 h-4 mr-2" />
-                Machine Learning
-              </Badge>
-              <Badge variant="outline" className="px-4 py-2 bg-green-400/10 border-green-400/30 text-green-400">
-                <BarChart3 className="w-4 h-4 mr-2" />
-                Data Analytics
-              </Badge>
-              <Badge variant="outline" className="px-4 py-2 bg-purple-400/10 border-purple-400/30 text-purple-400">
-                <Globe className="w-4 h-4 mr-2" />
-                Web Development
-              </Badge>
-              <Badge variant="outline" className="px-4 py-2 bg-highlight/12 border-highlight/35 text-highlight">
-                <Database className="w-4 h-4 mr-2" />
-                Extra Projects
-              </Badge>
-            </div>
-          </div>
+        </section>
+
+        {/* Projects Sections */}
+        <div className="container mx-auto px-4 py-16">
+          <ProjectSection
+            title="Machine Learning Projects"
+            description="Useful Machine learning models and neural networks built from scratch with impressive accuracy rates"
+            icon={<Brain className="w-6 h-6 text-primary" />}
+            projects={machineLearningProjects}
+          />
+
+          <ProjectSection
+            title="Data Analytics Projects"
+            description="Comprehensive business intelligence and data analysis solutions for real-world problems"
+            icon={<BarChart3 className="w-6 h-6 text-green-400" />}
+            projects={dataAnalyticsProjects}
+          />
+
+          <ProjectSection
+            title="Web Development Projects"
+            description="Modern, responsive web applications built with cutting-edge technologies"
+            icon={<Globe className="w-6 h-6 text-purple-400" />}
+            projects={webDevelopmentProjects}
+          />
+
+          <ProjectSection
+            title="Extra Projects"
+            description="Innovative solutions and automation tools that showcase diverse technical skills"
+            icon={<Database className="w-6 h-6 text-highlight" />}
+            projects={extraProjects}
+          />
+
+          {/* Call to Action */}
+          <motion.div
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 40, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Card className="card-hover bg-card border border-border inline-block">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-semibold text-gradient mb-4">Interested in Collaboration?</h3>
+                <p className="text-muted-foreground mb-6">
+                  I'm always excited to work on new projects and explore innovative solutions
+                </p>
+                <Button
+                  className="bg-gradient-to-r from-primary to-highlight hover:from-primary/90 hover:to-highlight/90"
+                  onClick={() => {
+                    navigate('/');
+                    // Small delay to ensure the page loads before scrolling
+                    setTimeout(() => {
+                      const contactSection = document.getElementById('contact');
+                      if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }, 100);
+                  }}
+                >
+                  <Mail className="w-4 h-4 mr-2" />
+                  Get In Touch
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
-      </section>
 
-      {/* Projects Sections */}
-      <div className="container mx-auto px-4 py-16">
-        <ProjectSection
-          title="Machine Learning Projects"
-          description="Useful Machine learning models and neural networks built from scratch with impressive accuracy rates"
-          icon={<Brain className="w-6 h-6 text-primary" />}
-          projects={machineLearningProjects}
-        />
-
-        <ProjectSection
-          title="Data Analytics Projects"
-          description="Comprehensive business intelligence and data analysis solutions for real-world problems"
-          icon={<BarChart3 className="w-6 h-6 text-green-400" />}
-          projects={dataAnalyticsProjects}
-        />
-
-        <ProjectSection
-          title="Web Development Projects"
-          description="Modern, responsive web applications built with cutting-edge technologies"
-          icon={<Globe className="w-6 h-6 text-purple-400" />}
-          projects={webDevelopmentProjects}
-        />
-
-        <ProjectSection
-          title="Extra Projects"
-          description="Innovative solutions and automation tools that showcase diverse technical skills"
-          icon={<Database className="w-6 h-6 text-highlight" />}
-          projects={extraProjects}
-        />
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <Card className="card-hover bg-card border border-border inline-block">
-            <CardContent className="p-8">
-              <h3 className="text-xl font-semibold text-gradient mb-4">Interested in Collaboration?</h3>
-              <p className="text-muted-foreground mb-6">
-                I'm always excited to work on new projects and explore innovative solutions
-              </p>
-              <Button 
-                className="bg-gradient-to-r from-primary to-highlight hover:from-primary/90 hover:to-highlight/90"
-                onClick={() => {
-                  navigate('/');
-                  // Small delay to ensure the page loads before scrolling
-                  setTimeout(() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }, 100);
-                }}
-              >
-                <Mail className="w-4 h-4 mr-2" />
-                Get In Touch
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
+        <Footer />
       </div>
-
-      <Footer />
     </div>
   );
 };

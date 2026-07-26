@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Code, Database, Brain, TrendingUp, Award, Target } from "lucide-react";
-import { Reveal } from "@/components/motion/Reveal";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { motion } from "framer-motion";
 
 const About = () => {
   return (
@@ -22,7 +23,11 @@ const About = () => {
           <Reveal delay={0.05} className="h-full lg:col-span-1">
             <Card className="card-hover border-0 h-full flex flex-col">
               <CardContent className="flex flex-1 flex-col p-6 md:p-8 text-left">
-                <div className="relative mb-5 w-full max-w-[200px]">
+                <motion.div
+                  className="relative mb-5 w-full max-w-[200px]"
+                  whileHover={{ scale: 1.03, rotate: -1.5 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                >
                   <div className="rounded-3xl p-[2px] bg-gradient-to-br from-primary/80 to-highlight/45">
                     <div className="rounded-[1.4rem] overflow-hidden bg-card aspect-[4/5] w-full">
                       <img
@@ -34,19 +39,24 @@ const About = () => {
                       />
                     </div>
                   </div>
-                </div>
+                </motion.div>
                 <h3 className="text-lg font-display font-bold text-foreground mb-1">Vishwas Tiwari</h3>
                 <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI/ML & Backend Engineer</p>
                 <div className="flex flex-wrap justify-start gap-2">
-                  <span className="rounded-xl bg-primary/10 p-2 text-primary">
-                    <Database className="w-4 h-4" />
-                  </span>
-                  <span className="rounded-xl bg-highlight/12 p-2 text-highlight">
-                    <Brain className="w-4 h-4" />
-                  </span>
-                  <span className="rounded-xl bg-primary/10 p-2 text-primary">
-                    <TrendingUp className="w-4 h-4" />
-                  </span>
+                  {[
+                    { icon: <Database className="w-4 h-4" />, cls: "bg-primary/10 text-primary" },
+                    { icon: <Brain className="w-4 h-4" />, cls: "bg-highlight/12 text-highlight" },
+                    { icon: <TrendingUp className="w-4 h-4" />, cls: "bg-primary/10 text-primary" },
+                  ].map((chip, i) => (
+                    <motion.span
+                      key={i}
+                      className={`rounded-xl p-2 ${chip.cls}`}
+                      whileHover={{ scale: 1.2, rotate: 8, y: -2 }}
+                      transition={{ type: "spring", stiffness: 320, damping: 16 }}
+                    >
+                      {chip.icon}
+                    </motion.span>
+                  ))}
                 </div>
               </CardContent>
             </Card>
@@ -66,16 +76,26 @@ const About = () => {
                   Currently pursuing a Bachelor&apos;s in Computer Applications (BCA) at Bhagwan Mahavir
                   University, I complement academic learning with hands-on projects across AI, backend engineering, QA automation, and DevOps. Always exploring, building, and turning ideas into working solutions.
                 </p>
-                <div className="grid grid-cols-2 gap-3 pt-2">
-                  <div className="flex items-center gap-3 rounded-2xl bg-white/[0.03] px-3 py-3 border border-white/[0.06]">
-                    <Award className="w-5 h-5 text-primary shrink-0" />
-                    <span className="text-sm font-medium font-label">Problem solver</span>
-                  </div>
-                  <div className="flex items-center gap-3 rounded-2xl bg-white/[0.03] px-3 py-3 border border-white/[0.06]">
-                    <Code className="w-5 h-5 text-primary shrink-0" />
-                    <span className="text-sm font-medium font-label">Tech enthusiast</span>
-                  </div>
-                </div>
+                <Stagger className="grid grid-cols-2 gap-3 pt-2" interval={0.12}>
+                  <StaggerItem>
+                    <motion.div
+                      className="flex items-center gap-3 rounded-2xl bg-white/[0.03] px-3 py-3 border border-white/[0.06]"
+                      whileHover={{ y: -3, borderColor: "hsl(var(--primary) / 0.3)" }}
+                    >
+                      <Award className="w-5 h-5 text-primary shrink-0" />
+                      <span className="text-sm font-medium font-label">Problem solver</span>
+                    </motion.div>
+                  </StaggerItem>
+                  <StaggerItem>
+                    <motion.div
+                      className="flex items-center gap-3 rounded-2xl bg-white/[0.03] px-3 py-3 border border-white/[0.06]"
+                      whileHover={{ y: -3, borderColor: "hsl(var(--primary) / 0.3)" }}
+                    >
+                      <Code className="w-5 h-5 text-primary shrink-0" />
+                      <span className="text-sm font-medium font-label">Tech enthusiast</span>
+                    </motion.div>
+                  </StaggerItem>
+                </Stagger>
               </CardContent>
             </Card>
           </Reveal>

@@ -1,4 +1,5 @@
 import { Heart, Code, Sparkles } from "lucide-react";
+import { Reveal } from "@/components/motion/Reveal";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -6,6 +7,7 @@ const Footer = () => {
   return (
     <footer className="relative border-t border-white/[0.06] bg-transparent py-12 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
+        <Reveal direction="scale">
         <div className="card-hover px-6 py-10 sm:px-10 md:px-12 md:py-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="text-center md:text-left">
@@ -39,6 +41,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
+        </Reveal>
       </div>
     </footer>
   );

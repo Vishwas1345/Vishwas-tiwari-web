@@ -26,7 +26,8 @@ import {
   Users,
   Sparkles,
 } from "lucide-react";
-import { Reveal } from "@/components/motion/Reveal";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { motion } from "framer-motion";
 
 const iconBase = "h-5 w-5 shrink-0";
 
@@ -46,9 +47,13 @@ const SkillItem = ({ name, icon, category }: SkillProps) => {
     <div className="mb-5 group">
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center min-w-0">
-          <div className="mr-3 flex h-10 min-w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary/15 group-hover:shadow-[0_0_20px_hsl(var(--glow)/0.2)] [&_svg]:overflow-visible">
+          <motion.div
+            className="mr-3 flex h-10 min-w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary/15 group-hover:shadow-[0_0_20px_hsl(var(--glow)/0.2)] [&_svg]:overflow-visible"
+            whileHover={{ scale: 1.18, rotate: -6 }}
+            transition={{ type: "spring", stiffness: 340, damping: 15 }}
+          >
             {icon}
-          </div>
+          </motion.div>
           <div className="min-w-0">
             <span className="font-medium text-foreground group-hover:text-primary transition-colors block truncate">
               {name}
@@ -261,14 +266,17 @@ const Skills = () => {
               <Card className="card-hover border-0 h-full floating-animation" style={{ animationDelay: `${blockIndex * 0.15}s` }}>
                 <CardContent className="p-7">
                   <h3 className="mb-6 text-lg font-display font-semibold text-foreground">{block.title}</h3>
-                  {block.skills.map((skill, index) => (
-                    <SkillItem
-                      key={`${skill.name}-${index}`}
-                      name={skill.name}
-                      icon={skill.icon}
-                      category={skill.category}
-                    />
-                  ))}
+                  <Stagger interval={0.06} delay={0.1}>
+                    {block.skills.map((skill, index) => (
+                      <StaggerItem key={`${skill.name}-${index}`}>
+                        <SkillItem
+                          name={skill.name}
+                          icon={skill.icon}
+                          category={skill.category}
+                        />
+                      </StaggerItem>
+                    ))}
+                  </Stagger>
                 </CardContent>
               </Card>
             </Reveal>

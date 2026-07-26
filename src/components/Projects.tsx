@@ -123,13 +123,13 @@ const Projects = () => {
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(260px,auto)]">
-          <Reveal className="md:col-span-2 md:row-span-2" delay={0.05}>
+          <Reveal className="md:col-span-2 md:row-span-2" delay={0.05} direction="scale">
             <ProjectCard {...projects[0]} className="md:min-h-[520px]" />
           </Reveal>
-          <Reveal delay={0.08}>
+          <Reveal delay={0.08} direction="right">
             <ProjectCard {...projects[1]} />
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} direction="right">
             <ProjectCard {...projects[2]} />
           </Reveal>
           <Reveal className="lg:col-span-2" delay={0.12}>
