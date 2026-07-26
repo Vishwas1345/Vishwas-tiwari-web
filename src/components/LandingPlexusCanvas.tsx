@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { IntroContext } from "@/contexts/IntroContext";
 import {
   NEURAL_LINES,
@@ -29,31 +28,7 @@ const PARTICLE_COUNT = 76;
 const SCATTER_MS = 900;
 const CONVERGE_MS = 3600;
 
-/** After particles join: show welcome copy on canvas, then reveal hero (non-skip only). */
-const WELCOME_AT_CONVERGE = 0.78;
-const WELCOME_HOLD_MS = 2000;
 
-const welcomeMotionParent = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.04 },
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 0.42, ease: [0.4, 0, 0.2, 1] },
-  },
-};
-
-const welcomeMotionLine = {
-  hidden: { opacity: 0, y: 36, filter: "blur(16px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] },
-  },
-};
 
 /** Only scatter → converge → idle canvas; hero name + copy animate in together on top (see Hero.tsx). */
 type IntroPhase = "scatter" | "converge" | "idle";
@@ -350,8 +325,6 @@ export function LandingPlexusCanvas() {
 
   const [uiPhase, setUiPhase] = useState<IntroPhase>("scatter");
   const uiSyncRef = useRef<IntroPhase>("scatter");
-  const [welcomeVisible, setWelcomeVisible] = useState(false);
-  const welcomeShownRef = useRef(false);
   const heroRevealTimeoutRef = useRef(0);
   /** Smoothed cursor (canvas space) for background mesh — avoids jitter. */
   const smoothMouseRef = useRef({ x: 0, y: 0 });
@@ -439,25 +412,13 @@ export function LandingPlexusCanvas() {
       uiSyncRef.current = "idle";
       setUiPhase("idle");
 
-      if (skipIntroRef.current) {
-        setWelcomeVisible(false);
-        setIntroComplete(true);
-        return;
-      }
-
-      if (!welcomeShownRef.current) {
-        welcomeShownRef.current = true;
-        setWelcomeVisible(true);
-      }
-
       if (heroRevealTimeoutRef.current) {
         window.clearTimeout(heroRevealTimeoutRef.current);
       }
       heroRevealTimeoutRef.current = window.setTimeout(() => {
         heroRevealTimeoutRef.current = 0;
-        setWelcomeVisible(false);
         setIntroComplete(true);
-      }, WELCOME_HOLD_MS);
+      }, 0);
     };
 
     const skipToIdle = () => {
@@ -899,10 +860,6 @@ export function LandingPlexusCanvas() {
         phaseRef.current = "converge";
         const raw = tim.converge > 0 ? (elapsed - tim.scatter) / tim.converge : 1;
         convergeProg = easeOutCubic(Math.min(1, raw));
-        if (!welcomeShownRef.current && raw >= WELCOME_AT_CONVERGE) {
-          welcomeShownRef.current = true;
-          setWelcomeVisible(true);
-        }
       }
 
       if (uiSyncRef.current !== phaseRef.current) {
@@ -950,51 +907,6 @@ export function LandingPlexusCanvas() {
         className="fixed inset-0 z-[0] h-[100svh] w-full pointer-events-none"
         aria-hidden
       />
-      <AnimatePresence>
-        {welcomeVisible && (
-          <motion.div
-            key="landing-welcome"
-            role="status"
-            aria-live="polite"
-            variants={welcomeMotionParent}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="fixed inset-0 z-[15] flex items-center justify-center pointer-events-none px-5 sm:px-8"
-          >
-            <div className="flex max-w-[min(92vw,36rem)] flex-col items-center text-center">
-              <motion.p
-                variants={welcomeMotionLine}
-                className="font-display text-[clamp(2.25rem,8vw,3.75rem)] font-medium italic leading-none text-white [text-shadow:0_1px_0_rgba(255,255,255,0.12),0_4px_36px_rgba(0,0,0,0.95),0_0_80px_rgba(255,255,255,0.06)]"
-              >
-                Hii
-              </motion.p>
-
-              <motion.div variants={welcomeMotionLine} className="mt-7 md:mt-9">
-                <span className="inline-block [filter:drop-shadow(0_10px_36px_rgba(0,0,0,0.85))]">
-                  <span className="font-display text-[clamp(2.75rem,11vw,5.5rem)] font-bold leading-[1.05] tracking-tight text-gradient">
-                    I'm Vishwas
-                  </span>
-                </span>
-              </motion.div>
-
-              <motion.p
-                variants={welcomeMotionLine}
-                className="mt-10 max-w-md font-display text-[clamp(1.05rem,3.6vw,1.35rem)] font-normal leading-relaxed tracking-[0.02em] text-white/92 [text-shadow:0_2px_28px_rgba(0,0,0,0.92),0_1px_2px_rgba(0,0,0,0.8)]"
-              >
-                Welcome to my Portfolio,
-              </motion.p>
-
-              <motion.p
-                variants={welcomeMotionLine}
-                className="mt-4 font-display text-[clamp(1.35rem,4.8vw,2.25rem)] font-semibold italic leading-tight tracking-tight text-primary [text-shadow:0_0_42px_hsl(var(--primary)/0.35),0_4px_32px_rgba(0,0,0,0.88)]"
-              >
-                Lets explore!
-              </motion.p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
       {showSkip && (
         <button
           type="button"
