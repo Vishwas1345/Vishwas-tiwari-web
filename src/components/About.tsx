@@ -14,7 +14,7 @@ const About = () => {
               About Me
             </h2>
             <p className="section-desc text-left mx-0 mt-4">
-              <span className="text-primary font-semibold">AI/ML and backend</span> specialist who adapts across the stack. Building models, automating systems, and connecting technologies to solve real problems.
+              <span className="text-primary font-semibold">AI Engineer</span> specializing in LLMs, RAG pipelines, MCP servers, and backend systems. Building models, automating systems, and connecting technologies to solve real problems.
             </p>
           </div>
         </Reveal>
@@ -32,7 +32,7 @@ const About = () => {
                     <div className="rounded-[1.4rem] overflow-hidden bg-card aspect-[4/5] w-full">
                       <img
                         src="/vishwas-portrait.png"
-                        alt="Vishwas Tiwari — professional portrait"
+                        alt="Vishwas Tiwari, professional portrait"
                         className="h-full w-full object-cover object-top"
                         loading="lazy"
                         decoding="async"
@@ -41,7 +41,7 @@ const About = () => {
                   </div>
                 </motion.div>
                 <h3 className="text-lg font-display font-bold text-foreground mb-1">Vishwas Tiwari</h3>
-                <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI Backend Engineer</p>
+                <p className="font-label text-xs uppercase tracking-wider text-primary mb-4">AI Engineer</p>
                 <div className="flex flex-wrap justify-start gap-2">
                   {[
                     { icon: <Database className="w-4 h-4" />, cls: "bg-primary/10 text-primary" },
@@ -70,13 +70,13 @@ const About = () => {
                   <h3 className="text-xl font-display font-semibold text-foreground">Personal profile</h3>
                 </div>
                 <p className="text-muted-foreground mb-5 leading-relaxed">
-                  <span className="text-primary font-semibold">AI Backend Engineer</span> with a foundation in Data Science and Machine Learning, currently working at the intersection of both. My experience spans backend development, AI/ML system integration, and applied engineering, including training and packaging ML models, building RAG pipelines with embeddings and retrieval, and developing MCP servers for AI-powered platforms.
+                  <span className="text-primary font-semibold">AI Engineer</span> with 2.5+ years of experience building and shipping production software, specializing in AI-powered systems and backend engineering. My work spans designing scalable architectures, integrating LLMs, building RAG pipelines, developing MCP servers, and engineering agentic workflows.
                 </p>
                 <p className="text-muted-foreground mb-5 leading-relaxed">
-                  I've worked on AI-powered test reporting and management tools, an agentic security tool for AI coding assistants. My interests lie in the practical side of AI: taking models and LLM systems from experimentation to production, with an emphasis on reliability, scalability, and real-world usability.
+                  I've shipped real products: an MCP server used by most TestDino users, 5+ platform integrations, a local LLM-powered test triage system, and an ML classifier that categorizes Playwright error logs into failure types. My focus is always on turning AI capabilities into reliable, practical tools, not experiments, but things that work in production.
                 </p>
                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                  Open for discussions on <span className="text-primary font-semibold">AI/ML engineering, backend engineering, or applied AI development</span>, where I can contribute both technical depth and hands-on system-building experience. Feel free to connect or reach out for any potential opportunities.
+                  Open for discussions on <span className="text-primary font-semibold">AI engineering, backend systems, or applied LLM development</span> where I can contribute both technical depth and hands-on product-building experience. Feel free to reach out.
                 </p>
                 <Stagger className="grid grid-cols-2 gap-3 pt-2" interval={0.12}>
                   <StaggerItem>

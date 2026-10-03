@@ -37,7 +37,7 @@ const Footer = () => {
 
           <div className="border-t border-white/[0.05] mt-10 pt-8 text-center">
             <p className="text-xs text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              The best way to predict the future is to build it — with data, rigor, and a bit of craft.
+              The best way to predict the future is to build it, with data, rigor, and a bit of craft.
             </p>
           </div>
         </div>

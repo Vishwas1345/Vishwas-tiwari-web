@@ -189,27 +189,26 @@ const Portfolio = () => {
   const navigate = useNavigate();
 
   const machineLearningProjects = [
-     {
-       title: "Computer price prediction",
-       description: "• Machine learning regression model for accurate computer price prediction\n• Analyzes comprehensive hardware specs: RAM, GPU, processor, brand, storage\n• Extensive data preprocessing and feature engineering with multiple algorithms\n• Trained on 80,000+ computer configurations from various manufacturers\n• Achieved 83% accuracy in price prediction\n• Real-time price prediction with confidence intervals\n• Detailed breakdown of how each specification affects final price\n• Helps consumers make informed decisions and retailers optimize pricing\n• Supports multiple regression algorithms and model optimization",
-       tags: ["Python", "Machine Learning", "Regression", "Scikit-Learn", "Pandas", "NumPy"],
-       imageUrl: "/images/3.1.png",
-       icon: <Brain className="w-5 h-5 text-primary" />,
-       category: "Machine Learning - Linear Regression",
-       accuracy: "83%",
-       dataset: "80k samples",
-       url: "https://github.com/Vishhhfr/Computer-price-prediction"
-     },
     {
-      title: "Handwritten digits classificaion",
-      description: "• 3-layer neural network built from scratch using only Python, NumPy, and Pandas\n• Implements forward propagation, backpropagation, and gradient descent algorithms\n• Custom ReLu activation function and mean squared error loss calculation\n• Classifies handwritten digits (0-9) from MNIST dataset with 85% accuracy\n• 980 training iterations with adaptive learning rate optimization\n• Deep understanding of neural network fundamentals and mathematical concepts\n•Calculus, linear algebra, and optimization algorithms\n• No reliance on high-level frameworks - pure mathematical implementation\n• Excellent demonstration of machine learning theory in practice",
+      title: "Test Triage Assistant",
+      description: "• Hybrid triage system combining TF-IDF + Logistic Regression classifier for test-failure labels\n• Low-confidence cases are automatically routed to RAG + a local LLM for plain-English root-cause explanations\n• Uses ChromaDB as a vector store with TF-IDF fallback for context retrieval\n• Runs an on-host model via Ollama (e.g. qwen3:8b) for fully local inference\n• Built to speed up QA debugging by categorizing raw Playwright error logs into failure types\n• No cloud API dependency — all inference runs locally for privacy and speed",
+      tags: ["Python", "TF-IDF", "Logistic Regression", "RAG", "ChromaDB", "Ollama", "LLM", "NLP"],
+      imageUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&h=500&q=80",
+      icon: <Brain className="w-5 h-5 text-primary" />,
+      category: "AI / ML - NLP",
+      url: "https://github.com/Vishwas1345/Failure-classifier",
+    },
+    {
+      title: "Digit-Recognizer",
+      description: "• 3-layer neural network built from scratch using only Python, NumPy, and Pandas\n• Implements forward propagation, backpropagation, and gradient descent algorithms\n• Custom ReLU activation function and mean squared error loss calculation\n• Classifies handwritten digits (0-9) from MNIST dataset\n• Trained over 900 iterations, achieving 95% test accuracy\n• No reliance on high-level frameworks. Pure mathematical implementation\n• Deep understanding of neural network fundamentals: calculus, linear algebra, optimization\n• Excellent demonstration of machine learning theory in practice",
       tags: ["Python", "Neural Networks", "NumPy", "Pandas", "Deep Learning", "Calculus", "Linear Algebra", "Machine Learning"],
       imageUrl: "/images/NNFS.png",
       icon: <Brain className="w-5 h-5 text-highlight" />,
       category: "Deep Learning - Neural Networks",
-      accuracy: "85%",
+      accuracy: "95%",
       dataset: "60k samples",
-      url: "https://github.com/Vishhhfr/Neural-Network-model-from-scratch"
+      iterations: "900+",
+      url: "https://github.com/Vishwas1345/Digit-Recognizer",
     },
     {
        title: "Gold price prediction",
@@ -431,7 +430,7 @@ const Portfolio = () => {
         <div className="container mx-auto px-4 py-16">
           <ProjectSection
             title="Machine Learning Projects"
-            description="Useful Machine learning models and neural networks built from scratch with impressive accuracy rates"
+            description="AI engineering, ML models, and neural networks. From LLM-powered triage systems to networks built from scratch"
             icon={<Brain className="w-6 h-6 text-primary" />}
             projects={machineLearningProjects}
           />

@@ -90,10 +90,10 @@ const Hero = () => {
             variants={row}
             className="text-xl md:text-2xl text-primary font-semibold font-display mb-5 text-left [text-shadow:0_1px_24px_rgba(0,0,0,0.5)]"
           >
-            <i>AI Backend Engineer</i>
+            <i>AI Engineer</i>
           </motion.p>
           <motion.p variants={row} className="text-muted-foreground mb-8 text-left max-w-2xl leading-relaxed">
-            <span className="text-primary font-semibold">Backend Engineer</span> with a foundation in Data Science and ML, working at the intersection of both. Experience includes training and packaging ML models, building RAG pipelines with embeddings, and developing MCP servers for AI-powered platforms.
+            <span className="text-primary font-semibold">AI Engineer</span> with 2.5+ years building and shipping production software. Specializing in AI-powered systems and backend engineering, designing scalable architectures, integrating LLMs, building RAG pipelines, MCP servers, and agentic workflows. Focused on turning emerging AI capabilities into reliable, practical solutions that deliver real-world value.
           </motion.p>
 
           <motion.div variants={row} className="flex flex-col sm:flex-row gap-4 mb-10">

@@ -105,7 +105,7 @@ const Contact = () => {
               <CardContent className="p-6 md:p-8">
                 <h3 className="text-lg font-display font-semibold mb-2">Send a message</h3>
                 <p className="text-sm text-muted-foreground mb-6">
-                  Fills your mail client — no backend required.
+                  Fills your mail client. No backend required.
                 </p>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>

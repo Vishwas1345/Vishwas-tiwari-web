@@ -2,24 +2,28 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   SiPython,
   SiJavascript,
+  SiTypescript,
   SiHtml5,
   SiPandas,
   SiNumpy,
   SiScikitlearn,
+  SiTensorflow,
   SiGithub,
   SiJupyter,
-  SiGooglecolab,
   SiMysql,
   SiMongodb,
-  SiGoogle,
+  SiRedis,
   SiOpenai,
   SiGithubactions,
   SiNodedotjs,
   SiDocker,
+  SiFastapi,
+  SiExpress,
+  SiPostman,
+  SiN8N,
 } from "react-icons/si";
-import { DiCss3, DiJava } from "react-icons/di";
+import { DiJava } from "react-icons/di";
 import { VscVscode } from "react-icons/vsc";
-import { FaFileExcel, FaFileWord, FaFilePowerpoint } from "react-icons/fa";
 import { FaChartLine, FaChartBar } from "react-icons/fa6";
 import {
   Lightbulb,
@@ -28,6 +32,12 @@ import {
   Users,
   Sparkles,
   DatabaseZap,
+  Network,
+  Bot,
+  Workflow,
+  Globe,
+  Wrench,
+  Cloud,
 } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { motion } from "framer-motion";
@@ -77,6 +87,16 @@ const Skills = () => {
       category: "Primary language",
     },
     {
+      name: "TypeScript",
+      icon: <SiTypescript className={`${iconBase} text-[#3178C6]`} aria-hidden />,
+      category: "Typed JavaScript",
+    },
+    {
+      name: "JavaScript",
+      icon: <SiJavascript className={`${iconBase} text-[#F7DF1E]`} aria-hidden />,
+      category: "Frontend / Node",
+    },
+    {
       name: "Java",
       icon: <DiJava className="h-5 w-5" aria-hidden />,
       category: "Object-oriented",
@@ -90,19 +110,80 @@ const Skills = () => {
       ),
       category: "Web",
     },
-    {
-      name: "JavaScript",
-      icon: <SiJavascript className={`${iconBase} text-[#F7DF1E]`} aria-hidden />,
-      category: "Frontend",
-    },
+  ];
+
+  const backendSkills = [
     {
       name: "Node.js",
       icon: <SiNodedotjs className={`${iconBase} text-[#339933]`} aria-hidden />,
       category: "Runtime",
     },
+    {
+      name: "FastAPI",
+      icon: <SiFastapi className={`${iconBase} text-[#009688]`} aria-hidden />,
+      category: "Python web framework",
+    },
+    {
+      name: "Express.js",
+      icon: <SiExpress className={`${iconBase} text-foreground`} aria-hidden />,
+      category: "Node.js framework",
+    },
+    {
+      name: "REST APIs",
+      icon: <Globe className={`${iconBase} text-primary`} aria-hidden />,
+      category: "API design",
+    },
+    {
+      name: "SQL",
+      icon: <SiMysql className={`${iconBase} text-[#4479A1]`} aria-hidden />,
+      category: "Relational queries",
+    },
+  ];
+
+  const aiEngineeringSkills = [
+    {
+      name: "LLMs & RAG",
+      icon: <Bot className={`${iconBase} text-primary`} aria-hidden />,
+      category: "LLM-powered pipelines",
+    },
+    {
+      name: "MCP",
+      icon: <Network className={`${iconBase} text-primary`} aria-hidden />,
+      category: "Model Context Protocol",
+    },
+    {
+      name: "Agentic Systems",
+      icon: <Sparkles className={`${iconBase} text-primary`} aria-hidden />,
+      category: "AI agent design",
+    },
+    {
+      name: "LiteLLM",
+      icon: <Bot className={`${iconBase} text-[#A855F7]`} aria-hidden />,
+      category: "LLM proxy / routing",
+    },
+    {
+      name: "RAG Pipelines",
+      icon: <DatabaseZap className={`${iconBase} text-primary`} aria-hidden />,
+      category: "Retrieval-Augmented Generation",
+    },
+    {
+      name: "n8n",
+      icon: <Workflow className={`${iconBase} text-[#EA4B71]`} aria-hidden />,
+      category: "Workflow automation",
+    },
   ];
 
   const dataScienceTools = [
+    {
+      name: "Scikit-learn",
+      icon: <SiScikitlearn className={`${iconBase} text-[#F89939]`} aria-hidden />,
+      category: "Machine learning",
+    },
+    {
+      name: "TensorFlow",
+      icon: <SiTensorflow className={`${iconBase} text-[#FF6F00]`} aria-hidden />,
+      category: "Deep learning",
+    },
     {
       name: "Pandas",
       icon: <SiPandas className={`${iconBase} text-[#150458]`} aria-hidden />,
@@ -123,16 +204,6 @@ const Skills = () => {
       icon: <FaChartBar className={`${iconBase} text-[#4C72B0]`} aria-hidden />,
       category: "Visualization",
     },
-    {
-      name: "Scikit-learn",
-      icon: <SiScikitlearn className={`${iconBase} text-[#F89939]`} aria-hidden />,
-      category: "Machine learning",
-    },
-    {
-      name: "RAG Pipelines",
-      icon: <DatabaseZap className={`${iconBase} text-primary`} aria-hidden />,
-      category: "Retrieval-Augmented Generation",
-    },
   ];
 
   const developmentTools = [
@@ -146,6 +217,31 @@ const Skills = () => {
       category: "Version control",
     },
     {
+      name: "Docker",
+      icon: <SiDocker className={`${iconBase} text-[#2496ED]`} aria-hidden />,
+      category: "Containerization",
+    },
+    {
+      name: "CI/CD Pipelines",
+      icon: <SiGithubactions className={`${iconBase} text-[#2088FF]`} aria-hidden />,
+      category: "Automation",
+    },
+    {
+      name: "Azure",
+      icon: <Cloud className={`${iconBase} text-[#0078D4]`} aria-hidden />,
+      category: "Cloud",
+    },
+    {
+      name: "Postman",
+      icon: <SiPostman className={`${iconBase} text-[#FF6C37]`} aria-hidden />,
+      category: "API testing",
+    },
+    {
+      name: "Ngrok",
+      icon: <Wrench className={`${iconBase} text-primary`} aria-hidden />,
+      category: "Tunnel / local dev",
+    },
+    {
       name: "VS Code",
       icon: <VscVscode className={`${iconBase} text-[#23A9F2]`} aria-hidden />,
       category: "IDE",
@@ -155,60 +251,23 @@ const Skills = () => {
       icon: <SiJupyter className={`${iconBase} text-[#F37626]`} aria-hidden />,
       category: "Analysis",
     },
-    {
-      name: "Google Colab",
-      icon: <SiGooglecolab className={`${iconBase} text-[#F9AB00]`} aria-hidden />,
-      category: "ML notebooks",
-    },
-    {
-      name: "CI/CD Pipelines",
-      icon: <SiGithubactions className={`${iconBase} text-[#2088FF]`} aria-hidden />,
-      category: "Automation",
-    },
-    {
-      name: "Docker",
-      icon: <SiDocker className={`${iconBase} text-[#2496ED]`} aria-hidden />,
-      category: "Containerization",
-    },
-  ];
-
-  const officeSkills = [
-    {
-      name: "MS Excel",
-      icon: <FaFileExcel className={`${iconBase} text-[#217346]`} aria-hidden />,
-      category: "Spreadsheets",
-    },
-    {
-      name: "MS Word",
-      icon: <FaFileWord className={`${iconBase} text-[#2B579A]`} aria-hidden />,
-      category: "Docs",
-    },
-    {
-      name: "MS PowerPoint",
-      icon: <FaFilePowerpoint className={`${iconBase} text-[#D24726]`} aria-hidden />,
-      category: "Decks",
-    },
-    {
-      name: "Google Workspace",
-      icon: (
-        <span className="flex items-center gap-0.5" aria-hidden>
-          <SiGoogle className="h-5 w-5 text-[#4285F4]" title="Google" />
-        </span>
-      ),
-      category: "Cloud",
-    },
   ];
 
   const databaseSkills = [
+    {
+      name: "MongoDB",
+      icon: <SiMongodb className={`${iconBase} text-[#47A248]`} aria-hidden />,
+      category: "NoSQL document DB",
+    },
     {
       name: "MySQL",
       icon: <SiMysql className={`${iconBase} text-[#4479A1]`} aria-hidden />,
       category: "Relational DB",
     },
     {
-      name: "MongoDB",
-      icon: <SiMongodb className={`${iconBase} text-[#47A248]`} aria-hidden />,
-      category: "NoSQL document DB",
+      name: "Redis",
+      icon: <SiRedis className={`${iconBase} text-[#DC382D]`} aria-hidden />,
+      category: "In-memory store",
     },
     {
       name: "ChromaDB",
@@ -251,24 +310,24 @@ const Skills = () => {
       skills: programmingLanguages,
     },
     {
+      title: "Backend",
+      skills: backendSkills,
+    },
+    {
+      title: "AI Engineering",
+      skills: aiEngineeringSkills,
+    },
+    {
       title: "Data science",
       skills: dataScienceTools,
     },
     {
-      title: "Development tools",
+      title: "Dev tools & cloud",
       skills: developmentTools,
-    },
-    {
-      title: "Office & productivity",
-      skills: officeSkills,
     },
     {
       title: "Databases",
       skills: databaseSkills,
-    },
-    {
-      title: "Soft skills",
-      skills: softSkills,
     },
   ];
 

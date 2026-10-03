@@ -29,14 +29,14 @@ const Experience = () => {
       position: "AI/ML & Backend Engineer",
       company: "TestDino",
       period: "Aug 2025 - Present",
-      location: "On-site ",
+      location: "On-site",
       status: "Active",
       description:
-        "AI/ML and Backend Engineer specializing in AI product development, LLM integrations, and backend infrastructure. Experienced in building production-ready AI features, integrating enterprise tools, developing MCP-based AI systems, and optimizing distributed backend flows. Passionate about leveraging AI and scalable engineering practices to improve automation, developer productivity, and software quality.",
+        "Building and shipping production software for TestDino, a cloud companion for the Playwright testing framework. Specializing in AI-powered QA tooling, MCP server infrastructure, and backend engineering. Focused on turning emerging AI capabilities into reliable, practical features that deliver real-world value for development teams.",
       responsibilities: [
-        "Developed multiple integrations for TestDino including Slack, GitHub, JIRA, and Claude Web to improve automation and developer assistant and workflows",
-        "Built the MCP (Model Context Protocol) infrastructure for TestDino, enabling multiple AI clients to securely interact with TestDino report data and enhance QA automation workflows",
-        "Worked on backend architecture improvements including server load balancing, database sharding, and CI/CD pipeline optimization to improve scalability and system reliability",
+        "Built the MCP server that lets AI clients (Claude, Cursor) securely query test report data, now used by most of the TestDino users, and shipped 5+ integrations including Slack, GitHub, Jira, Linear, and Claude Web to streamline QA workflows",
+        "Drove backend improvements across infrastructure migration, monolith-to-microservice extraction, horizontal scaling, and CI/CD optimization, resolving 100+ Jira tickets and merging 250+ PRs",
+        "Built an ML text classifier that sorts raw Playwright error logs into 5+ failure categories to speed up debugging, plus an AI-driven blog publishing pipeline that automated content workflows",
       ],
       companyInfo: {
         industry: "AI-powered QA & Testing",

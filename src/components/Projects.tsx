@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, BarChart3, Globe, Brain, Database, TrendingUp, Mail } from "lucide-react";
+import { ExternalLink, Globe, Brain, TrendingUp, Mail, Github } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
 
@@ -12,10 +12,11 @@ interface ProjectCardProps {
   imageUrl: string;
   icon: React.ReactNode;
   category: string;
+  githubUrl?: string;
   className?: string;
 }
 
-const ProjectCard = ({ title, description, tags, imageUrl, icon, category, className }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, tags, imageUrl, icon, category, githubUrl, className }: ProjectCardProps) => {
   return (
     <Card
       className={cn(
@@ -46,12 +47,26 @@ const ProjectCard = ({ title, description, tags, imageUrl, icon, category, class
           {title}
         </h3>
         <p className="text-sm text-muted-foreground mb-4 line-clamp-3 leading-relaxed flex-1">{description}</p>
-        <div className="flex flex-wrap gap-1.5 mt-auto">
-          {tags.slice(0, 4).map((tag) => (
-            <Badge key={tag} variant="outline" className="text-[10px] font-label border-white/12 text-muted-foreground">
-              {tag}
-            </Badge>
-          ))}
+        <div className="flex flex-wrap items-center justify-between gap-2 mt-auto">
+          <div className="flex flex-wrap gap-1.5">
+            {tags.slice(0, 4).map((tag) => (
+              <Badge key={tag} variant="outline" className="text-[10px] font-label border-white/12 text-muted-foreground">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+          {githubUrl && (
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors font-label shrink-0"
+              aria-label={`View ${title} on GitHub`}
+            >
+              <Github className="w-3.5 h-3.5" />
+              GitHub
+            </a>
+          )}
         </div>
       </CardContent>
     </Card>
@@ -61,13 +76,24 @@ const ProjectCard = ({ title, description, tags, imageUrl, icon, category, class
 const Projects = () => {
   const projects = [
     {
-      title: "Super Store's Superb Analytics",
+      title: "Test Triage Assistant",
       description:
-        "End-to-end retail analytics: sales patterns, customer behavior, and regional trends with actionable recommendations.",
-      tags: ["Python", "Pandas", "Seaborn", "BI"],
-      imageUrl: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&h=500&q=80",
-      icon: <TrendingUp className="w-5 h-5" />,
-      category: "Analytics",
+        "Hybrid triage: TF-IDF + Logistic Regression classifier for test-failure labels, with low-confidence cases routed to RAG + a local LLM for plain-English root-cause explanations. Uses ChromaDB with TF-IDF fallback for context retrieval and runs an on-host model via Ollama.",
+      tags: ["TF-IDF", "Logistic Regression", "RAG", "ChromaDB"],
+      imageUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&h=500&q=80",
+      icon: <Brain className="w-5 h-5" />,
+      category: "AI / ML",
+      githubUrl: "https://github.com/Vishwas1345/Failure-classifier",
+    },
+    {
+      title: "Digit-Recognizer",
+      description:
+        "3-layer neural network from scratch in Python for MNIST digit classification. Implemented forward/backprop, gradient descent, and ReLU without ML frameworks to build intuition for what libraries like PyTorch abstract away. Trained over 900 iterations, achieving 95% test accuracy.",
+      tags: ["Python", "NumPy", "Neural Network", "MNIST"],
+      imageUrl: "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?auto=format&fit=crop&w=800&h=500&q=80",
+      icon: <Brain className="w-5 h-5" />,
+      category: "ML",
+      githubUrl: "https://github.com/Vishwas1345/Digit-Recognizer",
     },
     {
       title: "Email Sender Pro",
@@ -78,20 +104,12 @@ const Projects = () => {
       category: "Automation",
     },
     {
-      title: "Portfolio Website Pro",
+      title: "Portfolio Website",
       description: "Modern portfolio with responsive layout, motion, and performance-minded structure.",
       tags: ["React", "TypeScript", "Tailwind"],
       imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&h=500&q=80",
       icon: <Globe className="w-5 h-5" />,
       category: "Web",
-    },
-    {
-      title: "Titanic Survival Prediction",
-      description: "ML pipeline with feature engineering; strong accuracy using scikit-learn and TensorFlow workflows.",
-      tags: ["Python", "Scikit-learn", "TensorFlow"],
-      imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=500&q=80",
-      icon: <Brain className="w-5 h-5" />,
-      category: "ML",
     },
     {
       title: "AI ChatBot",
@@ -102,11 +120,12 @@ const Projects = () => {
       category: "AI",
     },
     {
-      title: "Cafe Menu Analytics",
-      description: "Café billing analysis: top sellers, revenue trends, and category performance.",
-      tags: ["Python", "Pandas", "Matplotlib"],
-      imageUrl: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&h=500&q=80",
-      icon: <BarChart3 className="w-5 h-5" />,
+      title: "Super Store Analytics",
+      description:
+        "End-to-end retail analytics: sales patterns, customer behavior, and regional trends with actionable recommendations.",
+      tags: ["Python", "Pandas", "Seaborn", "BI"],
+      imageUrl: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&h=500&q=80",
+      icon: <TrendingUp className="w-5 h-5" />,
       category: "Analytics",
     },
   ];
@@ -118,7 +137,7 @@ const Projects = () => {
           <p className="section-eyebrow text-left">Selected work</p>
           <h2 className="section-title text-left block">Projects</h2>
           <p className="section-desc text-left mx-0 mb-14">
-            Bento-style showcase — dive deeper on the full portfolio page.
+            Bento-style showcase. Dive deeper on the full portfolio page.
           </p>
         </Reveal>
 
