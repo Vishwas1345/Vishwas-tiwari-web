@@ -28,7 +28,7 @@ const Experience = () => {
     {
       position: "AI/ML & Backend Engineer",
       company: "TestDino",
-      period: "May 2026 - Present",
+      period: "Aug 2025 - Present",
       location: "On-site ",
       status: "Active",
       description:
@@ -50,28 +50,28 @@ const Experience = () => {
       logoAlt: "TestDino logo",
     },
     {
-      position: "Data Science Intern",
-      company: "Alphabin Technologies",
-      period: "August 2025 - April 2026",
-      location: "Onsite",
+      position: "AI Engineer",
+      company: "DotSquare AI",
+      period: "May 2024 - July 2025",
+      location: "Remote",
       status: "Completed",
       description:
-        "Data Science Intern experienced in Machine Learning, NLP, LLM evaluation, text classification, clustering, and AI workflow automation. Built practical solutions for model testing, error analysis, and process automation using modern AI technologies.",
+        "AI Engineer focused on enterprise AI engineering, working across 4+ AI projects integrating LLM-powered applications using Hugging Face models and external APIs. Built production conversational AI systems and designed intelligent automation workflows for real-world business processes.",
       responsibilities: [
-        "Built LLM testing workflows using Playwright and DeepEval to evaluate AI model accuracy, response structure, and resilience against prompt injection attacks",
-        "Developed a text classification and clustering model for automated error grouping from raw Playwright error logs, improving debugging and failure analysis workflows",
-        "Created an AI-driven blog publishing pipeline that automated content publishing workflows, reduced manual effort, and improved operational efficiency",
+        "Worked across 4+ AI projects, integrating LLM-powered applications using Hugging Face models and external APIs",
+        "Developed conversational AI chatbots for pharmacy brands, enabling customer interactions through context-aware, LLM-generated responses",
+        "Designed n8n automation workflows integrating LLMs to automate manual, repetitive business processes",
       ],
       companyInfo: {
-        industry: "Software testing & QA",
-        size: "Mid-size",
-        focus: "Quality engineering",
+        industry: "Enterprise AI engineering",
+        size: "Startup",
+        focus: "LLM-powered product development",
         description:
-          "Alphabin Technologies delivers quality assurance and testing services across industries, with emphasis on automation and performance.",
-        website: "https://alphabin.co",
+          "DotSquare AI specializes in enterprise AI engineering, building LLM-powered applications and intelligent automation solutions for businesses across industries.",
+        website: "https://dotsquare.ai",
       },
-      logoSrc: "/lovable-uploads/OIP.jpeg",
-      logoAlt: "Alphabin Technologies logo",
+      logoSrc: "/images/logo.svg",
+      logoAlt: "DotSquare AI logo",
     },
   ];
 
