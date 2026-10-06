@@ -68,7 +68,7 @@ const Experience = () => {
         focus: "LLM-powered product development",
         description:
           "DotSquare AI specializes in enterprise AI engineering, building LLM-powered applications and intelligent automation solutions for businesses across industries.",
-        website: "https://dotsquare.ai",
+        website: "https://dotsquareai.com",
       },
       logoSrc: "/images/logo.svg",
       logoAlt: "DotSquare AI logo",
